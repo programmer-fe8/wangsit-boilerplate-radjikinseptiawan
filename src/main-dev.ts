@@ -3,9 +3,10 @@
  */
 
 import { createApp } from 'vue';
-import { registerComponents } from '@/utils';
 
 import App from './App.vue';
+
+import { registerComponents } from '@/utils';
 
 import '@fewangsit/wangsvue/style.css';
 import '@fewangsit/wangsvue-presets/wangsvue/style.css';

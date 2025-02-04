@@ -1,8 +1,8 @@
-import { h, createApp } from 'vue';
-import { registerComponents } from '@/utils';
+import singleSpaVue from 'single-spa-vue';
+import { createApp, h } from 'vue';
 
 import App from '@/App.vue';
-import singleSpaVue from 'single-spa-vue';
+import { registerComponents } from '@/utils';
 
 const vueLifecycles = singleSpaVue({
   createApp,
