@@ -6,9 +6,7 @@
  * @example 'APP_EXAMPLE_API'
  */
 export const getBaseURL = (env: string): string | undefined => {
-  if (window.Cypress) {
-    return Cypress.env('CY_' + env); // When running Cypress Intercept
-  } else if (import.meta.env) {
+  if (import.meta.env) {
     return import.meta.env['VITE_' + env]; // When running in development mode with Vite
   }
 

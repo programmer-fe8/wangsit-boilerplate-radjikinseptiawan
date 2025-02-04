@@ -8,6 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@fewangsit/wangsvue':
+        specifier: 1.5.198
+        version: 1.5.198
+      '@fewangsit/wangsvue-presets':
+        specifier: 1.0.88
+        version: 1.0.88
+      '@fewangsit/workspace-api-services':
+        specifier: 1.0.8
+        version: 1.0.8
       '@tailwindcss/postcss7-compat':
         specifier: 2.2.17
         version: 2.2.17
@@ -41,12 +50,6 @@ importers:
       vue-router:
         specifier: 4.4.3
         version: 4.4.3(vue@3.4.37(typescript@5.5.4))
-      wangsvue:
-        specifier: ^1.5.178
-        version: 1.5.178
-      wangsvue-presets:
-        specifier: ^1.0.79
-        version: 1.0.79
     devDependencies:
       '@cypress/code-coverage':
         specifier: 3.12.44
@@ -967,6 +970,15 @@ packages:
   '@eslint/js@8.57.0':
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  '@fewangsit/wangsvue-presets@1.0.88':
+    resolution: {integrity: sha512-Uu2L/cPz2A9MdMKstgVcblQDBAzc4dmO4cTYFs+w+Ak1aH2UD4PQ7vkXEkUCQE7Mow/072cxvZx4K5CcMwAo1g==}
+
+  '@fewangsit/wangsvue@1.5.198':
+    resolution: {integrity: sha512-Jo4PzpFjYRv5HZx1coMPBuWdYvXVrc/U6/34OjaFOfLsvXMVqnqfQF3vkVMgA+DWih7YSwqxdcSoiYRp+9/NnA==}
+
+  '@fewangsit/workspace-api-services@1.0.8':
+    resolution: {integrity: sha512-6OJ3YXDVPyHDC5X8XqX2N6knm/e4jl9KJKMVXXU9dM+SifWYhq4rtbTaQoBigL8WvE4rgfrhOBgSpttACRrZ1w==}
 
   '@hapi/hoek@9.3.0':
     resolution: {integrity: sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ==}
@@ -5197,12 +5209,6 @@ packages:
     engines: {node: '>=12.0.0'}
     hasBin: true
 
-  wangsvue-presets@1.0.79:
-    resolution: {integrity: sha512-kmsSw/cGPjYWZea60ujSwMMXfJrk1bYsyONO6uaQbaow5HXARU5IfB08eOPUa8T+LdJxf3GETrFsLZ/EwubLvQ==}
-
-  wangsvue@1.5.178:
-    resolution: {integrity: sha512-rBF5uwDVh8+//n0kwz3jVnziBH1I5vbfE74dLaqyjlsqW7/E6nGqhBUc+FHHN6gNhdEdd+mHEgF3mmbZclS7lw==}
-
   watchpack@2.4.1:
     resolution: {integrity: sha512-8wrBCMtVhqcXP2Sup1ctSkga6uc2Bx0IIvKyT7yTFier5AXHooSI+QyQQAtTb7+E0IUCCKyTFmXqdqgum2XWGg==}
     engines: {node: '>=10.13.0'}
@@ -6384,6 +6390,12 @@ snapshots:
       - supports-color
 
   '@eslint/js@8.57.0': {}
+
+  '@fewangsit/wangsvue-presets@1.0.88': {}
+
+  '@fewangsit/wangsvue@1.5.198': {}
+
+  '@fewangsit/workspace-api-services@1.0.8': {}
 
   '@hapi/hoek@9.3.0': {}
 
@@ -11039,10 +11051,6 @@ snapshots:
       rxjs: 7.8.1
     transitivePeerDependencies:
       - debug
-
-  wangsvue-presets@1.0.79: {}
-
-  wangsvue@1.5.178: {}
 
   watchpack@2.4.1:
     dependencies:

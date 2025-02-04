@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FilterContainer } from 'wangsvue';
+import { FilterContainer } from '@fewangsit/wangsvue';
 import { filterFields } from './options/filterFields';
 </script>
 <template>

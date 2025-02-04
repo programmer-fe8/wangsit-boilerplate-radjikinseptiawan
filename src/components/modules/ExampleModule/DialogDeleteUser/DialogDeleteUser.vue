@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { DialogConfirm, eventBus } from 'wangsvue';
-import { DialogConfirmProps } from 'wangsvue/components/dialogconfirm/DialogConfirm.vue.d';
+import { DialogConfirm, eventBus } from '@fewangsit/wangsvue';
+import { DialogConfirmProps } from '@fewangsit/wangsvue/components/dialogconfirm/DialogConfirm.vue.d';
 
 defineProps<
   Omit<DialogConfirmProps, 'header' | 'severity' | 'closeAfterConfirm'>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { useBreadcrumbStore } from '@/store';
-import { BreadcrumbMenu } from 'wangsvue/components/breadcrumb/Breadcrumb.vue';
+import { BreadcrumbMenu } from '@fewangsit/wangsvue/components/breadcrumb/Breadcrumb.vue';
 
 const { setBreadcrumbs } = useBreadcrumbStore();
 

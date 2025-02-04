@@ -7,6 +7,9 @@ import { registerComponents } from '@/utils';
 
 import App from './App.vue';
 
+import '@fewangsit/wangsvue/style.css';
+import '@fewangsit/wangsvue-presets/wangsvue/style.css';
+
 const app = createApp(App);
 registerComponents(app);
 

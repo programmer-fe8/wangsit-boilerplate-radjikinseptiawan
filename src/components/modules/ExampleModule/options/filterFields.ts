@@ -1,5 +1,5 @@
-import { FilterField } from 'wangsvue/components/filtercontainer/FilterContainer.vue.d';
-import { MultiSelectOption } from 'wangsvue/types/options.type';
+import { FilterField } from '@fewangsit/wangsvue/components/filtercontainer/FilterContainer.vue.d';
+import { MultiSelectOption } from '@fewangsit/wangsvue/types/options.type';
 
 export const quickFilterFields: FilterField[] = [
   {

@@ -1,4 +1,2 @@
-import { getBaseURL } from './getBaseURL.util';
-import registerComponents from './registerComponents.util';
-
-export { getBaseURL, registerComponents };
+export { getBaseURL } from './getBaseURL.util';
+export { default as registerComponents } from './registerComponents.util';

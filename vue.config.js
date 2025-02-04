@@ -26,7 +26,9 @@ module.exports = defineConfig({
       'axios',
       'single-spa-vue',
       'single-spa',
-      'wangsvue',
+      '@fewangsit/wangsvue',
+      '@fewangsit/wangsvue-presets/wangsvue',
+      '@fewangsit/workspace-api-services',
     ],
   },
 });

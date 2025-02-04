@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, shallowRef } from 'vue';
-import { MenuItem } from 'wangsvue/components/menuitem';
+import { MenuItem } from '@fewangsit/wangsvue/components/menuitem';
 import {
   ButtonBulkAction,
   ButtonDownload,
   ButtonFilter,
   ButtonSearch,
-} from 'wangsvue';
+} from '@fewangsit/wangsvue';
 import { Member } from '@/types/member.type';
 import DialogDeleteUser from './DialogDeleteUser/DialogDeleteUser.vue';
 

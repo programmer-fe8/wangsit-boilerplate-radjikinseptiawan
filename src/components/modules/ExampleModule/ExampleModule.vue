@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { Badge, BadgeGroup, DataTable } from 'wangsvue';
+import { Badge, BadgeGroup, DataTable } from '@fewangsit/wangsvue';
 import {
   FetchResponse,
   TableCellComponent,
   TableColumn,
-} from 'wangsvue/components/datatable/DataTable.vue.d';
-import { MenuItem } from 'wangsvue/components/menuitem';
+} from '@fewangsit/wangsvue/components/datatable/DataTable.vue.d';
+import { MenuItem } from '@fewangsit/wangsvue/components/menuitem';
 import { Member } from '@/types/member.type';
 import router from '@/router';
 import DialogDeleteUser from './DialogDeleteUser/DialogDeleteUser.vue';

@@ -25,7 +25,10 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
-      'wangsvue': resolve(__dirname, 'node_modules/wangsvue'),
+      '@fewangsit/wangsvue': resolve(
+        __dirname,
+        'node_modules/@fewangsit/wangsvue',
+      ),
     },
   },
   server: {
@@ -35,6 +38,6 @@ export default defineConfig({
     sourcemap: true,
   },
   optimizeDeps: {
-    include: ['wangsvue'],
+    include: ['@fewangsit/wangsvue'],
   },
 });
