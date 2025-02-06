@@ -16,7 +16,7 @@ import ExampleModuleQuickFilter from './ExampleModuleQuickFilter.vue';
 import response from './exampleResponse.json';
 
 const selectedUser = shallowRef<Member>();
-const showDeleteUserDialog = shallowRef(false);
+const showDeleteUserDialog = shallowRef<boolean>(false);
 
 const singleAction: MenuItem[] = [
   {
