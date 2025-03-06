@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@fewangsit/wangsvue':
-        specifier: 1.5.198
-        version: 1.5.198
+        specifier: 1.5.205-alpha.1
+        version: 1.5.205-alpha.1
       '@fewangsit/wangsvue-presets':
-        specifier: 1.0.88
-        version: 1.0.88
+        specifier: 1.0.90-alpha.17
+        version: 1.0.90-alpha.17
       '@fewangsit/workspace-api-services':
         specifier: 1.0.8
         version: 1.0.8
@@ -989,11 +989,11 @@ packages:
       eslint-plugin-vue: '>=9.32.0'
       typescript: '>=5.5.4'
 
-  '@fewangsit/wangsvue-presets@1.0.88':
-    resolution: {integrity: sha512-Uu2L/cPz2A9MdMKstgVcblQDBAzc4dmO4cTYFs+w+Ak1aH2UD4PQ7vkXEkUCQE7Mow/072cxvZx4K5CcMwAo1g==}
+  '@fewangsit/wangsvue-presets@1.0.90-alpha.17':
+    resolution: {integrity: sha512-lbtArpMtx087rPBWH95HK0ZDHqtyyZNrgZRrRssC4apk4cl3rZKsaA/M9/DAQ8MJUrKjHdMr2ifpSQKx6s/kiw==}
 
-  '@fewangsit/wangsvue@1.5.198':
-    resolution: {integrity: sha512-Jo4PzpFjYRv5HZx1coMPBuWdYvXVrc/U6/34OjaFOfLsvXMVqnqfQF3vkVMgA+DWih7YSwqxdcSoiYRp+9/NnA==}
+  '@fewangsit/wangsvue@1.5.205-alpha.1':
+    resolution: {integrity: sha512-Jnp77adc+IrxeLaf6INy/HVCIt7OafTptGF77YNT3wLXQYlucX6RHegOIAQz4b6CgYTETrieuDifVbsoGnTtMQ==}
 
   '@fewangsit/workspace-api-services@1.0.8':
     resolution: {integrity: sha512-6OJ3YXDVPyHDC5X8XqX2N6knm/e4jl9KJKMVXXU9dM+SifWYhq4rtbTaQoBigL8WvE4rgfrhOBgSpttACRrZ1w==}
@@ -6806,9 +6806,9 @@ snapshots:
       eslint-plugin-vue: 9.32.0(eslint@8.57.1)
       typescript: 5.5.4
 
-  '@fewangsit/wangsvue-presets@1.0.88': {}
+  '@fewangsit/wangsvue-presets@1.0.90-alpha.17': {}
 
-  '@fewangsit/wangsvue@1.5.198': {}
+  '@fewangsit/wangsvue@1.5.205-alpha.1': {}
 
   '@fewangsit/workspace-api-services@1.0.8': {}
 
