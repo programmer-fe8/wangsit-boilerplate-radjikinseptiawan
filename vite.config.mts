@@ -37,7 +37,4 @@ export default defineConfig({
   build: {
     sourcemap: true,
   },
-  optimizeDeps: {
-    include: ['@fewangsit/wangsvue'],
-  },
 });

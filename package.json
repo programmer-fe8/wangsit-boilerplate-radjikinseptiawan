@@ -16,9 +16,9 @@
     "cy:test-all": "pnpm tailwind && start-server-and-test dev http://localhost:9090 cy:run-e2e"
   },
   "dependencies": {
-    "@fewangsit/wangsvue": "1.5.205-alpha.1",
-    "@fewangsit/wangsvue-presets": "1.0.90-alpha.17",
-    "@fewangsit/workspace-api-services": "1.0.8",
+    "@fewangsit/wangsvue": "1.5.217-alpha.0",
+    "@fewangsit/wangsvue-presets": "1.0.102-alpha.0",
+    "@fewangsit/workspace-api-services": "1.0.18-alpha.1",
     "@tailwindcss/postcss7-compat": "2.2.17",
     "autoprefixer": "10.4.20",
     "axios": "1.7.3",

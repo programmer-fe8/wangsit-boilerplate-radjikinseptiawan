@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       '@fewangsit/wangsvue':
-        specifier: 1.5.205-alpha.1
-        version: 1.5.205-alpha.1
+        specifier: 1.5.217-alpha.0
+        version: 1.5.217-alpha.0(@stencil/core@4.35.1)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4))
       '@fewangsit/wangsvue-presets':
-        specifier: 1.0.90-alpha.17
-        version: 1.0.90-alpha.17
+        specifier: 1.0.102-alpha.0
+        version: 1.0.102-alpha.0
       '@fewangsit/workspace-api-services':
-        specifier: 1.0.8
-        version: 1.0.8
+        specifier: 1.0.18-alpha.1
+        version: 1.0.18-alpha.1
       '@tailwindcss/postcss7-compat':
         specifier: 2.2.17
         version: 2.2.17
@@ -989,14 +989,14 @@ packages:
       eslint-plugin-vue: '>=9.32.0'
       typescript: '>=5.5.4'
 
-  '@fewangsit/wangsvue-presets@1.0.90-alpha.17':
-    resolution: {integrity: sha512-lbtArpMtx087rPBWH95HK0ZDHqtyyZNrgZRrRssC4apk4cl3rZKsaA/M9/DAQ8MJUrKjHdMr2ifpSQKx6s/kiw==}
+  '@fewangsit/wangsvue-presets@1.0.102-alpha.0':
+    resolution: {integrity: sha512-R73i2i+R/xSvDR5psqsabkhotQaWhdckQfJHnsLjL77MeiuxA/HccNkdT4cOGvow0LEzUpv+B6ZHzmfQRixD3A==}
 
-  '@fewangsit/wangsvue@1.5.205-alpha.1':
-    resolution: {integrity: sha512-Jnp77adc+IrxeLaf6INy/HVCIt7OafTptGF77YNT3wLXQYlucX6RHegOIAQz4b6CgYTETrieuDifVbsoGnTtMQ==}
+  '@fewangsit/wangsvue@1.5.217-alpha.0':
+    resolution: {integrity: sha512-D4y5NHMqC+UAhyAO6Q0Aw09dNM+hXZBJZO9sUqvGw7f3EsbvLgps/66oQTVALJmMra0Jc02SDa6cxdWhWfLVSA==}
 
-  '@fewangsit/workspace-api-services@1.0.8':
-    resolution: {integrity: sha512-6OJ3YXDVPyHDC5X8XqX2N6knm/e4jl9KJKMVXXU9dM+SifWYhq4rtbTaQoBigL8WvE4rgfrhOBgSpttACRrZ1w==}
+  '@fewangsit/workspace-api-services@1.0.18-alpha.1':
+    resolution: {integrity: sha512-Tz4Vatyij8Ea7cv6iUpSuQiCbykis55M73urVQLYXrNkJMn+r/0i7c5i2Vtutw3GwVR4dGLhbRcpqGKBUyntNw==}
 
   '@hapi/hoek@9.3.0':
     resolution: {integrity: sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ==}
@@ -1095,8 +1095,18 @@ packages:
     cpu: [arm64]
     os: [darwin]
 
+  '@rollup/rollup-darwin-arm64@4.34.9':
+    resolution: {integrity: sha512-0CY3/K54slrzLDjOA7TOjN1NuLKERBgk9nY5V34mhmuu673YNb+7ghaDUs6N0ujXR7fz5XaS5Aa6d2TNxZd0OQ==}
+    cpu: [arm64]
+    os: [darwin]
+
   '@rollup/rollup-darwin-x64@4.20.0':
     resolution: {integrity: sha512-xbrMDdlev53vNXexEa6l0LffojxhqDTBeL+VUxuuIXys4x6xyvbKq5XqTXBCEUA8ty8iEJblHvFaWRJTk/icAQ==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@rollup/rollup-darwin-x64@4.34.9':
+    resolution: {integrity: sha512-eOojSEAi/acnsJVYRxnMkPFqcxSMFfrw7r2iD9Q32SGkb/Q9FpUY1UlAu1DH9T7j++gZ0lHjnm4OyH2vCI7l7Q==}
     cpu: [x64]
     os: [darwin]
 
@@ -1115,8 +1125,18 @@ packages:
     cpu: [arm64]
     os: [linux]
 
+  '@rollup/rollup-linux-arm64-gnu@4.34.9':
+    resolution: {integrity: sha512-6TZjPHjKZUQKmVKMUowF3ewHxctrRR09eYyvT5eFv8w/fXarEra83A2mHTVJLA5xU91aCNOUnM+DWFMSbQ0Nxw==}
+    cpu: [arm64]
+    os: [linux]
+
   '@rollup/rollup-linux-arm64-musl@4.20.0':
     resolution: {integrity: sha512-+it+mBSyMslVQa8wSPvBx53fYuZK/oLTu5RJoXogjk6x7Q7sz1GNRsXWjn6SwyJm8E/oMjNVwPhmNdIjwP135Q==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@rollup/rollup-linux-arm64-musl@4.34.9':
+    resolution: {integrity: sha512-LD2fytxZJZ6xzOKnMbIpgzFOuIKlxVOpiMAXawsAZ2mHBPEYOnLRK5TTEsID6z4eM23DuO88X0Tq1mErHMVq0A==}
     cpu: [arm64]
     os: [linux]
 
@@ -1140,13 +1160,28 @@ packages:
     cpu: [x64]
     os: [linux]
 
+  '@rollup/rollup-linux-x64-gnu@4.34.9':
+    resolution: {integrity: sha512-FwBHNSOjUTQLP4MG7y6rR6qbGw4MFeQnIBrMe161QGaQoBQLqSUEKlHIiVgF3g/mb3lxlxzJOpIBhaP+C+KP2A==}
+    cpu: [x64]
+    os: [linux]
+
   '@rollup/rollup-linux-x64-musl@4.20.0':
     resolution: {integrity: sha512-hM3nhW40kBNYUkZb/r9k2FKK+/MnKglX7UYd4ZUy5DJs8/sMsIbqWK2piZtVGE3kcXVNj3B2IrUYROJMMCikNg==}
     cpu: [x64]
     os: [linux]
 
+  '@rollup/rollup-linux-x64-musl@4.34.9':
+    resolution: {integrity: sha512-cYRpV4650z2I3/s6+5/LONkjIz8MBeqrk+vPXV10ORBnshpn8S32bPqQ2Utv39jCiDcO2eJTuSlPXpnvmaIgRA==}
+    cpu: [x64]
+    os: [linux]
+
   '@rollup/rollup-win32-arm64-msvc@4.20.0':
     resolution: {integrity: sha512-psegMvP+Ik/Bg7QRJbv8w8PAytPA7Uo8fpFjXyCRHWm6Nt42L+JtoqH8eDQ5hRP7/XW2UiIriy1Z46jf0Oa1kA==}
+    cpu: [arm64]
+    os: [win32]
+
+  '@rollup/rollup-win32-arm64-msvc@4.34.9':
+    resolution: {integrity: sha512-z4mQK9dAN6byRA/vsSgQiPeuO63wdiDxZ9yg9iyX2QTzKuQM7T4xlBoeUP/J8uiFkqxkcWndWi+W7bXdPbt27Q==}
     cpu: [arm64]
     os: [win32]
 
@@ -1157,6 +1192,11 @@ packages:
 
   '@rollup/rollup-win32-x64-msvc@4.20.0':
     resolution: {integrity: sha512-aJ1EJSuTdGnM6qbVC4B5DSmozPTqIag9fSzXRNNo+humQLG89XpPgdt16Ia56ORD7s+H8Pmyx44uczDQ0yDzpg==}
+    cpu: [x64]
+    os: [win32]
+
+  '@rollup/rollup-win32-x64-msvc@4.34.9':
+    resolution: {integrity: sha512-AyleYRPU7+rgkMWbEh71fQlrzRfeP6SyMnRf9XX4fCdDPAJumdSBqYEcWPMzVQ4ScAl7E4oFfK0GUVn77xSwbw==}
     cpu: [x64]
     os: [win32]
 
@@ -1180,6 +1220,17 @@ packages:
 
   '@soda/get-current-script@1.0.2':
     resolution: {integrity: sha512-T7VNNlYVM1SgQ+VsMYhnDkcGmWhQdL0bDyGm5TlQ3GBXnJscEClUUOKduWTmm2zCnvNLC1hc3JpuXjs/nFOc5w==}
+
+  '@stencil/core@4.35.1':
+    resolution: {integrity: sha512-u65m3TbzOtpn679gUV4Yvi8YpInhRJ62js30a7YtXief9Ej/vzrhwDE22U0w4DMWJOYwAsJl133BUaZkWwnmzg==}
+    engines: {node: '>=16.0.0', npm: '>=7.10.0'}
+    hasBin: true
+
+  '@stencil/store@2.1.3':
+    resolution: {integrity: sha512-qeWJisbcafVcAhFZidiqK82ULlgBzPNEhlsm0PZ54FHkNTIomxns2MiI7IOGUvGPumK1WK7KzajRomHHc8SYag==}
+    engines: {node: '>=18.0.0', npm: '>=6.0.0'}
+    peerDependencies:
+      '@stencil/core': '>=2.0.0 || >=3.0.0 || >= 4.0.0-beta.0 || >= 4.0.0'
 
   '@tailwindcss/postcss7-compat@2.2.17':
     resolution: {integrity: sha512-3h2svqQAqYHxRZ1KjsJjZOVTQ04m29LjfrLjXyZZEJuvUuJN+BCIF9GI8vhE1s0plS0mogd6E6YLg6mu4Wv/Vw==}
@@ -1615,6 +1666,26 @@ packages:
 
   '@vue/web-component-wrapper@1.3.0':
     resolution: {integrity: sha512-Iu8Tbg3f+emIIMmI2ycSI8QcEuAUgPTgHwesDU1eKMLE4YC/c/sFbGc70QgMq31ijRftV0R7vCm9co6rldCeOA==}
+
+  '@wangs-ui/core@1.0.22':
+    resolution: {integrity: sha512-A9cqWZi14FdEFRd0QnJZVpOgBLzuHlUNkV2ts1XIlaHFS0I1Opjq9r+lHjOLTuJsKK5eXVdN+NnV6fbEBkPu+g==}
+
+  '@wangs-ui/vue-output-target@0.10.12':
+    resolution: {integrity: sha512-FlxD/JV3W1Jaf94neTdoxGucOP5x21dqgXGniunTwrP2Yo//Dsujw/RuBYVtMSJ8LJJ9Gb4qHuZ5vR9qPOKHYw==}
+    peerDependencies:
+      '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
+      vue: ^3.4.38
+      vue-router: ^4.5.0
+    peerDependenciesMeta:
+      '@stencil/core':
+        optional: true
+      vue-router:
+        optional: true
+
+  '@wangs-ui/vue@1.0.22':
+    resolution: {integrity: sha512-rKiYr0tEAxG/3+bWcYY5UEMuDAlbGGDE3lcADLke/QA+6citDgtMU+pGvMk8LpLjtxqJpYO5CW/Tvu08EClmCg==}
+    peerDependencies:
+      '@wangs-ui/core': '>=1.0.0'
 
   '@webassemblyjs/ast@1.12.1':
     resolution: {integrity: sha512-EKfMUOPRRUTy5UII4qJDGPpqfwjOmZ5jeGFwid9mnoqIFK+e0vqoi1qH56JpmZSzEL53jKnNzScdmftJyG5xWg==}
@@ -6806,11 +6877,18 @@ snapshots:
       eslint-plugin-vue: 9.32.0(eslint@8.57.1)
       typescript: 5.5.4
 
-  '@fewangsit/wangsvue-presets@1.0.90-alpha.17': {}
+  '@fewangsit/wangsvue-presets@1.0.102-alpha.0': {}
 
-  '@fewangsit/wangsvue@1.5.205-alpha.1': {}
+  '@fewangsit/wangsvue@1.5.217-alpha.0(@stencil/core@4.35.1)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4))':
+    dependencies:
+      '@wangs-ui/core': 1.0.22(@stencil/core@4.35.1)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4))
+      '@wangs-ui/vue': 1.0.22(@stencil/core@4.35.1)(@wangs-ui/core@1.0.22(@stencil/core@4.35.1)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4)))(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4))
+    transitivePeerDependencies:
+      - '@stencil/core'
+      - vue
+      - vue-router
 
-  '@fewangsit/workspace-api-services@1.0.8': {}
+  '@fewangsit/workspace-api-services@1.0.18-alpha.1': {}
 
   '@hapi/hoek@9.3.0': {}
 
@@ -6905,7 +6983,13 @@ snapshots:
   '@rollup/rollup-darwin-arm64@4.20.0':
     optional: true
 
+  '@rollup/rollup-darwin-arm64@4.34.9':
+    optional: true
+
   '@rollup/rollup-darwin-x64@4.20.0':
+    optional: true
+
+  '@rollup/rollup-darwin-x64@4.34.9':
     optional: true
 
   '@rollup/rollup-linux-arm-gnueabihf@4.20.0':
@@ -6917,7 +7001,13 @@ snapshots:
   '@rollup/rollup-linux-arm64-gnu@4.20.0':
     optional: true
 
+  '@rollup/rollup-linux-arm64-gnu@4.34.9':
+    optional: true
+
   '@rollup/rollup-linux-arm64-musl@4.20.0':
+    optional: true
+
+  '@rollup/rollup-linux-arm64-musl@4.34.9':
     optional: true
 
   '@rollup/rollup-linux-powerpc64le-gnu@4.20.0':
@@ -6932,16 +7022,28 @@ snapshots:
   '@rollup/rollup-linux-x64-gnu@4.20.0':
     optional: true
 
+  '@rollup/rollup-linux-x64-gnu@4.34.9':
+    optional: true
+
   '@rollup/rollup-linux-x64-musl@4.20.0':
     optional: true
 
+  '@rollup/rollup-linux-x64-musl@4.34.9':
+    optional: true
+
   '@rollup/rollup-win32-arm64-msvc@4.20.0':
+    optional: true
+
+  '@rollup/rollup-win32-arm64-msvc@4.34.9':
     optional: true
 
   '@rollup/rollup-win32-ia32-msvc@4.20.0':
     optional: true
 
   '@rollup/rollup-win32-x64-msvc@4.20.0':
+    optional: true
+
+  '@rollup/rollup-win32-x64-msvc@4.34.9':
     optional: true
 
   '@rtsao/scc@1.1.0': {}
@@ -6963,6 +7065,21 @@ snapshots:
       webpack: 5.93.0
 
   '@soda/get-current-script@1.0.2': {}
+
+  '@stencil/core@4.35.1':
+    optionalDependencies:
+      '@rollup/rollup-darwin-arm64': 4.34.9
+      '@rollup/rollup-darwin-x64': 4.34.9
+      '@rollup/rollup-linux-arm64-gnu': 4.34.9
+      '@rollup/rollup-linux-arm64-musl': 4.34.9
+      '@rollup/rollup-linux-x64-gnu': 4.34.9
+      '@rollup/rollup-linux-x64-musl': 4.34.9
+      '@rollup/rollup-win32-arm64-msvc': 4.34.9
+      '@rollup/rollup-win32-x64-msvc': 4.34.9
+
+  '@stencil/store@2.1.3(@stencil/core@4.35.1)':
+    dependencies:
+      '@stencil/core': 4.35.1
 
   '@tailwindcss/postcss7-compat@2.2.17':
     dependencies:
@@ -7777,6 +7894,31 @@ snapshots:
   '@vue/shared@3.4.37': {}
 
   '@vue/web-component-wrapper@1.3.0': {}
+
+  '@wangs-ui/core@1.0.22(@stencil/core@4.35.1)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4))':
+    dependencies:
+      '@stencil/store': 2.1.3(@stencil/core@4.35.1)
+      '@wangs-ui/vue-output-target': 0.10.12(@stencil/core@4.35.1)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4))
+    transitivePeerDependencies:
+      - '@stencil/core'
+      - vue
+      - vue-router
+
+  '@wangs-ui/vue-output-target@0.10.12(@stencil/core@4.35.1)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4))':
+    dependencies:
+      vue: 3.4.37(typescript@5.5.4)
+    optionalDependencies:
+      '@stencil/core': 4.35.1
+      vue-router: 4.4.3(vue@3.4.37(typescript@5.5.4))
+
+  '@wangs-ui/vue@1.0.22(@stencil/core@4.35.1)(@wangs-ui/core@1.0.22(@stencil/core@4.35.1)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4)))(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4))':
+    dependencies:
+      '@wangs-ui/core': 1.0.22(@stencil/core@4.35.1)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4))
+      '@wangs-ui/vue-output-target': 0.10.12(@stencil/core@4.35.1)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4))
+    transitivePeerDependencies:
+      - '@stencil/core'
+      - vue
+      - vue-router
 
   '@webassemblyjs/ast@1.12.1':
     dependencies:
