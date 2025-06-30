@@ -5,8 +5,8 @@ import {
   FetchResponse,
   TableCellComponent,
   TableColumn,
-} from '@fewangsit/wangsvue/components/datatable/DataTable.vue.d';
-import { MenuItem } from '@fewangsit/wangsvue/components/menuitem';
+} from '@fewangsit/wangsvue/datatable';
+import { MenuItem } from '@fewangsit/wangsvue/menuitem';
 import { Member } from '@/types/member.type';
 import router from '@/router';
 import DialogDeleteUser from './DialogDeleteUser/DialogDeleteUser.vue';

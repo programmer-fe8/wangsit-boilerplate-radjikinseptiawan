@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { MenuItem } from '@fewangsit/wangsvue/components/menuitem';
+import { MenuItem } from '@fewangsit/wangsvue/menuitem';
 import {
   ButtonBulkAction,
   ButtonDownload,

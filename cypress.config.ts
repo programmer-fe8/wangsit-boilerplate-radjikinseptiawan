@@ -1,14 +1,13 @@
 import { defineConfig } from 'cypress';
+
 import coverage from '@cypress/code-coverage/task';
 
 export default defineConfig({
-  env: {
-    CY_APP_WANGS_DUMMY_REST_API: 'https://example.dummy-api.com',
-  },
   e2e: {
-    baseUrl: 'http://localhost:9090',
+    baseUrl: 'http://localhost:9093',
     specPattern: 'cypress/e2e/**/*.cy.spec.ts',
     supportFile: 'cypress/support/e2e.ts',
+    screenshotsFolder: 'cypress/snapshots/actual',
     setupNodeEvents(on, config) {
       coverage(on, config);
 
@@ -17,6 +16,7 @@ export default defineConfig({
   },
   component: {
     specPattern: 'src/**/*.cy.spec.ts',
+    screenshotsFolder: 'cypress/snapshots/actual',
     setupNodeEvents(on, config) {
       coverage(on, config);
 

@@ -1,7 +1,5 @@
 node_modules
-/dist
-/coverage
-
+dist
 
 # env files
 .env
@@ -27,4 +25,10 @@ pnpm-debug.log*
 
 .nyc_output
 out.json
+/cypress/downloads
+/cypress/screenshots
+/cypress/snapshots/actual
+/cypress/snapshots/diff
 cypress/support/tailwind.css
+
+coverage

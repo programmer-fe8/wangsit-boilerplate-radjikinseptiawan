@@ -1,25 +1,42 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "strict": true,
-    "jsx": "preserve",
-    "moduleResolution": "bundler",
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
+    "target": "ES2022",
     "useDefineForClassFields": true,
-    "sourceMap": false,
+    "module": "ESNext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "resolveJsonModule": true,
+    "types": [
+      "cypress",
+      "mocha",
+      "@microtsm/cli/client",
+      "@fewangsit/workspace-api-services",
+      "@fewangsit/wangsvue"
+    ],
     "baseUrl": ".",
-    "types": ["webpack-env", "cypress", "mocha"],
     "paths": {
       "@/*": ["src/*"],
+      "@fewangsit/workspace-api-services/*": [
+        "node_modules/@fewangsit/workspace-api-services/*"
+      ],
       "@fewangsit/wangsvue/*": ["node_modules/@fewangsit/wangsvue/*"]
-    },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+    }
   },
-  "include": ["**/*.d.ts", "**/*.ts", "src/**/*.vue", "vite.config.mts"],
+  "include": [
+    "**/*.d.ts",
+    "**/*.ts",
+    "microtsm.config.*",
+    "src/**/*",
+    "src/**/*.vue"
+  ],
   "exclude": ["node_modules"]
 }

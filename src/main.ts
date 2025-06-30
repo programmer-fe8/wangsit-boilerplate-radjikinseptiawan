@@ -1,30 +1,23 @@
-import singleSpaVue from 'single-spa-vue';
-import { createApp, h } from 'vue';
-
 import App from '@/App.vue';
-import { registerComponents } from '@/utils';
+import createVueMicroApp from '@microtsm/vue';
+import router from './router';
 
-const vueLifecycles = singleSpaVue({
-  createApp,
-  appOptions: {
-    render() {
-      return h(App, {
-        /*
-         * Single-spa props are available on the "this" object. Forward them to your component as needed.
-         * https://single-spa.js.org/docs/building-applications#lifecycle-props
-         * if you uncomment these, remember to add matching prop definitions for them in your App.vue file.
-         *
-         * name: this.name,
-         * mountParcel: this.mountParcel,
-         * singleSpa: this.singleSpa,
-         */
-      });
-    },
-  },
-  handleInstance(app) {
-    registerComponents(app);
+import { WangsVue, ToastService, Tooltip, Focus } from '@fewangsit/wangsvue';
+import preset from '@fewangsit/wangsvue-presets/wangsvue';
+
+import '@/assets/css/main.css';
+import '@fewangsit/wangsvue/style.css';
+import '@fewangsit/wangsvue-presets/wangsvue/style.css';
+
+export const { mount, unmount } = createVueMicroApp(App, {
+  el: '#app', // Only used for standalone development
+  setupInstance(app) {
+    app.use(WangsVue, { preset });
+
+    app.use(router);
+    app.use(ToastService);
+
+    app.directive('Tooltip', Tooltip);
+    app.directive('focus', Focus);
   },
 });
-
-export const { mount } = vueLifecycles;
-export const { unmount } = vueLifecycles;

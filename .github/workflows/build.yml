@@ -29,7 +29,7 @@ jobs:
 
       - name: Build project
         run: pnpm build
-        env: 
+        env:
           VUE_APP_EXAMPLE_API: ${{ secrets.APP_EXAMPLE_API }}
 
       - name: Upload production-ready build files

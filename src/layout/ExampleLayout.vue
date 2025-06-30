@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import { useBreadcrumbStore } from '@/store';
 import { Breadcrumb, Card, TabMenu } from '@fewangsit/wangsvue';
-import { MenuItem } from '@fewangsit/wangsvue/components/menuitem';
+import { MenuItem } from '@fewangsit/wangsvue/menuitem';
 
 const { breadcrumbs } = useBreadcrumbStore();
 

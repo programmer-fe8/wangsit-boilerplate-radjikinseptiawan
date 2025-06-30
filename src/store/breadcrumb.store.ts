@@ -1,6 +1,5 @@
 import { Ref, ref } from 'vue';
-import { BreadcrumbMenu } from '@fewangsit/wangsvue/components/breadcrumb/Breadcrumb.vue.d';
-
+import { BreadcrumbMenu } from '@fewangsit/wangsvue/breadcrumb';
 export interface BreadcrumbStore {
   breadcrumbs: Ref<BreadcrumbMenu[]>;
   setBreadcrumbs: (breadrumb: BreadcrumbMenu[]) => void;

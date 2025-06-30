@@ -9,6 +9,7 @@ The purpose of this structure is to enhance the organization and maintainability
 The `module` directory should contain subdirectories for each module and sub-module. Each subdirectory should then contain the Vue SFC related to that specific context.
 
 We follow a flat file tree structure with a base directory for each module. For example:
+
 ```
 > BaseModule
   BaseModuleHeader.vue
@@ -16,14 +17,13 @@ We follow a flat file tree structure with a base directory for each module. For 
   BaseModuleFooter.vue
 ```
 
-
-When a module has sub-modules, we use the most common scope, followed by the more specific scope. 
-Example: 
+When a module has sub-modules, we use the most common scope, followed by the more specific scope.
+Example:
 You have module named: 'Borrow'.
 
 And it has some sub module: Prelist, Transaction, Borrowed, and History.
-And every sub module has some actions or other sub module. 
-So your folder structure should be like this: 
+And every sub module has some actions or other sub module.
+So your folder structure should be like this:
 
 ```
 > BorrowHistory
@@ -33,9 +33,9 @@ So your folder structure should be like this:
   BorrowHistoryTable.vue
 ```
 
-  The pattern:
-  > CommonSpecificMoreSpecificTheMostSpecific.vue
+The pattern:
 
+> CommonSpecificMoreSpecificTheMostSpecific.vue
 
 ## Naming Convention
 

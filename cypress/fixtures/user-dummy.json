@@ -14,11 +14,7 @@
         },
         "profile": {
           "bio": "Bookworm and coffee addict.",
-          "interests": [
-            "reading",
-            "coffee",
-            "writing"
-          ]
+          "interests": ["reading", "coffee", "writing"]
         }
       },
       {
@@ -33,11 +29,7 @@
         },
         "profile": {
           "bio": "Chef and culinary artist.",
-          "interests": [
-            "cooking",
-            "food",
-            "travel"
-          ]
+          "interests": ["cooking", "food", "travel"]
         }
       },
       {
@@ -52,11 +44,7 @@
         },
         "profile": {
           "bio": "Poet and literature lover.",
-          "interests": [
-            "poetry",
-            "literature",
-            "writing"
-          ]
+          "interests": ["poetry", "literature", "writing"]
         }
       },
       {
@@ -71,11 +59,7 @@
         },
         "profile": {
           "bio": "Outdoor enthusiast and mountaineer.",
-          "interests": [
-            "hiking",
-            "climbing",
-            "nature"
-          ]
+          "interests": ["hiking", "climbing", "nature"]
         }
       },
       {
@@ -90,11 +74,7 @@
         },
         "profile": {
           "bio": "Animal lover and wildlife photographer.",
-          "interests": [
-            "photography",
-            "animals",
-            "travel"
-          ]
+          "interests": ["photography", "animals", "travel"]
         }
       },
       {
@@ -109,11 +89,7 @@
         },
         "profile": {
           "bio": "Tech enthusiast and startup founder.",
-          "interests": [
-            "technology",
-            "startups",
-            "innovation"
-          ]
+          "interests": ["technology", "startups", "innovation"]
         }
       },
       {
@@ -128,11 +104,7 @@
         },
         "profile": {
           "bio": "Digital artist and graphic designer.",
-          "interests": [
-            "art",
-            "design",
-            "technology"
-          ]
+          "interests": ["art", "design", "technology"]
         }
       },
       {
@@ -147,11 +119,7 @@
         },
         "profile": {
           "bio": "Musician and composer.",
-          "interests": [
-            "music",
-            "composing",
-            "performing"
-          ]
+          "interests": ["music", "composing", "performing"]
         }
       },
       {
@@ -166,11 +134,7 @@
         },
         "profile": {
           "bio": "Fitness model and personal trainer.",
-          "interests": [
-            "fitness",
-            "modeling",
-            "nutrition"
-          ]
+          "interests": ["fitness", "modeling", "nutrition"]
         }
       },
       {
@@ -185,11 +149,7 @@
         },
         "profile": {
           "bio": "Art lover and museum goer.",
-          "interests": [
-            "art",
-            "museums",
-            "painting"
-          ]
+          "interests": ["art", "museums", "painting"]
         }
       }
     ],

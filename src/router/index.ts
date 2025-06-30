@@ -22,7 +22,7 @@ const routes: Readonly<RouteRecordRaw[]> = [
 ];
 
 const router = createRouter({
-  history: createWebHistory((import.meta.env || process.env).BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
 });
 

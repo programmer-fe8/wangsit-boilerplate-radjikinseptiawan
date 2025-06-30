@@ -1,4 +1,4 @@
-import { MultiSelectFilterField } from '@fewangsit/wangsvue/components/filtercontainer/FilterContainer.vue';
+import { MultiSelectFilterField } from '@fewangsit/wangsvue/filtercontainer';
 import { filterFields, quickFilterFields } from './filterFields';
 
 describe('Filter Fields', () => {
@@ -12,7 +12,7 @@ describe('Filter Fields', () => {
     it('country options', async () => {
       const option = quickFilterFields.find(
         (field) => field.label === 'Country' && field.type === 'multiselect',
-      ) as MultiSelectFilterField;
+      ) as MultiSelectFilterField<Record<string, boolean>>;
 
       const options = await option.fetchOptionFn?.({ country: true });
 
@@ -30,7 +30,7 @@ describe('Filter Fields', () => {
     it('country options', async () => {
       const option = filterFields.find(
         (field) => field.label === 'Country' && field.type === 'multiselect',
-      ) as MultiSelectFilterField;
+      ) as MultiSelectFilterField<Record<string, boolean>>;
 
       const options = await option.fetchOptionFn?.({ country: true });
 
@@ -46,7 +46,7 @@ describe('Filter Fields', () => {
     it('country options', async () => {
       const option = quickFilterFields.find(
         (field) => field.label === 'Country' && field.type === 'multiselect',
-      ) as MultiSelectFilterField;
+      ) as MultiSelectFilterField<Record<string, boolean>>;
 
       const options = await option.fetchOptionFn?.({ country: true });
 
@@ -62,7 +62,7 @@ describe('Filter Fields', () => {
     it('country options', async () => {
       const option = filterFields.find(
         (field) => field.label === 'Country' && field.type === 'multiselect',
-      ) as MultiSelectFilterField;
+      ) as MultiSelectFilterField<Record<string, boolean>>;
 
       const options = await option.fetchOptionFn?.({ country: true });
 

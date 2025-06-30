@@ -1,7 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { FetchResponse } from '@fewangsit/wangsvue/components/datatable/DataTable.vue';
+import { FetchResponse } from '@fewangsit/wangsvue/datatable';
 import { FetchOptionResponse } from '@fewangsit/workspace-api-services/src/types/fetchResponse.type';
-import { getBaseURL } from '@/utils/getBaseURL.util';
 import { GetOptionsParams, GetUsersParams } from '../dto/user.dto';
 import { Member } from '@/types/member.type';
 
@@ -9,7 +8,7 @@ type GetOptionsResponse = FetchOptionResponse<GetOptionsParams>;
 
 const API = ({ headers = {}, params = {} } = {}): AxiosInstance => {
   const user = JSON.parse(localStorage.getItem('user') ?? '{}');
-  const BASE_URL = getBaseURL('APP_WANGS_DUMMY_REST_API');
+  const BASE_URL = import.meta.env.VITE_APP_WANGS_DUMMY_REST_API;
 
   const instance = axios.create({
     baseURL: `${BASE_URL}/user`,

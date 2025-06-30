@@ -1,10 +1,5 @@
 {
   "instrument": true,
   "report-dir": "coverage",
-  "reporter": [
-    "lcov",
-    "html",
-    "text-summary",
-    "text"
-  ]
+  "reporter": ["lcov", "html", "text-summary", "text"]
 }
