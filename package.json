@@ -16,20 +16,20 @@
     "cy:test-all": "pnpm tailwind && start-server-and-test dev http://localhost:9090 cy:run-e2e"
   },
   "dependencies": {
-    "@fewangsit/wangsvue": "1.5.217-alpha.0",
+    "@fewangsit/wangsvue": "1.5.219-alpha.0",
     "@fewangsit/wangsvue-presets": "1.0.102-alpha.0",
     "@fewangsit/workspace-api-services": "1.0.18-alpha.1",
     "@tailwindcss/postcss7-compat": "2.2.17",
     "autoprefixer": "10.4.20",
-    "axios": "1.7.3",
+    "axios": "1.8.4",
     "core-js": "3.38.0",
     "postcss": "8.4.41",
     "single-spa": "^6.0.3",
     "single-spa-vue": "3.0.0",
     "systemjs-webpack-interop": "2.3.7",
     "tailwindcss": "3.4.9",
-    "vue": "3.4.37",
-    "vue-router": "4.4.3"
+    "vue": "3.5.16",
+    "vue-router": "4.5.1"
   },
   "devDependencies": {
     "@cypress/code-coverage": "3.12.44",
@@ -39,7 +39,7 @@
     "@types/webpack-env": "1.18.5",
     "@typescript-eslint/eslint-plugin": "8.0.1",
     "@typescript-eslint/parser": "8.0.1",
-    "@vitejs/plugin-vue": "5.1.2",
+    "@vitejs/plugin-vue": "5.2.4",
     "@vue/cli-plugin-babel": "5.0.8",
     "@vue/cli-plugin-eslint": "5.0.8",
     "@vue/cli-plugin-router": "5.0.8",
@@ -61,7 +61,7 @@
     "nyc": "15.1.0",
     "prettier": "3.3.3",
     "start-server-and-test": "2.0.5",
-    "typescript": "5.5.4",
+    "typescript": "5.8.3",
     "vite": "5.4.0",
     "vite-plugin-istanbul": "6.0.2",
     "vue-cli-plugin-single-spa": "3.3.0",
