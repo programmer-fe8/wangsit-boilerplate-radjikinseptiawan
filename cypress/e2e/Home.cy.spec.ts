@@ -11,7 +11,7 @@ describe('/home', () => {
   });
 
   it('navigate to another page and should have correct breadcrumb', () => {
-    cy.getByName('tabmenu').within(() => {
+    cy.get('wangs-tab-menu').within(() => {
       cy.contains('Another Page').click();
     });
 
