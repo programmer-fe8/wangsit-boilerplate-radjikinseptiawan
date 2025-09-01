@@ -3,12 +3,13 @@ import { FetchResponse } from '@fewangsit/wangsvue/datatable';
 import { FetchOptionResponse } from '@fewangsit/workspace-api-services/src/types/fetchResponse.type';
 import { GetOptionsParams, GetUsersParams } from '../dto/user.dto';
 import { Member } from '@/types/member.type';
+import { getBaseURL } from '@fewangsit/workspace-api-services';
 
 type GetOptionsResponse = FetchOptionResponse<GetOptionsParams>;
 
 const API = ({ headers = {}, params = {} } = {}): AxiosInstance => {
   const user = JSON.parse(localStorage.getItem('user') ?? '{}');
-  const BASE_URL = import.meta.env.VITE_APP_WANGS_DUMMY_REST_API;
+  const BASE_URL = getBaseURL();
 
   const instance = axios.create({
     baseURL: `${BASE_URL}/user`,
@@ -27,7 +28,7 @@ const UserServices = {
   getUsers: (
     params: GetUsersParams,
   ): Promise<AxiosResponse<FetchResponse<Member>>> => {
-    return API({ params }).get('/');
+    return API({ params }).get('');
   },
 
   getOptions: (

@@ -2,7 +2,7 @@
   "status": 200,
   "message": "Successfully get member list",
   "data": {
-    "totalRecords": 112,
+    "totalRecords": 1,
     "data": [
       {
         "_id": "675c1c9563710519e9e9bfa8",

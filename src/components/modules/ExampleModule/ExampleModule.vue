@@ -4,6 +4,7 @@ import { Badge, BadgeGroup, DataTable } from '@fewangsit/wangsvue';
 import {
   FetchResponse,
   TableCellComponent,
+  QueryParams,
   TableColumn,
 } from '@fewangsit/wangsvue/datatable';
 import { MenuItem } from '@fewangsit/wangsvue/menuitem';
@@ -13,7 +14,7 @@ import DialogDeleteUser from './DialogDeleteUser/DialogDeleteUser.vue';
 import ExampleModuleTableFilter from './ExampleModuleTableFilter.vue';
 import ExampleModuleHeader from './ExampleModuleHeader.vue';
 import ExampleModuleQuickFilter from './ExampleModuleQuickFilter.vue';
-import response from './exampleResponse.json';
+import UserServices from '@/components/services/example.service';
 
 const selectedUser = shallowRef<Member>();
 const showDeleteUserDialog = shallowRef<boolean>(false);
@@ -77,9 +78,11 @@ const tableColumns = computed<TableColumn[]>(() => {
   ];
 });
 
-const getTableData = async (): Promise<FetchResponse<Member> | undefined> => {
+const getTableData = async (
+  params: QueryParams,
+): Promise<FetchResponse<Member> | undefined> => {
   try {
-    const data = response;
+    const { data } = await UserServices.getUsers(params);
 
     return data;
   } catch (error) {
