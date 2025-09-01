@@ -11,7 +11,7 @@ import { Member } from '@/types/member.type';
 import DialogDeleteUser from './DialogDeleteUser/DialogDeleteUser.vue';
 
 const dataSelected = shallowRef<Member[]>([]);
-const showDeleteUserDialog = shallowRef(false);
+const showDeleteUserDialog = shallowRef<boolean>(false);
 
 const bulkAction: MenuItem[] = [
   {
