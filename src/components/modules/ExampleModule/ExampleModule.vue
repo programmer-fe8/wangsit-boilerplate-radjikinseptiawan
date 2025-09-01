@@ -45,14 +45,12 @@ const tableColumns = computed<TableColumn[]>(() => {
       sortable: true,
       reorderable: false,
       fixed: true,
-      bodyComponent: (data: Member): TableCellComponent => {
-        return {
-          component: Badge,
-          props: {
-            label: data.nickName,
-          },
-        };
-      },
+      bodyComponent: (data: Member): TableCellComponent => ({
+        component: Badge,
+        props: {
+          label: data.nickName,
+        },
+      }),
     },
     {
       field: 'email',
@@ -64,16 +62,14 @@ const tableColumns = computed<TableColumn[]>(() => {
       field: 'teams',
       header: 'Teams',
       sortable: false,
-      bodyComponent: (data: Member): TableCellComponent => {
-        return {
-          component: BadgeGroup,
-          props: {
-            labels: data.teams,
-            limit: 2,
-            headerLabel: 'Teams',
-          },
-        };
-      },
+      bodyComponent: (data: Member): TableCellComponent => ({
+        component: BadgeGroup,
+        props: {
+          labels: data.teams,
+          limit: 2,
+          headerLabel: 'Teams',
+        },
+      }),
     },
   ];
 });
