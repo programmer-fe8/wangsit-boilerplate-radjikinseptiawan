@@ -1,3 +1,5 @@
+import 'cypress-intercept-formdata';
+
 Cypress.Commands.add('getSection', (section) => {
   cy.get(`[data-wv-section="${section}"]`);
 });
