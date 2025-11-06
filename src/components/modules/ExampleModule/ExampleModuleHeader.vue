@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { shallowRef } from 'vue';
+import { AxiosResponse } from 'axios';
+import { computed, shallowRef } from 'vue';
 import { MenuItem } from '@fewangsit/wangsvue/menuitem';
 import {
   ButtonBulkAction,
@@ -8,10 +9,14 @@ import {
   ButtonSearch,
   FilterContainer,
 } from '@fewangsit/wangsvue';
-import { Option } from '@fewangsit/wangsvue/dropdown';
-import { FilterField } from '@fewangsit/wangsvue/filtercontainer';
+import {
+  FetchOptionResponse,
+  FilterField,
+} from '@fewangsit/wangsvue/filtercontainer';
+import { GetOptionsParams } from '@/dto/user.dto';
 import { Member } from '@/types/member.type';
 import DialogDeleteUser from './DialogDeleteUser.vue';
+import UserServices from '@/services/example.service';
 
 const dataSelected = shallowRef<Member[]>([]);
 const showDeleteUserDialog = shallowRef<boolean>(false);
@@ -27,13 +32,14 @@ const bulkAction: MenuItem[] = [
   },
 ];
 
-const filterFields: FilterField[] = [
+const filterFields = computed<FilterField[]>(() => [
   {
     label: 'Country',
     field: 'country',
+    optionField: 'countryOptions',
     type: 'multiselect',
     placeholder: 'Select country',
-    fetchOptionFn: (): Option[] => [{ label: 'Indonesia' }],
+    fetchOptionFn: getUserOptions,
   },
   {
     label: 'Age',
@@ -41,7 +47,13 @@ const filterFields: FilterField[] = [
     type: 'rangenumber',
     placeholder: '0',
   },
-];
+]);
+
+const getUserOptions = async (
+  params: GetOptionsParams,
+): Promise<AxiosResponse<FetchOptionResponse<GetOptionsParams>>> => {
+  return await UserServices.getOptions(params);
+};
 </script>
 
 <template>

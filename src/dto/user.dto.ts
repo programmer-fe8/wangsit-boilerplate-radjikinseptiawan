@@ -1,4 +1,4 @@
-import { QueryParams } from '@fewangsit/workspace-api-services/src/types/fetchResponse.type';
+import { QueryParams } from '@fewangsit/wangsvue/datatable';
 
 export interface GetUsersParams extends QueryParams {
   country?: string;

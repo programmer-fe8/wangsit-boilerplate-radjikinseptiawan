@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { FetchResponse } from '@fewangsit/wangsvue/datatable';
-import { FetchOptionResponse } from '@fewangsit/workspace-api-services/src/types/fetchResponse.type';
+import { FetchOptionResponse } from '@fewangsit/wangsvue/filtercontainer';
 import { GetOptionsParams, GetUsersParams } from '../dto/user.dto';
 import { Member } from '@/types/member.type';
 import { getBaseURL } from '@fewangsit/workspace-api-services';
