@@ -12,7 +12,7 @@ import { Member } from '@/types/member.type';
 import router from '@/router';
 import DialogDeleteUser from './DialogDeleteUser.vue';
 import ExampleModuleHeader from './ExampleModuleHeader.vue';
-import UserServices from '@/components/services/example.service';
+import UserServices from '@/services/example.service';
 
 const selectedUser = shallowRef<Member>();
 const showDeleteUserDialog = shallowRef<boolean>(false);
