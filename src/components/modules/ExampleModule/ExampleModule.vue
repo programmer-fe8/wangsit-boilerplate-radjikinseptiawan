@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
+import { useRouter } from 'vue-router';
 import { Badge, BadgeGroup, DataTable } from '@fewangsit/wangsvue';
 import {
   FetchResponse,
@@ -9,10 +10,11 @@ import {
 } from '@fewangsit/wangsvue/datatable';
 import { MenuItem } from '@fewangsit/wangsvue/menuitem';
 import { Member } from '@/types/member.type';
-import router from '@/router';
 import DialogDeleteUser from './DialogDeleteUser.vue';
 import ExampleModuleHeader from './ExampleModuleHeader.vue';
 import UserServices from '@/services/example.service';
+
+const router = useRouter();
 
 const selectedUser = shallowRef<Member>();
 const showDeleteUserDialog = shallowRef<boolean>(false);
