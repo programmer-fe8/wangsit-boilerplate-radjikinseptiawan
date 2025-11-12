@@ -14,8 +14,8 @@
     "cy:test-all": "microtsm e2e --headless"
   },
   "dependencies": {
-    "@fewangsit/wangsvue": "1.5.219-alpha.4",
-    "@fewangsit/wangsvue-presets": "1.0.99-alpha.1",
+    "@fewangsit/wangsvue": "1.5.223-alpha.1",
+    "@fewangsit/wangsvue-presets": "1.0.108-alpha.0",
     "@fewangsit/workspace-api-services": "1.0.18-alpha.1",
     "@microtsm/vue": "^0.0.22",
     "axios": "1.8.4",
