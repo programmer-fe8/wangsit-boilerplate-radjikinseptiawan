@@ -1,0 +1,15 @@
+{
+	"servers": {
+		"wangsvue-mcp": {
+			"type": "stdio",
+			"command": "npx",
+			"args": ["wangsvue-mcp"],
+			"env": {
+				"NODE_ENV": "development",
+				"REPOSITORY_URL": "..",
+				"WEB_COMPONENTS_URL": "file:///Volumes/Data Disk/Project/wangsit/wangsvue/mcp/server/data/components/wangsvue-components.json",
+			}
+		}
+	},
+	"inputs": []
+}

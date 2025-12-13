@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "wangsvue-mcp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "wangsvue-mcp"
+      ],
+      "env": {
+        "WEB_COMPONENTS_URL": "file:///Volumes/Data Disk/Project/wangsit/wangsvue/mcp/server/data/components/wangsvue-components.json"
+      },
+      "disabledTools": [
+        "get_component_documentation"
+      ],
+      "autoApprove": [
+        "search_components",
+        "analyze_component",
+        "get_component_definition",
+        "resolve_type_definition"
+      ]
+    }
+  }
+}
