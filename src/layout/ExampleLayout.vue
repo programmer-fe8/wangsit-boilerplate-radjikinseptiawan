@@ -18,6 +18,14 @@ const tabMenus: MenuItem[] = [
     label: 'Button Demo',
     route: 'button-demo',
   },
+  {
+    label: 'Badge Demo',
+    route: 'badge-demo',
+  },
+  {
+    label: 'Dialog Registration Demo',
+    route: 'dialog-registration-demo',
+  },
 ];
 </script>
 
