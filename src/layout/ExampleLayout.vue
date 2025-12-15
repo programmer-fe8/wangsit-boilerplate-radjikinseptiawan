@@ -26,6 +26,10 @@ const tabMenus: MenuItem[] = [
     label: 'Dialog Registration Demo',
     route: 'dialog-registration-demo',
   },
+  {
+    label: 'Dialog Confirm Demo',
+    route: 'dialog-confirm-demo',
+  },
 ];
 </script>
 

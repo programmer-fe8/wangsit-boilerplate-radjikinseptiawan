@@ -33,6 +33,12 @@ const routes: Readonly<RouteRecordRaw[]> = [
         component: (): Promise<Component> =>
           import('@/views/DialogRegistrationDemo.vue'),
       },
+      {
+        path: 'dialog-confirm-demo',
+        name: 'DialogConfirmDemo',
+        component: (): Promise<Component> =>
+          import('@/views/DialogConfirmDemo.vue'),
+      },
     ],
   },
 ];
