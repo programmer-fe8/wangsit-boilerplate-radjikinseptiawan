@@ -14,6 +14,10 @@ const tabMenus: MenuItem[] = [
     label: 'Another Page',
     route: 'another-page',
   },
+  {
+    label: 'Button Demo',
+    route: 'button-demo',
+  },
 ];
 </script>
 
