@@ -30,6 +30,10 @@ const tabMenus: MenuItem[] = [
     label: 'Dialog Confirm Demo',
     route: 'dialog-confirm-demo',
   },
+  {
+    label: 'Email Input Demo',
+    route: 'email-input-demo',
+  },
 ];
 </script>
 
