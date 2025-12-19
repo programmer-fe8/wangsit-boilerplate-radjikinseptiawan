@@ -14,8 +14,11 @@
         "analyze_component",
         "get_component_definition",
         "resolve_type_definition",
-        "get_component_source",
+        "get_component_source"
       ]
+    },
+    "gitbook-mcp": {
+      "url": "https://fewangsit.gitbook.io/vue/~gitbook/mcp"
     }
   }
 }

@@ -15,7 +15,7 @@
     "inspect-mcp": "npx @modelcontextprotocol/inspector npx wangsvue-mcp"
   },
   "dependencies": {
-    "@fewangsit/wangsvue": "1.5.229-alpha.4",
+    "@fewangsit/wangsvue": "1.5.229-alpha.5",
     "@fewangsit/wangsvue-presets": "1.0.110-alpha.0",
     "@fewangsit/workspace-api-services": "1.0.18-alpha.1",
     "@microtsm/vue": "^0.0.22",
@@ -64,8 +64,7 @@
   },
   "pnpm": {
     "overrides": {
-      "brace-expansion": "2.0.2",
-      "@fewangsit/wangsvue": "link:../../../../../Users/zainkurnia/Library/pnpm/global/5/node_modules/@fewangsit/wangsvue"
+      "brace-expansion": "2.0.2"
     }
   }
 }
