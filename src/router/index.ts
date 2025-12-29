@@ -17,34 +17,6 @@ const routes: Readonly<RouteRecordRaw[]> = [
         name: 'AnotherExampleView',
         component: (): Promise<Component> => import('@/views/ExampleView2.vue'),
       },
-      {
-        path: 'button-demo',
-        name: 'ButtonDemo',
-        component: (): Promise<Component> => import('@/views/ButtonDemo.vue'),
-      },
-      {
-        path: 'badge-demo',
-        name: 'BadgeDemo',
-        component: (): Promise<Component> => import('@/views/BadgeDemo.vue'),
-      },
-      {
-        path: 'dialog-registration-demo',
-        name: 'DialogRegistrationDemo',
-        component: (): Promise<Component> =>
-          import('@/views/DialogRegistrationDemo.vue'),
-      },
-      {
-        path: 'dialog-confirm-demo',
-        name: 'DialogConfirmDemo',
-        component: (): Promise<Component> =>
-          import('@/views/DialogConfirmDemo.vue'),
-      },
-      {
-        path: 'email-input-demo',
-        name: 'EmailInputDemo',
-        component: (): Promise<Component> =>
-          import('@/views/EmailInputDemo.vue'),
-      },
     ],
   },
 ];
