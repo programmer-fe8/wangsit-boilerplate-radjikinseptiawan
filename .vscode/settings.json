@@ -1,5 +1,11 @@
 {
   "files.associations": {
     "*.css": "tailwindcss"
-  }
+  },
+  "chat.mcp.serverSampling": {
+    "wangsit-mfe-boilerplate-app/.vscode/mcp.json: wangsvue-mcp": {
+      "allowedModels": ["copilot/auto"]
+    }
+  },
+  "kiroAgent.configureMCP": "Enabled"
 }
