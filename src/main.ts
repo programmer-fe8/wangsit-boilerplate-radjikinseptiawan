@@ -1,9 +1,10 @@
-import App from '@/App.vue';
-import createVueMicroApp from '@microtsm/vue';
-import router from './router';
-
-import { WangsVue, ToastService, Tooltip, Focus } from '@fewangsit/wangsvue';
+import { Focus, ToastService, Tooltip, WangsVue } from '@fewangsit/wangsvue';
 import preset from '@fewangsit/wangsvue-presets/wangsvue';
+import createVueMicroApp from '@microtsm/vue';
+
+import App from '@/App.vue';
+
+import router from './router';
 
 import '@/assets/css/main.css';
 import '@fewangsit/wangsvue/style.css';

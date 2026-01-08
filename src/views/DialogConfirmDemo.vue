@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Button, Card, DialogConfirm } from '@fewangsit/wangsvue';
 import { ref } from 'vue';
-import { DialogConfirm, Button, Card } from '@fewangsit/wangsvue';
 
 // State untuk berbagai dialog
 const showBasicDialog = ref<boolean>(false);

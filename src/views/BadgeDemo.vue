@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { Badge, InputBadge } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
 // Badge demo state
 const editableBadgeLabel = ref('Editable Badge');

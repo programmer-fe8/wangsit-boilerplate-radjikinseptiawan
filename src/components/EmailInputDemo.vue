@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { InputEmail } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
 // Reactive data
 const basicEmail = ref<string>();

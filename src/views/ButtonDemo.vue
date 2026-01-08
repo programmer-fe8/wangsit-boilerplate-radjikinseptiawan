@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { Button } from '@fewangsit/wangsvue';
 import { ButtonProps } from '@fewangsit/wangsvue/button';
+import { ref } from 'vue';
 
 // Interactive state
 const isLoading = ref(false);

@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import {
-  DialogForm,
-  InputText,
-  InputEmail,
-  InputPhoneNumber,
-  InputPassword,
   Button,
+  DialogForm,
+  InputEmail,
+  InputPassword,
+  InputPhoneNumber,
+  InputText,
 } from '@fewangsit/wangsvue';
+import { ref } from 'vue';
 
 interface RegistrationData {
   fullName: string;

@@ -1,18 +1,20 @@
 <script setup lang="ts">
-import { computed, shallowRef } from 'vue';
-import { useRouter } from 'vue-router';
 import { Badge, BadgeGroup, DataTable } from '@fewangsit/wangsvue';
 import {
   FetchResponse,
-  TableCellComponent,
   QueryParams,
+  TableCellComponent,
   TableColumn,
 } from '@fewangsit/wangsvue/datatable';
 import { MenuItem } from '@fewangsit/wangsvue/menuitem';
+import { computed, shallowRef } from 'vue';
+import { useRouter } from 'vue-router';
+
+import UserServices from '@/services/example.service';
 import { Member } from '@/types/member.type';
+
 import DialogDeleteUser from './DialogDeleteUser.vue';
 import ExampleModuleHeader from './ExampleModuleHeader.vue';
-import UserServices from '@/services/example.service';
 
 const router = useRouter();
 

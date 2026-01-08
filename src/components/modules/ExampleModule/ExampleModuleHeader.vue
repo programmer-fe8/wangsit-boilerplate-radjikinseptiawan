@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { AxiosResponse } from 'axios';
-import { computed, shallowRef } from 'vue';
-import { MenuItem } from '@fewangsit/wangsvue/menuitem';
 import {
   ButtonBulkAction,
   ButtonDownload,
@@ -13,10 +10,15 @@ import {
   FetchOptionResponse,
   FilterField,
 } from '@fewangsit/wangsvue/filtercontainer';
+import { MenuItem } from '@fewangsit/wangsvue/menuitem';
+import { AxiosResponse } from 'axios';
+import { computed, shallowRef } from 'vue';
+
 import { GetOptionsParams } from '@/dto/user.dto';
-import { Member } from '@/types/member.type';
-import DialogDeleteUser from './DialogDeleteUser.vue';
 import UserServices from '@/services/example.service';
+import { Member } from '@/types/member.type';
+
+import DialogDeleteUser from './DialogDeleteUser.vue';
 
 const dataSelected = shallowRef<Member[]>([]);
 const showDeleteUserDialog = shallowRef<boolean>(false);
