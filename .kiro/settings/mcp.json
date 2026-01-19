@@ -18,7 +18,10 @@
       ]
     },
     "gitbook-mcp": {
-      "url": "https://fewangsit.gitbook.io/vue/~gitbook/mcp"
+      "url": "https://fewangsit.gitbook.io/vue/~gitbook/mcp",
+      "autoApprove": [
+        "searchDocumentation"
+      ]
     }
   }
 }
