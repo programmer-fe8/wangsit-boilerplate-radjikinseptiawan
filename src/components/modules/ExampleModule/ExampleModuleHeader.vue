@@ -65,8 +65,11 @@ const getUserOptions = async (
       :options="bulkAction"
       table-name="user-list"
     />
+
     <ButtonSearch class="ml-auto" table-name="user-list" />
+
     <ButtonDownload file-name="Download" table-name="user-list" />
+
     <ButtonFilter table-name="user-list" />
   </div>
 

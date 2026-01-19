@@ -91,6 +91,7 @@ const getTableData = async (
 
 <template>
   <ExampleModuleHeader />
+
   <DataTable
     :columns="tableColumns"
     :fetch-function="getTableData"
@@ -102,6 +103,7 @@ const getTableData = async (
     use-option
     use-paginator
   />
+
   <DialogDeleteUser
     v-model:visible="showDeleteUserDialog"
     :list="selectedUser ? [selectedUser] : []"

@@ -4,5 +4,6 @@ import { Toast } from '@fewangsit/wangsvue';
 
 <template>
   <router-view />
+
   <Toast />
 </template>

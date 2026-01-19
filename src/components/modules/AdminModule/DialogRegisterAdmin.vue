@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { shallowRef } from 'vue';
-
 import {
   DialogForm,
-  InputText,
-  InputPhoneNumber,
   Dropdown,
+  InputPhoneNumber,
+  InputText,
   MultiSelect,
   Textarea,
 } from '@fewangsit/wangsvue';
+import { shallowRef } from 'vue';
 
 import type { AdminRegistrationDto } from '@/dto/admin-registration.dto';
 import AdminService from '@/services/admin.service';

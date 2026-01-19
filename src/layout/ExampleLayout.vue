@@ -40,9 +40,11 @@ const tabMenus: MenuItem[] = [
 
 <template>
   <Breadcrumb :menus="breadcrumbs" />
+
   <Card>
     <template #content>
       <TabMenu :menu="tabMenus" />
+
       <router-view />
     </template>
   </Card>

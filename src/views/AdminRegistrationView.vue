@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { shallowRef } from 'vue';
-
 import { Button } from '@fewangsit/wangsvue';
+import { shallowRef } from 'vue';
 
 import DialogRegisterAdmin from '@/components/modules/AdminModule/DialogRegisterAdmin.vue';
 import type { AdminRegistrationDto } from '@/dto/admin-registration.dto';
@@ -35,6 +34,7 @@ const handleAdminRegistered = (values: AdminRegistrationDto): void => {
       <h1 class="text-2xl font-semibold text-gray-900 mb-2">
         Admin Management
       </h1>
+
       <p class="text-gray-600">Manage admin users and their permissions</p>
     </div>
 
