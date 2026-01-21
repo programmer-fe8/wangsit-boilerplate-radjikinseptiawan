@@ -47,6 +47,9 @@ importers:
       cypress-intercept-formdata:
         specifier: ^0.6.0
         version: 0.6.0(cypress@13.13.2)
+      eslint:
+        specifier: ^9.39.2
+        version: 9.39.2(jiti@1.21.7)
       microtsm:
         specifier: ^0.0.37
         version: 0.0.37(@types/node@22.15.19)(jiti@1.21.7)(terser@5.46.0)(yaml@2.8.0)
