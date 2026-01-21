@@ -15,6 +15,9 @@
     },
     "wangsvue-docs": {
       "url": "https://wangsvue.netlify.app/mcp"
+    },
+    "Figma Desktop": {
+      "url": "http://127.0.0.1:3845/mcp"
     }
   }
 }
