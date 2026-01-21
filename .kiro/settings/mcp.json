@@ -14,10 +14,18 @@
       ]
     },
     "wangsvue-docs": {
-      "url": "https://wangsvue.netlify.app/mcp"
+      "url": "https://wangsvue.netlify.app/mcp",
+      "autoApprove": [
+        "get-sections",
+        "get-example"
+      ]
     },
     "Figma Desktop": {
-      "url": "http://127.0.0.1:3845/mcp"
+      "url": "http://127.0.0.1:3845/mcp",
+      "autoApprove": [
+        "get_design_context",
+        "get_screenshot"
+      ]
     }
   }
 }
