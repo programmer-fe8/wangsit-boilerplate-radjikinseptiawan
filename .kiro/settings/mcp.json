@@ -4,24 +4,17 @@
       "type": "stdio",
       "command": "npx",
       "args": [
-        "wangsvue-mcp"
-      ],
-      "disabledTools": [
-        "get_component_documentation"
+        "wangsvue-mcp",
+        "run"
       ],
       "autoApprove": [
-        "search_components",
+        "list_all_components",
         "analyze_component",
-        "get_component_definition",
-        "resolve_type_definition",
-        "get_component_source"
+        "resolve_type_definition"
       ]
     },
-    "gitbook-mcp": {
-      "url": "https://fewangsit.gitbook.io/vue/~gitbook/mcp",
-      "autoApprove": [
-        "searchDocumentation"
-      ]
+    "wangsvue-docs": {
+      "url": "https://wangsvue.netlify.app/mcp"
     }
   }
 }
