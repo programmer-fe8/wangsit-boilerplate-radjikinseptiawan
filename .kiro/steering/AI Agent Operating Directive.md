@@ -57,7 +57,7 @@ When converting from Figma or React:
     - **Layout Style:** Flex/Grid positioning, spacing, alignment, and sizing.
     - **Custom Style:** Apply only to non-Wangsvue elements where layout-specific CSS is required.
     - You MUST use tailwind css class instead of css in <style> block.
-5. **Architecture:** You MUST break flat code into the appropriate `modules` or `commons` structure defined in the **Project Structure** MD.
+5. **Architecture:** You MUST break flat code into the appropriate folder defined in the **Project Structure** MD.
 ---
 
 ## 5. Strict Implementation Enforcement
