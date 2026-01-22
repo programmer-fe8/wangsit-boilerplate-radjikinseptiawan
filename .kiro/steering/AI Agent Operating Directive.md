@@ -82,19 +82,31 @@ Examples of specialized components I must discover:
 - [ ] Am I using built-in features instead of manual workarounds?
 - [ ] Did I check for router integration, automatic state management, or other built-in features?
 
+### 🏗️ ARCHITECTURE ANALYSIS - BEFORE PLACING COMPONENTS
+
+**MANDATORY QUESTIONS FOR NAVIGATION/STATE COMPONENTS:**
+- [ ] **"Should this data be static or dynamic?"** - If dynamic, don't hardcode
+- [ ] **"Who owns this data - layout or views?"** - Views own their specific context
+- [ ] **"Does each route need different data?"** - If yes, use store/state management
+- [ ] **"Is there a store/state pattern for this?"** - Check for `useXxxStore()` patterns
+- [ ] **"What's the user experience?"** - Each page should show relevant context
+
 **CRITICAL EXAMPLES OF WHAT STEP 3 REVEALS:**
 - **TabMenu**: Has automatic router integration - no manual `activeIndex` needed
+- **Breadcrumb**: Has `useBreadcrumbStore()` for dynamic state management across routes
 - **DataTable**: Has built-in pagination, sorting, filtering - no manual state management
 - **Button Components**: Specialized variants (ButtonDownload, ButtonSearch) with built-in functionality
 
 **🚫 FAILURE CONDITION:** 
 **Writing component usage without checking examples = IMMEDIATE FAILURE**
+**Hardcoding dynamic data in layouts = IMMEDIATE FAILURE**
 
 **WHY THIS STEP IS CRITICAL:**
 - Types show you WHAT props exist
 - Examples show you HOW to use them elegantly
 - Built-in features eliminate manual workarounds
 - Proper patterns prevent over-engineering
+- Architecture patterns prevent data placement errors
 
 ### Step 4: Synthesis (Strict Implementation)
 * **MANDATORY COMPLIANCE CHECKLIST:**
@@ -178,11 +190,12 @@ Import: import { MenuItem } from '@fewangsit/wangsvue/menuitem'
 2. **"Did I check for specialized components before using generic ones?"** - If NO, STOP and search
 3. **"Did I call MCP tools for this component?"** - If NO, STOP and call them
 4. **"Did I check EXAMPLES to see intended usage patterns?"** - If NO, STOP and get examples
-5. **"Did I check the MD files for structure rules?"** - If NO, STOP and read them
-6. **"Are my imports EXACTLY from MCP results?"** - If NO, STOP and copy exact paths
-7. **"Did I add 'type' for type imports?"** - If from resolve_type_definition, add 'type'
-8. **"Does my script organization match the MD guide?"** - If NO, STOP and fix
-9. **"Are data-wv-name and data-wv-section present?"** - If NO, STOP and add them
+5. **"Is this data static or dynamic? Who owns it?"** - If dynamic, don't hardcode in layout
+6. **"Did I check the MD files for structure rules?"** - If NO, STOP and read them
+7. **"Are my imports EXACTLY from MCP results?"** - If NO, STOP and copy exact paths
+8. **"Did I add 'type' for type imports?"** - If from resolve_type_definition, add 'type'
+9. **"Does my script organization match the MD guide?"** - If NO, STOP and fix
+10. **"Are data-wv-name and data-wv-section present?"** - If NO, STOP and add them
 
 ### 🔄 REPETITION PROTOCOL - Say This Before Every Task:
 **"I WILL DISCOVER SPECIALIZED COMPONENTS FIRST. I WILL CHECK EXAMPLES FOR USAGE PATTERNS. I WILL NOT GUESS IMPORTS. I WILL COPY EXACT PATHS FROM MCP. I WILL ADD 'TYPE' FOR TYPES. I WILL FOLLOW THE 5-STEP WORKFLOW. I WILL RUN PNPM LINT."**
@@ -190,6 +203,7 @@ Import: import { MenuItem } from '@fewangsit/wangsvue/menuitem'
 ### ❌ FAILURE INDICATORS - If ANY of these happen, IMMEDIATELY STOP:
 - Using generic Button when specialized component exists
 - Writing component usage without checking examples
+- Hardcoding dynamic data in layouts
 - Manual state management when built-in features exist
 - Writing import without MCP verification
 - Modifying import paths from MCP results
@@ -197,6 +211,7 @@ Import: import { MenuItem } from '@fewangsit/wangsvue/menuitem'
 - Mixing component and type import paths
 - Skipping component discovery step
 - Skipping pattern extraction step (Step 3)
+- Skipping architecture analysis
 - Skipping any of the 5 steps
 - Putting logic in App.vue
 - Missing data-wv-name/data-wv-section
