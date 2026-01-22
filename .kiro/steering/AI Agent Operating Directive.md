@@ -231,6 +231,11 @@ Import: import { MenuItem } from '@fewangsit/wangsvue/menuitem'
 12. **"Are data-wv-name and data-wv-section present?"** - If NO, STOP and add them
 13. **"Am I following the documented pattern EXACTLY?"** - If NO, STOP and check examples again
 14. **"Am I creating a custom solution when documentation exists?"** - If YES, STOP and use documented approach
+15. **"Is this div wrapping only 1 component?"** - If YES, remove the div (double wrapping)
+16. **"Am I adding styling to a Wangsvue component?"** - If YES, STOP and trust the design system
+17. **"Am I converting pixel values correctly?"** - If NO, keep exact values (21px ≠ 20px)
+18. **"Does this Figma data-name exist in component list?"** - If YES, replace element; If NO, keep as layout div
+19. **"Should I replace or keep this Figma element?"** - Check component list first
 
 ### 🔄 REPETITION PROTOCOL - Say This Before Every Task:
 **"I WILL DISCOVER SPECIALIZED COMPONENTS FIRST. I WILL CHECK FOR STRUCTURAL COMPONENTS BEFORE MANUAL CSS. I WILL CHECK EXAMPLES FOR USAGE PATTERNS. I WILL FOLLOW DOCUMENTED PATTERNS EXACTLY. I WILL NOT GUESS IMPORTS. I WILL COPY EXACT PATHS FROM MCP. I WILL ADD 'TYPE' FOR TYPES. I WILL FOLLOW THE 5-STEP WORKFLOW. I WILL RUN PNPM LINT. I WILL NOT CREATE CUSTOM SOLUTIONS WHEN DOCUMENTATION EXISTS."**
@@ -261,6 +266,10 @@ Import: import { MenuItem } from '@fewangsit/wangsvue/menuitem'
 - **Deviating from documented examples**
 - **"Optimizing" or "improving" documented patterns**
 - **Placing state management in wrong component (e.g., breadcrumbs in layout vs views)**
+- **Double wrapping components (e.g., `<div><Breadcrumb /></div>` when div only has 1 component)**
+- **Adding styling to Wangsvue components (trust the design system)**
+- **Converting exact pixel values incorrectly (e.g., 21px → 20px)**
+- **Wrapping components instead of replacing Figma elements with `data-name`**
 
 ---
 
@@ -275,6 +284,47 @@ When converting from Figma or React:
     - **Custom Style:** Apply only to non-Wangsvue elements where layout-specific CSS is required.
     - You MUST use tailwind css class instead of css in <style> block.
 5. **Architecture:** You MUST break flat code into the appropriate folder defined in the **Project Structure** MD.
+
+### 🎯 FIGMA CONVERSION RULES
+
+#### **Component Replacement Logic:**
+- **`data-name="ComponentName"`** = Replace this entire element with `<ComponentName>`
+- **NOT** wrap `<ComponentName>` inside this element
+- **Example:** `<div data-name="Breadcrumb">...</div>` → `<Breadcrumb />`
+- **Exception:** If `data-name` is NOT in Wangsvue component list, it may be a custom layout name - keep as div with appropriate classes
+
+#### **No Double Wrapping:**
+- **❌ WRONG:** `<div><Breadcrumb /></div>` (when div only contains 1 component)
+- **✅ CORRECT:** `<Breadcrumb />` (every Vue component has root element)
+- **Rule:** If container has only 1 component, remove the container
+
+#### **Trust Component Styling:**
+- **❌ NEVER:** Add styling to Wangsvue components
+- **✅ ALWAYS:** Trust component's built-in design system
+- **Exception:** Layout positioning only (margin, positioning)
+- **Example:** `<Breadcrumb class="mb-4" />` (spacing OK), `<Breadcrumb class="flex gap-2" />` (styling NOT OK)
+
+#### **Figma Data-Name Decision Tree:**
+```
+Figma element has data-name="SomeName"
+    ↓
+Check: Is "SomeName" in Wangsvue component list?
+    ↓
+YES → Replace: <div data-name="Button"> → <Button />
+    ↓
+NO → Keep as layout: <div data-name="HeaderSection"> → <div class="...">
+```
+
+**Examples:**
+- `data-name="Button"` → `<Button />` (component exists)
+- `data-name="DataTable"` → `<DataTable />` (component exists)  
+- `data-name="HeaderSection"` → `<div class="...">` (layout name, not component)
+- `data-name="MainContent"` → `<div class="...">` (layout name, not component)
+
+#### **Exact Value Preservation:**
+- **❌ WRONG:** `h-[21px]` → `h-5` (20px ≠ 21px)
+- **✅ CORRECT:** Keep exact values `h-[21px]`
+- **Rule:** 1px difference matters for pixel-perfect design
 
 ### 🎨 COLOR SYSTEM PROTOCOL - NEVER USE CSS VARIABLES
 
@@ -352,5 +402,9 @@ import Colors from '@fewangsit/wangsvue-presets/wangsvue/colors.config.json';
 - Wrong project structure
 - **Implementing custom patterns when documentation provides the correct approach**
 - **Ignoring documented architecture patterns (e.g., where to place state management)**
+- **Double wrapping: `<div><Component /></div>` when div contains only 1 component**
+- **Adding styling classes to Wangsvue components (except layout positioning)**
+- **Incorrect pixel conversion (changing exact values like 21px to 20px)**
+- **Wrapping Figma `data-name` elements instead of replacing them**
 
-**REMEMBER: Following these rules is NOT optional. They are MANDATORY for every single line of code. When documentation exists, it is the ONLY acceptable approach.**
+**REMEMBER: Following these rules is NOT optional. They are MANDATORY for every single line of code. When documentation exists, it is the ONLY acceptable approach. Trust the Wangsvue design system - don't override component styling.**
