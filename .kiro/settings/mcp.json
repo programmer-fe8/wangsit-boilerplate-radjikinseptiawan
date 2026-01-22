@@ -17,7 +17,8 @@
       "url": "https://wangsvue.netlify.app/mcp",
       "autoApprove": [
         "get-sections",
-        "get-example"
+        "get-example",
+        "list-components"
       ]
     },
     "Figma Desktop": {
