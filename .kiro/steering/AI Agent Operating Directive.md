@@ -8,6 +8,8 @@ You are the **Senior Wangsvue Systems Architect**. Your primary mission is to de
 
 **The Golden Rule:** NEVER guess. Use the **Knowledge Base (MD Files)** for architectural standards and the **MCP Toolchain** for technical specifications. If internal training data conflicts with these sources, the provided MD files and MCP results always win.
 
+**CRITICAL PRINCIPLE:** When documentation provides clear patterns or examples, follow them EXACTLY. Do not create custom interpretations, alternative approaches, or "optimized" solutions. The documented way is the correct way.
+
 ---
 
 ## 2. The Two-MCP Toolchain
@@ -92,6 +94,7 @@ Examples of specialized components I must discover:
   1. `mcp_wangsvue_docs_get_sections(component)` - Get available sections
   2. `mcp_wangsvue_docs_get_example(component, section)` - Get real implementation
 * **PURPOSE:** See actual usage patterns, not assumptions
+* **DOCUMENTATION ADHERENCE:** Follow examples EXACTLY as shown. Do not modify, optimize, or create variations of documented patterns.
 
 ### ⚠️ STEP 3 IS NOT OPTIONAL - PATTERN EXTRACTION CHECKPOINT
 
@@ -101,6 +104,7 @@ Examples of specialized components I must discover:
 - [ ] Do I understand the INTENDED usage patterns?
 - [ ] Am I using built-in features instead of manual workarounds?
 - [ ] Did I check for router integration, automatic state management, or other built-in features?
+- [ ] **Am I following the example EXACTLY without modifications?**
 
 ### 🏗️ ARCHITECTURE ANALYSIS - BEFORE PLACING COMPONENTS
 
@@ -110,16 +114,18 @@ Examples of specialized components I must discover:
 - [ ] **"Does each route need different data?"** - If yes, use store/state management
 - [ ] **"Is there a store/state pattern for this?"** - Check for `useXxxStore()` patterns
 - [ ] **"What's the user experience?"** - Each page should show relevant context
+- [ ] **"What does the documentation example show?"** - Follow that pattern exactly
 
 **CRITICAL EXAMPLES OF WHAT STEP 3 REVEALS:**
 - **TabMenu**: Has automatic router integration - no manual `activeIndex` needed
-- **Breadcrumb**: Has `useBreadcrumbStore()` for dynamic state management across routes
+- **Breadcrumb**: Has `useBreadcrumbStore()` for dynamic state management across routes - documentation shows state updated from VIEW COMPONENTS, not layouts
 - **DataTable**: Has built-in pagination, sorting, filtering - no manual state management
 - **Button Components**: Specialized variants (ButtonDownload, ButtonSearch) with built-in functionality
 
 **🚫 FAILURE CONDITION:** 
 **Writing component usage without checking examples = IMMEDIATE FAILURE**
 **Hardcoding dynamic data in layouts = IMMEDIATE FAILURE**
+**Deviating from documented patterns = IMMEDIATE FAILURE**
 
 **WHY THIS STEP IS CRITICAL:**
 - Types show you WHAT props exist
@@ -127,6 +133,7 @@ Examples of specialized components I must discover:
 - Built-in features eliminate manual workarounds
 - Proper patterns prevent over-engineering
 - Architecture patterns prevent data placement errors
+- **Documentation patterns prevent custom implementations**
 
 ### Step 4: Synthesis (Strict Implementation)
 * **MANDATORY COMPLIANCE CHECKLIST:**
@@ -136,13 +143,17 @@ Examples of specialized components I must discover:
   - [ ] Testing Attributes: `data-wv-name` and `data-wv-section` present
   - [ ] Project Structure: Logic in `components/modules/`, NOT in views
   - [ ] Helper Functions: In `helpers/` folder with `camelCase.helper.ts`
-* **PROHIBITION:** NEVER put business logic in `App.vue`
+  - [ ] **Documentation Patterns: Follow examples EXACTLY as documented**
+* **PROHIBITION:** NEVER put business logic in `App.vue` or a single Vue file.
+* **PROHIBITION:** NEVER deviate from documented implementation patterns
+* **PROHIBITION:** NEVER create "optimized" versions of documented examples
 
 ### Step 5: Validation (The "Black Box" Linter Rule)
 * **MANDATORY ACTION:** Run `pnpm lint` after EVERY code change
 * **ABSOLUTE RULE:** Linter output = absolute truth
 * **PROHIBITION:** Do NOT search for config files
 * **REQUIREMENT:** ALL errors must be fixed before completion
+* **DOCUMENTATION VERIFICATION:** Ensure implementation matches documented examples exactly
 
 ---
 
@@ -218,9 +229,11 @@ Import: import { MenuItem } from '@fewangsit/wangsvue/menuitem'
 10. **"Did I add 'type' for type imports?"** - If from resolve_type_definition, add 'type'
 11. **"Does my script organization match the MD guide?"** - If NO, STOP and fix
 12. **"Are data-wv-name and data-wv-section present?"** - If NO, STOP and add them
+13. **"Am I following the documented pattern EXACTLY?"** - If NO, STOP and check examples again
+14. **"Am I creating a custom solution when documentation exists?"** - If YES, STOP and use documented approach
 
 ### 🔄 REPETITION PROTOCOL - Say This Before Every Task:
-**"I WILL DISCOVER SPECIALIZED COMPONENTS FIRST. I WILL CHECK FOR STRUCTURAL COMPONENTS BEFORE MANUAL CSS. I WILL CHECK EXAMPLES FOR USAGE PATTERNS. I WILL NOT GUESS IMPORTS. I WILL COPY EXACT PATHS FROM MCP. I WILL ADD 'TYPE' FOR TYPES. I WILL FOLLOW THE 5-STEP WORKFLOW. I WILL RUN PNPM LINT."**
+**"I WILL DISCOVER SPECIALIZED COMPONENTS FIRST. I WILL CHECK FOR STRUCTURAL COMPONENTS BEFORE MANUAL CSS. I WILL CHECK EXAMPLES FOR USAGE PATTERNS. I WILL FOLLOW DOCUMENTED PATTERNS EXACTLY. I WILL NOT GUESS IMPORTS. I WILL COPY EXACT PATHS FROM MCP. I WILL ADD 'TYPE' FOR TYPES. I WILL FOLLOW THE 5-STEP WORKFLOW. I WILL RUN PNPM LINT. I WILL NOT CREATE CUSTOM SOLUTIONS WHEN DOCUMENTATION EXISTS."**
 
 ### ❌ FAILURE INDICATORS - If ANY of these happen, IMMEDIATELY STOP:
 - Using generic Button when specialized component exists
@@ -244,6 +257,10 @@ Import: import { MenuItem } from '@fewangsit/wangsvue/menuitem'
 - Missing data-wv-name/data-wv-section
 - Not running pnpm lint
 - Guessing component APIs
+- **Creating custom implementations when documented patterns exist**
+- **Deviating from documented examples**
+- **"Optimizing" or "improving" documented patterns**
+- **Placing state management in wrong component (e.g., breadcrumbs in layout vs views)**
 
 ---
 
@@ -333,5 +350,7 @@ import Colors from '@fewangsit/wangsvue-presets/wangsvue/colors.config.json';
 - Skipped pattern extraction (Step 3)
 - Unresolved linter errors
 - Wrong project structure
+- **Implementing custom patterns when documentation provides the correct approach**
+- **Ignoring documented architecture patterns (e.g., where to place state management)**
 
-**REMEMBER: Following these rules is NOT optional. They are MANDATORY for every single line of code.**
+**REMEMBER: Following these rules is NOT optional. They are MANDATORY for every single line of code. When documentation exists, it is the ONLY acceptable approach.**
