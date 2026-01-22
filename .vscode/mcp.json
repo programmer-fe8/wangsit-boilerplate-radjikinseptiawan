@@ -3,12 +3,16 @@
 		"wangsvue-mcp": {
 			"type": "stdio",
 			"command": "npx",
-			"args": ["wangsvue-mcp"],
-			"env": {
-				"NODE_ENV": "development",
-				"REPOSITORY_URL": "..",
-				"WEB_COMPONENTS_URL": "file:///Volumes/Data Disk/Project/wangsit/wangsvue/mcp/server/data/components/wangsvue-components.json",
-			}
+			"args": [
+				"wangsvue-mcp",
+				"run"
+			]
+		},
+		"wangsvue-docs": {
+			"url": "https://wangsvue.netlify.app/mcp",
+		},
+		"figma-dev": {
+			"url": "http://127.0.0.1:3845/mcp"
 		}
 	},
 	"inputs": []
