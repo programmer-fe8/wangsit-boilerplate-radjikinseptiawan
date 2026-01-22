@@ -73,6 +73,29 @@ Examples of specialized components I must discover:
   2. `mcp_wangsvue_docs_get_example(component, section)` - Get real implementation
 * **PURPOSE:** See actual usage patterns, not assumptions
 
+### ⚠️ STEP 3 IS NOT OPTIONAL - PATTERN EXTRACTION CHECKPOINT
+
+**BEFORE WRITING ANY TEMPLATE CODE:**
+- [ ] Did I call `get_sections` for this component?
+- [ ] Did I call `get_example` for relevant sections?
+- [ ] Do I understand the INTENDED usage patterns?
+- [ ] Am I using built-in features instead of manual workarounds?
+- [ ] Did I check for router integration, automatic state management, or other built-in features?
+
+**CRITICAL EXAMPLES OF WHAT STEP 3 REVEALS:**
+- **TabMenu**: Has automatic router integration - no manual `activeIndex` needed
+- **DataTable**: Has built-in pagination, sorting, filtering - no manual state management
+- **Button Components**: Specialized variants (ButtonDownload, ButtonSearch) with built-in functionality
+
+**🚫 FAILURE CONDITION:** 
+**Writing component usage without checking examples = IMMEDIATE FAILURE**
+
+**WHY THIS STEP IS CRITICAL:**
+- Types show you WHAT props exist
+- Examples show you HOW to use them elegantly
+- Built-in features eliminate manual workarounds
+- Proper patterns prevent over-engineering
+
 ### Step 4: Synthesis (Strict Implementation)
 * **MANDATORY COMPLIANCE CHECKLIST:**
   - [ ] Vue SFC Structure: Script → Template → Style
@@ -154,22 +177,26 @@ Import: import { MenuItem } from '@fewangsit/wangsvue/menuitem'
 1. **"Did I call list_all_components() to discover specialized components?"** - If NO, STOP and call it
 2. **"Did I check for specialized components before using generic ones?"** - If NO, STOP and search
 3. **"Did I call MCP tools for this component?"** - If NO, STOP and call them
-4. **"Did I check the MD files for structure rules?"** - If NO, STOP and read them
-5. **"Are my imports EXACTLY from MCP results?"** - If NO, STOP and copy exact paths
-6. **"Did I add 'type' for type imports?"** - If from resolve_type_definition, add 'type'
-7. **"Does my script organization match the MD guide?"** - If NO, STOP and fix
-8. **"Are data-wv-name and data-wv-section present?"** - If NO, STOP and add them
+4. **"Did I check EXAMPLES to see intended usage patterns?"** - If NO, STOP and get examples
+5. **"Did I check the MD files for structure rules?"** - If NO, STOP and read them
+6. **"Are my imports EXACTLY from MCP results?"** - If NO, STOP and copy exact paths
+7. **"Did I add 'type' for type imports?"** - If from resolve_type_definition, add 'type'
+8. **"Does my script organization match the MD guide?"** - If NO, STOP and fix
+9. **"Are data-wv-name and data-wv-section present?"** - If NO, STOP and add them
 
 ### 🔄 REPETITION PROTOCOL - Say This Before Every Task:
-**"I WILL DISCOVER SPECIALIZED COMPONENTS FIRST. I WILL NOT GUESS IMPORTS. I WILL COPY EXACT PATHS FROM MCP. I WILL ADD 'TYPE' FOR TYPES. I WILL FOLLOW THE 5-STEP WORKFLOW. I WILL RUN PNPM LINT."**
+**"I WILL DISCOVER SPECIALIZED COMPONENTS FIRST. I WILL CHECK EXAMPLES FOR USAGE PATTERNS. I WILL NOT GUESS IMPORTS. I WILL COPY EXACT PATHS FROM MCP. I WILL ADD 'TYPE' FOR TYPES. I WILL FOLLOW THE 5-STEP WORKFLOW. I WILL RUN PNPM LINT."**
 
 ### ❌ FAILURE INDICATORS - If ANY of these happen, IMMEDIATELY STOP:
 - Using generic Button when specialized component exists
+- Writing component usage without checking examples
+- Manual state management when built-in features exist
 - Writing import without MCP verification
 - Modifying import paths from MCP results
 - Forgetting 'type' keyword for type imports
 - Mixing component and type import paths
 - Skipping component discovery step
+- Skipping pattern extraction step (Step 3)
 - Skipping any of the 5 steps
 - Putting logic in App.vue
 - Missing data-wv-name/data-wv-section
@@ -206,6 +233,8 @@ When converting from Figma or React:
 
 ### 🚫 AUTOMATIC FAILURE CONDITIONS:
 - Using generic components when specialized ones exist
+- Manual workarounds when built-in features exist
+- Writing component usage without checking examples
 - Any guessed import path
 - Modified import paths from MCP results
 - Missing 'type' keyword for type imports
@@ -214,6 +243,7 @@ When converting from Figma or React:
 - Logic in App.vue
 - Skipped MCP tool calls
 - Skipped component discovery
+- Skipped pattern extraction (Step 3)
 - Unresolved linter errors
 - Wrong project structure
 
