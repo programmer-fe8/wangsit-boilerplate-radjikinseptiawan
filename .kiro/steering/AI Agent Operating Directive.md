@@ -209,14 +209,15 @@ Import: import { MenuItem } from '@fewangsit/wangsvue/menuitem'
 1. **"Did I call list_all_components() to discover specialized components?"** - If NO, STOP and call it
 2. **"Did I check for specialized components before using generic ones OR manual CSS?"** - If NO, STOP and search
 3. **"Am I about to write manual styling? Does Wangsvue have a component for this?"** - If YES, STOP and search
-4. **"Did I call MCP tools for this component?"** - If NO, STOP and call them
-5. **"Did I check EXAMPLES to see intended usage patterns?"** - If NO, STOP and get examples
-6. **"Is this data static or dynamic? Who owns it?"** - If dynamic, don't hardcode in layout
-7. **"Did I check the MD files for structure rules?"** - If NO, STOP and read them
-8. **"Are my imports EXACTLY from MCP results?"** - If NO, STOP and copy exact paths
-9. **"Did I add 'type' for type imports?"** - If from resolve_type_definition, add 'type'
-10. **"Does my script organization match the MD guide?"** - If NO, STOP and fix
-11. **"Are data-wv-name and data-wv-section present?"** - If NO, STOP and add them
+4. **"Am I using CSS variables or hex colors? Should I use Tailwind tokens?"** - If YES, STOP and map colors
+5. **"Did I call MCP tools for this component?"** - If NO, STOP and call them
+6. **"Did I check EXAMPLES to see intended usage patterns?"** - If NO, STOP and get examples
+7. **"Is this data static or dynamic? Who owns it?"** - If dynamic, don't hardcode in layout
+8. **"Did I check the MD files for structure rules?"** - If NO, STOP and read them
+9. **"Are my imports EXACTLY from MCP results?"** - If NO, STOP and copy exact paths
+10. **"Did I add 'type' for type imports?"** - If from resolve_type_definition, add 'type'
+11. **"Does my script organization match the MD guide?"** - If NO, STOP and fix
+12. **"Are data-wv-name and data-wv-section present?"** - If NO, STOP and add them
 
 ### 🔄 REPETITION PROTOCOL - Say This Before Every Task:
 **"I WILL DISCOVER SPECIALIZED COMPONENTS FIRST. I WILL CHECK FOR STRUCTURAL COMPONENTS BEFORE MANUAL CSS. I WILL CHECK EXAMPLES FOR USAGE PATTERNS. I WILL NOT GUESS IMPORTS. I WILL COPY EXACT PATHS FROM MCP. I WILL ADD 'TYPE' FOR TYPES. I WILL FOLLOW THE 5-STEP WORKFLOW. I WILL RUN PNPM LINT."**
@@ -224,7 +225,10 @@ Import: import { MenuItem } from '@fewangsit/wangsvue/menuitem'
 ### ❌ FAILURE INDICATORS - If ANY of these happen, IMMEDIATELY STOP:
 - Using generic Button when specialized component exists
 - Using manual CSS when structural component exists
+- Using CSS variables instead of Tailwind color tokens
+- Using hex colors instead of color palette tokens
 - Writing `<div class="bg-white p-4">` instead of `<Card>`
+- Writing `bg-[var(--color)]` instead of `bg-general-50`
 - Writing component usage without checking examples
 - Hardcoding dynamic data in layouts
 - Manual state management when built-in features exist
@@ -254,6 +258,49 @@ When converting from Figma or React:
     - **Custom Style:** Apply only to non-Wangsvue elements where layout-specific CSS is required.
     - You MUST use tailwind css class instead of css in <style> block.
 5. **Architecture:** You MUST break flat code into the appropriate folder defined in the **Project Structure** MD.
+
+### 🎨 COLOR SYSTEM PROTOCOL - NEVER USE CSS VARIABLES
+
+**WANGSVUE COLOR SYSTEM RULES:**
+- ❌ **NEVER use CSS variables**: `bg-[var(--general/content,#ebeaf0)]`
+- ✅ **ALWAYS use Tailwind color tokens**: `bg-general-50`
+- ❌ **NEVER use hex colors directly**: `bg-[#ebeaf0]`
+- ✅ **ALWAYS map hex to color palette**: `#ebeaf0` → `general-50`
+
+**COLOR PALETTE MAPPING PROCESS:**
+1. **Find hex color** in Figma code or design
+2. **Check `tailwind.config.js`** to see which color config is imported
+3. **Open the specific color config file** referenced in tailwind.config.js
+4. **Match hex to color token**: `#ebeaf0` = `general-50`
+5. **Use Tailwind class**: `bg-general-50`
+
+**EXAMPLE WORKFLOW:**
+```javascript
+// tailwind.config.js shows:
+import Colors from '@fewangsit/wangsvue-presets/fixedasset/colors.config.json';
+// So check: node_modules/@fewangsit/wangsvue-presets/fixedasset/colors.config.json
+
+// OR it might show:
+import Colors from '@fewangsit/wangsvue-presets/wangsvue/colors.config.json';
+// So check: node_modules/@fewangsit/wangsvue-presets/wangsvue/colors.config.json
+```
+
+**AVAILABLE COLOR CATEGORIES:**
+- `primary-*` (50-950): Primary brand colors
+- `danger-*` (50-950): Error/danger states  
+- `warning-*` (50-950): Warning states
+- `success-*` (50-950): Success states
+- `grayscale-*` (50-950): Neutral grays
+- `general-*` (50-950): General UI colors
+
+**COMMON MAPPINGS:**
+- Background light: `general-50` (#ebeaf0)
+- Background white: `grayscale-50` (#f7f7f7)  
+- Text dark: `general-800` (#201e29)
+- Borders: `grayscale-200` (#e5e6e6)
+
+**🚫 FAILURE CONDITION:**
+**Using CSS variables or hex colors instead of Tailwind tokens = IMMEDIATE FAILURE**
 
 ---
 
