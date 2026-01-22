@@ -77,25 +77,46 @@ Within the `modules` directory, the `options` folder stores TypeScript files ess
 
 The `layout` folder contains Vue components that define the **overall page structure and navigation framework**. Layout components are responsible for:
 
-* Providing the main page structure (header, sidebar, footer, etc.)
-* Containing navigation elements (tab menus, breadcrumbs, main navigation)
-* Rendering `<router-view />` where view components are displayed
-* Managing layout-specific state and responsive behavior
+- Providing the main page structure (header, sidebar, footer, etc.)
+- Containing navigation elements (tab menus, breadcrumbs, main navigation)
+- Rendering `<router-view />` where view components are displayed
+- Managing layout-specific state and responsive behavior
 
 **Naming Convention:** Use `PascalCase` with the suffix `Layout` (e.g., `MainLayout.vue`, `SettingsLayout.vue`).
 
 **Architecture Pattern:** Routes use layout components that contain navigation structure and render view components through `<router-view />`.
 
-**Example Structure:**
+**Example Layout Code:**
 
 ```vue
-<!-- SettingsLayout.vue -->
+<!-- ExampleLayout.vue -->
+<script setup lang="ts">
+import { Breadcrumb, Card, TabMenu } from '@fewangsit/wangsvue';
+import { MenuItem } from '@fewangsit/wangsvue/menuitem';
+
+const tabMenus: MenuItem[] = [
+  {
+    label: 'Tab 1',
+    route: 'tab-1',
+  },
+  {
+    label: 'Tab 2',
+    route: 'tab-2',
+  },
+];
+</script>
+
 <template>
-  <div>
+  <div class="flex flex-col gap-2">
     <Breadcrumb />
-    <TabMenu />
-    <router-view />
-    <!-- View components render here -->
+
+    <Card>
+      <template #content>
+        <TabMenu :menu="tabMenus" />
+
+        <router-view />
+      </template>
+    </Card>
   </div>
 </template>
 ```
@@ -104,18 +125,50 @@ The `layout` folder contains Vue components that define the **overall page struc
 
 The `views` folder contains Vue components that serve as **route targets**. These are the components that Vue Router directly loads when navigating to specific URLs. View components should be lightweight and primarily responsible for:
 
-* Importing and composing module components from `components/modules/`
-* Handling route-specific logic (query parameters, route guards, etc.)
-* Managing page-level state and data fetching
-* Containing the specific content that renders within the layout structure
+- Importing and composing module components from `components/modules/`
+- Handling route-specific logic (query parameters, route guards, etc.)
+- Managing page-level state and data fetching
+- Containing the specific content that renders within the layout structure
 
 **Naming Convention:** Use `PascalCase` with the suffix `View` (e.g., `BrandView.vue`, `UserProfileView.vue`).
 
 **Key Rule:** Routes should **only** import components from the `views` folder, never directly from `modules` or `commons`.
 
+**Example View Code:**
+
+```vue
+<!-- ExampleView.vue -->
+<script setup lang="ts">
+import { useBreadcrumbStore } from '@fewangsit/wangsvue';
+import type { BreadcrumbMenu } from '@fewangsit/wangsvue/breadcrumb';
+import { onMounted } from 'vue';
+
+import ExampleModule from '@/components/modules/ExampleModule/ExampleModule.vue';
+
+const { setBreadcrumbs } = useBreadcrumbStore();
+
+const breadcrumbs: BreadcrumbMenu[] = [
+  {
+    name: 'Example',
+  },
+  {
+    name: 'Tab 1',
+  },
+];
+
+onMounted(() => {
+  setBreadcrumbs(breadcrumbs);
+});
+</script>
+
+<template>
+  <ExampleModule />
+</template>
+```
+
 ### 8. `router/index.ts`
 
-The `router` folder stores the client-side routes (URLs) used by the application. It also details the components used by each route. The guidelines for this folder can you read in [Vue Router Setup](code-consistency-guidelines-vue-specific-guidelines#vue-router-setup.md).
+The `router` folder stores the client-side routes (URLs) used by the application. It also details the components used by each route. The guidelines for this folder can you read in [Vue Router Setup](style-guide-code-consistency-guidelines-vue-specific-guidelines.md#vue-router-setup).
 
 ### 9. `utils`
 
