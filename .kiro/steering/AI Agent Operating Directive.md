@@ -144,9 +144,11 @@ Examples of specialized components I must discover:
   - [ ] Project Structure: Logic in `components/modules/`, NOT in views
   - [ ] Helper Functions: In `helpers/` folder with `camelCase.helper.ts`
   - [ ] **Documentation Patterns: Follow examples EXACTLY as documented**
+  - [ ] **Views Architecture: Views are lightweight, only import and compose from modules**
 * **PROHIBITION:** NEVER put business logic in `App.vue` or a single Vue file.
 * **PROHIBITION:** NEVER deviate from documented implementation patterns
 * **PROHIBITION:** NEVER create "optimized" versions of documented examples
+* **PROHIBITION:** NEVER put data, columns, handlers, or business logic in view components
 
 ### Step 5: Validation (The "Black Box" Linter Rule)
 * **MANDATORY ACTION:** Run `pnpm lint` after EVERY code change
@@ -236,6 +238,8 @@ Import: import { MenuItem } from '@fewangsit/wangsvue/menuitem'
 17. **"Am I converting pixel values correctly?"** - If NO, keep exact values (21px ≠ 20px)
 18. **"Does this Figma data-name exist in component list?"** - If YES, replace element; If NO, keep as layout div
 19. **"Should I replace or keep this Figma element?"** - Check component list first
+20. **"Am I putting business logic in a view component?"** - If YES, STOP and move to components/modules
+21. **"Is this view lightweight and only importing from modules?"** - If NO, STOP and restructure
 
 ### 🔄 REPETITION PROTOCOL - Say This Before Every Task:
 **"I WILL DISCOVER SPECIALIZED COMPONENTS FIRST. I WILL CHECK FOR STRUCTURAL COMPONENTS BEFORE MANUAL CSS. I WILL CHECK EXAMPLES FOR USAGE PATTERNS. I WILL FOLLOW DOCUMENTED PATTERNS EXACTLY. I WILL NOT GUESS IMPORTS. I WILL COPY EXACT PATHS FROM MCP. I WILL ADD 'TYPE' FOR TYPES. I WILL FOLLOW THE 5-STEP WORKFLOW. I WILL RUN PNPM LINT. I WILL NOT CREATE CUSTOM SOLUTIONS WHEN DOCUMENTATION EXISTS."**
@@ -270,6 +274,8 @@ Import: import { MenuItem } from '@fewangsit/wangsvue/menuitem'
 - **Adding styling to Wangsvue components (trust the design system)**
 - **Converting exact pixel values incorrectly (e.g., 21px → 20px)**
 - **Wrapping components instead of replacing Figma elements with `data-name`**
+- **Putting business logic, data, columns, handlers in view components**
+- **Creating fat views instead of lightweight route targets**
 
 ---
 
@@ -406,5 +412,7 @@ import Colors from '@fewangsit/wangsvue-presets/wangsvue/colors.config.json';
 - **Adding styling classes to Wangsvue components (except layout positioning)**
 - **Incorrect pixel conversion (changing exact values like 21px to 20px)**
 - **Wrapping Figma `data-name` elements instead of replacing them**
+- **Fat views: Putting business logic, data, columns, handlers in view components**
+- **Views not being lightweight route targets that only import from modules**
 
-**REMEMBER: Following these rules is NOT optional. They are MANDATORY for every single line of code. When documentation exists, it is the ONLY acceptable approach. Trust the Wangsvue design system - don't override component styling.**
+**REMEMBER: Following these rules is NOT optional. They are MANDATORY for every single line of code. When documentation exists, it is the ONLY acceptable approach. Trust the Wangsvue design system - don't override component styling. Views must be lightweight and only import from components/modules/.**
