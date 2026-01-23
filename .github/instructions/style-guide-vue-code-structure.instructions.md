@@ -1,5 +1,5 @@
 ---
-applyTo: **
+applyTo: '**'
 ---
 # Vue Code Structure
 

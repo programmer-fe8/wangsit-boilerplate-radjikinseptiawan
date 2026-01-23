@@ -1,5 +1,5 @@
 ---
-applyTo: **
+applyTo: '**'
 ---
 # Creating API Services
 

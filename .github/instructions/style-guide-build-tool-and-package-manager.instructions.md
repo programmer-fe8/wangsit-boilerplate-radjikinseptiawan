@@ -1,5 +1,5 @@
 ---
-applyTo: **
+applyTo: '**'
 ---
 # Build Tool and Package Manager
 

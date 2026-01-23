@@ -1,5 +1,5 @@
 ---
-applyTo: **
+applyTo: '**'
 ---
 # Vue Specific Guidelines
 
@@ -40,7 +40,7 @@ const formatFullName = (name: string): string => {
 };
 ```
 
-#### 1.2 Boolean Props Shorthand
+**1.2 Boolean Props Shorthand**
 
 For boolean props with `true` values, use the shorthand form without explicitly setting the value.
 
@@ -69,7 +69,6 @@ For boolean props with `true` values, use the shorthand form without explicitly 
 />
 
 <Button
-  disabled
   outlined
 />
 ```
