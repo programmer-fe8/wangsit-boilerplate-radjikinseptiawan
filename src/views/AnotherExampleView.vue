@@ -1,0 +1,26 @@
+<script setup lang="ts">
+import { useBreadcrumbStore } from '@fewangsit/wangsvue';
+import { BreadcrumbMenu } from '@fewangsit/wangsvue/breadcrumb';
+import { onMounted } from 'vue';
+
+import ExampleModule from '@/components/modules/ExampleModule/ExampleModule.vue';
+
+onMounted(() => {
+  setBreadcrumbs(menus);
+});
+
+const { setBreadcrumbs } = useBreadcrumbStore();
+
+const menus: BreadcrumbMenu[] = [
+  {
+    name: 'Wangs',
+  },
+  {
+    name: 'Another Page',
+  },
+];
+</script>
+
+<template>
+  <ExampleModule />
+</template>

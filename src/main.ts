@@ -7,6 +7,7 @@ import App from '@/App.vue';
 import '@/assets/css/main.css';
 import '@fewangsit/wangsvue/style.css';
 import '@fewangsit/wangsvue-presets/wangsvue/style.css';
+import router from './router';
 
 export const { mount, unmount } = createVueMicroApp(App, {
   el: '#app', // Only used for standalone development
@@ -16,6 +17,7 @@ export const { mount, unmount } = createVueMicroApp(App, {
     });
 
     app.use(ToastService);
+    app.use(router);
 
     app.directive('Tooltip', Tooltip);
     app.directive('focus', Focus);

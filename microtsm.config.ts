@@ -44,14 +44,6 @@ export default defineConfig((env) => ({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
-      '@fewangsit/wangsvue': resolve(
-        __dirname,
-        'node_modules/@fewangsit/wangsvue',
-      ),
-      '@fewangsit/workspace-api-services': resolve(
-        __dirname,
-        'node_modules/@fewangsit/workspace-api-services',
-      ),
     },
   },
 }));

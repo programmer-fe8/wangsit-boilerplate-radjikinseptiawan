@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { Toast } from '@fewangsit/wangsvue';
 </script>
 
 <template>
-Hello World!
+  <router-view />
+
+  <Toast />
 </template>
