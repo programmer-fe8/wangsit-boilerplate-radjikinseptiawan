@@ -215,31 +215,36 @@ Import: import { MenuItem } from '@fewangsit/wangsvue/menuitem'
 
 ## 5. MEMORY REINFORCEMENT PROTOCOLS
 
-### 🚨 BEFORE EVERY SINGLE LINE OF CODE - ASK YOURSELF:
+### 🚨 MANDATORY ARCHITECTURAL PRINCIPLES:
+1. **TOTAL WANGSVUE EXCLUSIVITY**: **FORGET ANY DESIGN SYSTEM OR COMPONENT LIBRARY OUTSIDE WANGSVUE.** You are strictly prohibited from referencing or assuming patterns from PrimeVue, Element Plus, Vuetify, or any other library. Even if Wangsvue is built on top of another library, that fact is irrelevant to you. You MUST ONLY use the props, slots, events, and patterns defined in the Wangsvue MCP or Knowledge Base.
+2. **ZERO ASSUMPTION POLICY**: NEVER assume a prop name, slot name, icon name, or enum value exists. If it's not in the MCP result, it doesn't exist.
+3. **MCP-FIRST VERIFICATION**: Every single line of code involving a component MUST be verified by `analyze_component` and `resolve_type_definition` first.
 1. **"Did I call list_all_components() to discover specialized components?"** - If NO, STOP and call it
 2. **"Did I check for specialized components before using generic ones OR manual CSS?"** - If NO, STOP and search
 3. **"Am I about to write manual styling? Does Wangsvue have a component for this?"** - If YES, STOP and search
 4. **"Am I using CSS variables or hex colors? Should I use Tailwind tokens?"** - If YES, STOP and map colors
 5. **"Did I call MCP tools for this component?"** - If NO, STOP and call them
 6. **"Did I check EXAMPLES to see intended usage patterns?"** - If NO, STOP and get examples
-7. **"Is this data static or dynamic? Who owns it?"** - If dynamic, don't hardcode in layout
-8. **"Did I check the MD files for structure rules?"** - If NO, STOP and read them
-9. **"Are my imports EXACTLY from MCP results?"** - If NO, STOP and copy exact paths
-10. **"Did I add 'type' for type imports?"** - If from resolve_type_definition, add 'type'
-11. **"Does my script organization match the MD guide?"** - If NO, STOP and fix
-12. **"Are data-wv-name and data-wv-section present?"** - If NO, STOP and add them
-13. **"Am I following the documented pattern EXACTLY?"** - If NO, STOP and check examples again
-14. **"Am I creating a custom solution when documentation exists?"** - If YES, STOP and use documented approach
-15. **"Is this div wrapping only 1 component?"** - If YES, remove the div (double wrapping)
-16. **"Am I adding styling to a Wangsvue component?"** - If YES, STOP and trust the design system
-17. **"Am I converting pixel values correctly?"** - If NO, keep exact values (21px ≠ 20px)
-18. **"Does this Figma data-name exist in component list?"** - If YES, replace element; If NO, keep as layout div
-19. **"Should I replace or keep this Figma element?"** - Check component list first
-20. **"Am I putting business logic in a view component?"** - If YES, STOP and move to components/modules
-21. **"Is this view lightweight and only importing from modules?"** - If NO, STOP and restructure
+7. **"Am I assuming a string literal value (icon, severity, size, etc.)?"** - If YES, STOP and call `resolve_type_definition` for that type (e.g., `WangsIcons`, `ButtonSeverity`)
+8. **"Is this icon name correct?"** - NEVER guess. Check `WangsIcons` definition. (e.g., `add` NOT `add-line`)
+9. **"Is this data static or dynamic? Who owns it?"** - If dynamic, don't hardcode in layout
+10. **"Did I check the MD files for structure rules?"** - If NO, STOP and read them
+11. **"Are my imports EXACTLY from MCP results?"** - If NO, STOP and copy exact paths
+12. **"Did I add 'type' for type imports?"** - If from resolve_type_definition, add 'type'
+13. **"Does my script organization match the MD guide?"** - If NO, STOP and fix
+14. **"Are data-wv-name and data-wv-section present?"** - If NO, STOP and add them
+15. **"Am I following the documented pattern EXACTLY?"** - If NO, STOP and check examples again
+16. **"Am I creating a custom solution when documentation exists?"** - If YES, STOP and use documented approach
+17. **"Is this div wrapping only 1 component?"** - If YES, remove the div (double wrapping)
+18. **"Am I adding styling to a Wangsvue component?"** - If YES, STOP and trust the design system
+19. **"Am I converting pixel values correctly?"** - If NO, keep exact values (21px ≠ 20px)
+20. **"Does this Figma data-name exist in component list?"** - If YES, replace element; If NO, keep as layout div
+21. **"Should I replace or keep this Figma element?"** - Check component list first
+22. **"Am I putting business logic in a view component?"** - If YES, STOP and move to components/modules
+23. **"Is this view lightweight and only importing from modules?"** - If NO, STOP and restructure
 
 ### 🔄 REPETITION PROTOCOL - Say This Before Every Task:
-**"I WILL DISCOVER SPECIALIZED COMPONENTS FIRST. I WILL CHECK FOR STRUCTURAL COMPONENTS BEFORE MANUAL CSS. I WILL CHECK EXAMPLES FOR USAGE PATTERNS. I WILL FOLLOW DOCUMENTED PATTERNS EXACTLY. I WILL NOT GUESS IMPORTS. I WILL COPY EXACT PATHS FROM MCP. I WILL ADD 'TYPE' FOR TYPES. I WILL FOLLOW THE 5-STEP WORKFLOW. I WILL RUN PNPM LINT. I WILL NOT CREATE CUSTOM SOLUTIONS WHEN DOCUMENTATION EXISTS."**
+**"I WILL DISCOVER SPECIALIZED COMPONENTS FIRST. I WILL CHECK FOR STRUCTURAL COMPONENTS BEFORE MANUAL CSS. I WILL CHECK EXAMPLES FOR USAGE PATTERNS. I WILL FOLLOW DOCUMENTED PATTERNS EXACTLY. I WILL NOT GUESS IMPORTS. I WILL COPY EXACT PATHS FROM MCP. I WILL ADD 'TYPE' FOR TYPES. I WILL FOLLOW THE 5-STEP WORKFLOW. I WILL RUN PNPM LINT. I WILL NOT CREATE CUSTOM SOLUTIONS WHEN DOCUMENTATION EXISTS. I WILL NEVER GUESS ICON NAMES OR ENUM VALUES. I WILL ALWAYS VERIFY LITERALS WITH RESOLVE_TYPE_DEFINITION."**
 
 ### ❌ FAILURE INDICATORS - If ANY of these happen, IMMEDIATELY STOP:
 - Using generic Button when specialized component exists
@@ -249,6 +254,8 @@ Import: import { MenuItem } from '@fewangsit/wangsvue/menuitem'
 - Writing `<div class="bg-white p-4">` instead of `<Card>`
 - Writing `bg-[var(--color)]` instead of `bg-general-50`
 - Writing component usage without checking examples
+- **Guessing icon names or enum values (e.g., `edit-line` instead of `edit`)**
+- **Writing literal values without `resolve_type_definition` verification**
 - Hardcoding dynamic data in layouts
 - Manual state management when built-in features exist
 - Writing import without MCP verification
