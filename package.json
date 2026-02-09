@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "microtsm",
+    "dev": "microtsm e2e",
     "serve": "microtsm serve",
     "build": "tsc && microtsm build",
     "lint": "eslint . --fix",
