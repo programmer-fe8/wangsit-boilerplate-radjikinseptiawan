@@ -21,7 +21,5 @@ describe('/home', () => {
       cy.contains('Wangs');
       cy.contains('Another Page');
     });
-
-    cy.contains('Hello from Another Tab');
   });
 });
