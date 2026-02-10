@@ -7,7 +7,7 @@ import {
   TableColumn,
 } from '@fewangsit/wangsvue/datatable';
 import { MenuItem } from '@fewangsit/wangsvue/menuitem';
-import { computed, shallowRef } from 'vue';
+import { shallowRef } from 'vue';
 import { useRouter } from 'vue-router';
 
 import UserServices from '@/services/example.service';
@@ -39,42 +39,40 @@ const singleAction: MenuItem[] = [
   },
 ];
 
-const tableColumns = computed<TableColumn<Member>[]>(() => {
-  return [
-    {
-      field: 'nickName',
-      header: 'Name',
-      sortable: true,
-      reorderable: false,
-      fixed: true,
-      bodyComponent: (data: Member): TableCellComponent => ({
-        component: Badge,
-        props: {
-          label: data.nickName,
-        },
-      }),
-    },
-    {
-      field: 'email',
-      header: 'Email',
-      sortable: true,
-      fixed: true,
-    },
-    {
-      field: 'teams',
-      header: 'Teams',
-      sortable: false,
-      bodyComponent: (data: Member): TableCellComponent => ({
-        component: BadgeGroup,
-        props: {
-          labels: data.teams,
-          limit: 2,
-          headerLabel: 'Teams',
-        },
-      }),
-    },
-  ];
-});
+const tableColumns: TableColumn<Member>[] = [
+  {
+    field: 'nickName',
+    header: 'Name',
+    sortable: true,
+    reorderable: false,
+    fixed: true,
+    bodyComponent: (data: Member): TableCellComponent => ({
+      component: Badge,
+      props: {
+        label: data.nickName,
+      },
+    }),
+  },
+  {
+    field: 'email',
+    header: 'Email',
+    sortable: true,
+    fixed: true,
+  },
+  {
+    field: 'teams',
+    header: 'Teams',
+    sortable: false,
+    bodyComponent: (data: Member): TableCellComponent => ({
+      component: BadgeGroup,
+      props: {
+        labels: data.teams,
+        limit: 2,
+        headerLabel: 'Teams',
+      },
+    }),
+  },
+];
 
 const getTableData = async (
   params: QueryParams,
