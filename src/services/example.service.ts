@@ -7,8 +7,6 @@ import { Member } from '@/types/member.type';
 
 import { GetOptionsParams, GetUsersParams } from '../dto/user.dto';
 
-type GetOptionsResponse = FetchOptionResponse<GetOptionsParams>;
-
 const API = ({ headers = {}, params = {} } = {}): AxiosInstance => {
   const user = JSON.parse(localStorage.getItem('user') ?? '{}');
   const BASE_URL = getBaseURL();
@@ -35,7 +33,7 @@ const UserServices = {
 
   getOptions: (
     params: GetOptionsParams,
-  ): Promise<AxiosResponse<GetOptionsResponse>> => {
+  ): Promise<AxiosResponse<FetchOptionResponse<GetOptionsParams>>> => {
     return API({ params }).get('/options');
   },
 };
