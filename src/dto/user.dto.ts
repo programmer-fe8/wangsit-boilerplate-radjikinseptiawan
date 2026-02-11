@@ -7,5 +7,5 @@ export interface GetUsersParams extends QueryParams {
 }
 
 export interface GetOptionsParams {
-  country?: boolean;
+  countryOptions?: boolean;
 }
