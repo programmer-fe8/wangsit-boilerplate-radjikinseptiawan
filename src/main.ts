@@ -174,6 +174,12 @@ export const { mount, unmount } = createVueMicroApp(App, {
             applyCropLabel: 'Apply',
             changeImageLabel: 'Change Image',
           },
+
+          Toast: {
+            successMessage: 'Success, {message}',
+            errorMessage: 'Error, {message}',
+            networkErrorMessage: ' Please check your connection and try again.',
+          },
         },
       },
     });
