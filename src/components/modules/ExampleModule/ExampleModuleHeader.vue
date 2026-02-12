@@ -23,7 +23,7 @@ import DialogDeleteUser from './DialogDeleteUser.vue';
 const dataSelected = shallowRef<Member[]>([]);
 const showDeleteUserDialog = shallowRef<boolean>(false);
 
-const bulkAction: MenuItem[] = [
+const BULK_ACTION: MenuItem[] = [
   {
     label: 'Delete User',
     icon: 'checkbox-blank-circle',
@@ -62,7 +62,7 @@ const getUserOptions = async (
   <div class="flex justify-end gap-4" data-wv-section="tabletoolbars">
     <ButtonBulkAction
       v-model:selected-data="dataSelected"
-      :options="bulkAction"
+      :options="BULK_ACTION"
       table-name="user-list"
     />
 

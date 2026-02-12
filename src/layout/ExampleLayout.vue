@@ -2,7 +2,7 @@
 import { Breadcrumb, Card, TabMenu } from '@fewangsit/wangsvue';
 import { MenuItem } from '@fewangsit/wangsvue/menuitem';
 
-const tabMenus: MenuItem[] = [
+const TAB_MENUS: MenuItem[] = [
   {
     label: 'Home',
     route: 'home',
@@ -19,7 +19,7 @@ const tabMenus: MenuItem[] = [
 
   <Card>
     <template #content>
-      <TabMenu :menu="tabMenus" />
+      <TabMenu :menu="TAB_MENUS" />
 
       <router-view />
     </template>

@@ -6,12 +6,12 @@ import { onMounted } from 'vue';
 import ExampleModule from '@/components/modules/ExampleModule/ExampleModule.vue';
 
 onMounted(() => {
-  setBreadcrumbs(menus);
+  setBreadcrumbs(MENUS);
 });
 
 const { setBreadcrumbs } = useBreadcrumbStore();
 
-const menus: BreadcrumbMenu[] = [
+const MENUS: BreadcrumbMenu[] = [
   {
     name: 'Wangs',
   },

@@ -21,7 +21,7 @@ const router = useRouter();
 const selectedUser = shallowRef<Member>();
 const showDeleteUserDialog = shallowRef<boolean>(false);
 
-const singleAction: MenuItem[] = [
+const SINGLE_ACTION: MenuItem[] = [
   {
     label: 'Detail',
     icon: 'checkbox-blank-circle',
@@ -39,7 +39,7 @@ const singleAction: MenuItem[] = [
   },
 ];
 
-const tableColumns: TableColumn<Member>[] = [
+const TABLE_COLUMNS: TableColumn<Member>[] = [
   {
     field: 'nickName',
     header: 'Name',
@@ -91,9 +91,9 @@ const getTableData = async (
   <ExampleModuleHeader />
 
   <DataTable
-    :columns="tableColumns"
+    :columns="TABLE_COLUMNS"
     :fetch-function="getTableData"
-    :options="singleAction"
+    :options="SINGLE_ACTION"
     @toggle-option="selectedUser = $event"
     data-key="_id"
     lazy
