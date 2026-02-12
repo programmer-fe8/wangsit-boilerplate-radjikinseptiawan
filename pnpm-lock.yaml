@@ -22,11 +22,11 @@ importers:
         specifier: ^1.0.13
         version: 1.0.13(@types/eslint@9.6.1)(jiti@1.21.7)(prettier@3.3.3)(typescript@5.8.3)(vue-eslint-parser@10.2.0(eslint@9.39.2(jiti@1.21.7)))
       '@fewangsit/wangsvue':
-        specifier: 1.5.229-alpha.47
-        version: 1.5.229-alpha.47(@stencil/core@4.39.0)(hono@4.11.7)(vue-router@4.5.1(vue@3.5.16(typescript@5.8.3)))(vue@3.5.16(typescript@5.8.3))
+        specifier: 1.5.229-alpha.50
+        version: 1.5.229-alpha.50(@stencil/core@4.39.0)(hono@4.11.7)(vue-router@4.5.1(vue@3.5.16(typescript@5.8.3)))(vue@3.5.16(typescript@5.8.3))
       '@fewangsit/wangsvue-presets':
-        specifier: 1.0.110-alpha.0
-        version: 1.0.110-alpha.0
+        specifier: 2.0.0-alpha.2
+        version: 2.0.0-alpha.2
       '@fewangsit/workspace-api-services':
         specifier: 1.0.18-alpha.1
         version: 1.0.18-alpha.1
@@ -922,11 +922,11 @@ packages:
   '@fewangsit/eslint-config-vue-code-standard@1.0.13':
     resolution: {integrity: sha512-tiYBMRwQ/t8w5QIMsDI+nAXHGppd6vDvrkqfUPN/jM878xjn8HEVCOq0yVUmQAy7bpe9ENzzpRUujD0QKdf5GA==}
 
-  '@fewangsit/wangsvue-presets@1.0.110-alpha.0':
-    resolution: {integrity: sha512-UaCGNvye8QPdJ+TVxdfA2ZO9+9WD13D+BtCDNAAD6+tJOdYDqMO0i6Vmu7tL2Oz52ozpeXms3HfsPRH796BAxA==}
+  '@fewangsit/wangsvue-presets@2.0.0-alpha.2':
+    resolution: {integrity: sha512-urQX+ilkH74mFLYZu1ahYhbPNwMBGTXxfe2ckvealClFi0cKoMPNdXOTBCnTJIn5kk4QvETxMZsz4aEr1qG0Pg==}
 
-  '@fewangsit/wangsvue@1.5.229-alpha.47':
-    resolution: {integrity: sha512-cTaGX89L4T0l4f5b4pM7bxE6y1C+8lLK1ZTvT1qGbD9Ah2dawzQeV7OMO27deuHSnugm8nNqTQTSbyE51ZGpXg==}
+  '@fewangsit/wangsvue@1.5.229-alpha.50':
+    resolution: {integrity: sha512-SLt1X1ZGENs5nFttVCmorKdjxXkbYXb8e6yukrEdK0nTtxgYi97u9ux+wBBHedlSIpETiaWKgQxSrqOi+sNnXw==}
     hasBin: true
 
   '@fewangsit/workspace-api-services@1.0.18-alpha.1':
@@ -5221,9 +5221,9 @@ snapshots:
       - typescript
       - vue-eslint-parser
 
-  '@fewangsit/wangsvue-presets@1.0.110-alpha.0': {}
+  '@fewangsit/wangsvue-presets@2.0.0-alpha.2': {}
 
-  '@fewangsit/wangsvue@1.5.229-alpha.47(@stencil/core@4.39.0)(hono@4.11.7)(vue-router@4.5.1(vue@3.5.16(typescript@5.8.3)))(vue@3.5.16(typescript@5.8.3))':
+  '@fewangsit/wangsvue@1.5.229-alpha.50(@stencil/core@4.39.0)(hono@4.11.7)(vue-router@4.5.1(vue@3.5.16(typescript@5.8.3)))(vue@3.5.16(typescript@5.8.3))':
     dependencies:
       '@modelcontextprotocol/sdk': 1.25.2(hono@4.11.7)(zod@3.23.8)
       '@toon-format/toon': 2.1.0
