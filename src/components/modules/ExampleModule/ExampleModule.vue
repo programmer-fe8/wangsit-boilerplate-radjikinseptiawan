@@ -105,6 +105,5 @@ const getTableData = async (
   <DialogDeleteUser
     v-model:visible="showDeleteUserDialog"
     :list="selectedUser ? [selectedUser] : []"
-    list-label="name"
   />
 </template>

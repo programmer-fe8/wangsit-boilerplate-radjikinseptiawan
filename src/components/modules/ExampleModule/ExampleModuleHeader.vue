@@ -78,6 +78,5 @@ const getUserOptions = async (
   <DialogDeleteUser
     v-model:visible="showDeleteUserDialog"
     :list="dataSelected"
-    list-label="name"
   />
 </template>
