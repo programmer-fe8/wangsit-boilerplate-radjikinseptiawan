@@ -1,4 +1,4 @@
-describe('/home', () => {
+describe('Home page', () => {
   beforeEach(() => {
     cy.visit('/home');
     cy.intercept('GET', '/user*', { fixture: 'user-list' });
