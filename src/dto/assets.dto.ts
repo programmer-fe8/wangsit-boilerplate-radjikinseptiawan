@@ -8,3 +8,10 @@ export interface GetAssetsParams extends QueryParams {
   type?: string;
   alias?: string;
 }
+
+export interface GetOptionParams {
+  typeOptions?: boolean;
+  categoryOptions?: boolean;
+  nameOptions?: boolean;
+  brandOptions?: boolean;
+}

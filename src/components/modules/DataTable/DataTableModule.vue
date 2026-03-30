@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Badge, DataTable, Paginator } from '@fewangsit/wangsvue';
+import { Badge, DataTable } from '@fewangsit/wangsvue';
 import {
   FetchListResponse,
   QueryParams,
@@ -9,25 +9,28 @@ import {
 import { MenuItem } from '@fewangsit/wangsvue/menuitem';
 import { computed, shallowRef } from 'vue';
 
-import getAssetServices from '@/services/assets.service';
+import AssetServices from '@/services/assets.service';
 import { Assets } from '@/types/assets.type';
 
 import DataTableHeader from './DataTableHeader.vue';
 
 const selectedAset = shallowRef<Assets | null>(null);
 const singleActions = computed<MenuItem[]>(() => {
+  const singleDataDelete = shallowRef<boolean>(false);
   return [
     {
       label: 'Detail Asset',
       icon: 'file-copy-2-line',
-      // eslint-disable-next-line no-empty-function
-      command: (): void => {},
+      command: (): void => {
+        window.location.href = '/detail';
+      },
     },
     {
       label: 'Edit',
       icon: 'edit-2-line',
-      // eslint-disable-next-line no-empty-function
-      command: (): void => {},
+      command: (): void => {
+        singleDataDelete.value = true;
+      },
     },
   ];
 });
@@ -36,7 +39,7 @@ const getTableData = async (
   params: QueryParams,
 ): Promise<FetchListResponse<Assets> | undefined> => {
   try {
-    const { data } = await getAssetServices.getUser(params);
+    const { data } = await AssetServices.getAssets(params);
     return data;
   } catch (e) {
     console.error(e);
@@ -104,8 +107,11 @@ const TABLE_COLUMNS: TableColumn<Assets>[] = [
     :columns="TABLE_COLUMNS"
     :fetch-function="getTableData"
     :options="singleActions"
-    @toggle-option="selectedAset"
+    @toggle-option="selectedAset = $event"
+    data-key="_id"
+    lazy
+    table-name="asset-list"
+    use-option
+    use-paginator
   />
-
-  <Paginator />
 </template>

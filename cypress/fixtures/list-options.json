@@ -1,0 +1,37 @@
+
+{
+    "data": {
+        "nameOptions": [
+            {
+                "label": "string",
+                "value": "string"
+            }
+        ],
+        "groupOptions": [
+            {
+                "label": "wirehouse",
+                "value": "wirehouse"
+            }
+        ],
+        "brandOptions": [
+            {
+                "label": "string",
+                "value": "string"
+            }
+        ],
+        "modelOptions": [
+            {
+                "label": "string",
+                "value": "string"
+            }
+        ],
+        "categoryOptions": [
+            {
+                "label": "test",
+                "value": "test"
+            }
+        ]
+    },
+    "message": "Successfully get asset options",
+    "status": 200
+}

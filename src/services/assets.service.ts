@@ -1,12 +1,13 @@
 import { FetchListResponse } from '@fewangsit/wangsvue/datatable';
+import { FetchOptionResponse } from '@fewangsit/wangsvue/filtercontainer';
 import { getBaseURL } from '@fewangsit/workspace-api-services';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
-import { GetAssetsParams } from '@/dto/assets.dto';
+import { GetAssetsParams, GetOptionParams } from '@/dto/assets.dto';
 import { Assets } from '@/types/assets.type';
 
 const API = ({ headers = {}, params = {} } = {}): AxiosInstance => {
-  const user = JSON.parse(localStorage.getItem('assets') ?? '{}');
+  const user = JSON.parse(localStorage.getItem('user') ?? '{}');
   const BASE_URL = getBaseURL();
 
   const instance = axios.create({
@@ -22,12 +23,18 @@ const API = ({ headers = {}, params = {} } = {}): AxiosInstance => {
   return instance;
 };
 
-const getAssetServices = {
-  getUser(
+const AssetServices = {
+  getAssets(
     params: GetAssetsParams,
   ): Promise<AxiosResponse<FetchListResponse<Assets>>> {
     return API({ params }).get('');
   },
+
+  getAssetsOptions(
+    params: GetAssetsParams,
+  ): Promise<AxiosResponse<FetchOptionResponse<GetOptionParams>>> {
+    return API({ params }).get('/options');
+  },
 };
 
-export default getAssetServices;
+export default AssetServices;

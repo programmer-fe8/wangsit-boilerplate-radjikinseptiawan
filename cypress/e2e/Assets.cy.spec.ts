@@ -1,11 +1,11 @@
+/* eslint-disable no-empty-function */
 describe('Asset Page', () => {
   beforeEach(() => {
     cy.visit('/asset');
-    cy.intercept('GET', '/v2/asset*', { fixture: 'assets-list' });
-    // Cy.intercept('GET', '/user/options*', { fixture: 'user-options' });
+    cy.intercept('GET', '/v2/assets*', { fixture: 'assets-list' });
+    cy.intercept('GET', '/v2/assets/options*', { fixture: 'list-options' });
+    cy.intercept('GET', '/v2/assets/:id', { fixture: 'detail-asset' });
   });
 
-  it('should have correct breadcrumb', () => {
-    
-  });
+  it('should have correct breadcrumb', () => {});
 });
