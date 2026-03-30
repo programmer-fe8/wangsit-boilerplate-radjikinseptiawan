@@ -1,19 +1,26 @@
+<!-- eslint-disable no-console -->
 <script lang="ts" setup>
 import {
   Button,
   ButtonFilter,
   ButtonSearch,
+  DialogForm,
   FilterContainer,
+  ImageCompressor,
+  InputText,
 } from '@fewangsit/wangsvue';
 import {
   FetchOptionResponse,
   FilterField,
 } from '@fewangsit/wangsvue/filtercontainer';
+import { ImageCompressorPayload } from '@fewangsit/wangsvue/imagecompressor';
 import { AxiosResponse } from 'axios';
-import { computed } from 'vue';
+import { computed, shallowRef } from 'vue';
 
 import { GetOptionParams } from '@/dto/assets.dto';
 import AssetServices from '@/services/assets.service';
+
+const show = shallowRef<boolean>(false);
 
 const getFilterOptions = async (
   params: GetOptionParams,
@@ -57,6 +64,10 @@ const filterFields = computed<FilterField[]>(() => {
     },
   ];
 });
+
+const onApply = (payload: ImageCompressorPayload): void => {
+  console.log('image compressed', payload);
+};
 </script>
 
 <template>
@@ -67,8 +78,67 @@ const filterFields = computed<FilterField[]>(() => {
 
     <Button class="border-0" icon="history-line" severity="none" />
 
-    <Button label="+ Register" severity="secondary" />
+    <Button @click="show = true" label="+ Register" severity="secondary" />
   </div>
 
   <FilterContainer :fields="filterFields" table-name="asset-list" />
+
+  <DialogForm
+    v-model:visible="show"
+    :buttons-template="['submit', 'clear']"
+    header="Register Asset"
+    show-stay-checkbox
+  >
+    <template #fields>
+      <div class="flex gap-5">
+        <div>
+          <InputText
+            :validator-message="{ empty: 'You must pick a grup' }"
+            label="Group"
+            mandatory
+            use-validator
+          />
+
+          <InputText
+            :validator-message="{ empty: 'You must pick a name' }"
+            label="Name"
+            mandatory
+            use-validator
+          />
+
+          <InputText
+            :validator-message="{ empty: 'You must pick a brand' }"
+            label="Brand"
+            mandatory
+            use-validator
+          />
+        </div>
+
+        <div>
+          <InputText
+            :validator-message="{ empty: 'You must pick a category' }"
+            label="Category"
+            mandatory
+            use-validator
+          />
+
+          <InputText
+            :validator-message="{ empty: 'You must pick a alias name' }"
+            label="Alias Name"
+            mandatory
+            use-validator
+          />
+
+          <InputText
+            :validator-message="{ empty: 'You must pick a Model/Type' }"
+            label="Model/Type"
+            mandatory
+            use-validator
+          />
+        </div>
+      </div>
+
+      <ImageCompressor @apply="onApply" />
+    </template>
+  </DialogForm>
 </template>
