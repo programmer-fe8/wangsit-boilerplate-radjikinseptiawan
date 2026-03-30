@@ -1,0 +1,19 @@
+{
+  "status": 200,
+  "message": "Successfully get assets list",
+  "data": {
+    "totalRecords": 1,
+    "data": [
+      {
+        "_id": "675c1c9563710519e9e9bfa8",
+        "key": 36,
+        "assets": "AC Portable Indoor",
+        "group": "Room 301",
+        "category": "AC",
+        "brand": "LG",
+        "type": "Hercules",
+        "alias": "AC ruang rapat"
+      }
+    ]
+  }
+}

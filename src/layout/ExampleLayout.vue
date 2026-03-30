@@ -11,6 +11,10 @@ const TAB_MENUS: MenuItem[] = [
     label: 'Another Page',
     route: 'another',
   },
+  {
+    label: 'asset',
+    route: 'asset',
+  },
 ];
 </script>
 

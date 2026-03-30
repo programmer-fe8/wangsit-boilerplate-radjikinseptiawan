@@ -17,7 +17,11 @@ const routes: Readonly<RouteRecordRaw[]> = [
         name: 'AnohterExampleView',
         component: (): Promise<Component> =>
           import('@/views/AnotherExampleView.vue'),
-      },
+      },{
+        path:"Asset",
+        name:"Asset",
+        component:(): Promise<Component>=> import("@/views/Asset.vue")
+      }
     ],
   },
 ];

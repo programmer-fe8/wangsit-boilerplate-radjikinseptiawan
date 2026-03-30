@@ -9,3 +9,4 @@ export interface GetUsersParams extends QueryParams {
 export interface GetOptionsParams {
   countryOptions?: boolean;
 }
+
