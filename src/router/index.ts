@@ -9,9 +9,8 @@ const routes: Readonly<RouteRecordRaw[]> = [
     children: [
       {
         path: 'home',
-        // TODO: There shouldn't be any routes with duplicate names or components
-        name: 'Asset',
-        component: (): Promise<Component> => import('@/views/Asset.vue'),
+        name: 'Home',
+        component: (): Promise<Component> => import('@/views/AssetView.vue'),
       },
       {
         path: 'another',
@@ -20,20 +19,15 @@ const routes: Readonly<RouteRecordRaw[]> = [
           import('@/views/AnotherExampleView.vue'),
       },
       {
-        /*
-         * TODO: The path should be `assets`
-         * I've updated the figma design so that you can see the path
-         * on the top-left of the frame
-         */
-        path: 'home',
+        path: 'assets',
         name: 'Asset',
-        component: (): Promise<Component> => import('@/views/Asset.vue'),
+        component: (): Promise<Component> => import('@/views/AssetView.vue'),
       },
       {
-        // TODO: The path should be `assets/detail/:id`
         path: 'detail',
         name: 'Detail',
-        component: (): Promise<Component> => import('@/views/AssetsDetail.vue'),
+        component: (): Promise<Component> =>
+          import('@/views/AssetsDetailView.vue'),
       },
     ],
   },

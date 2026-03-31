@@ -1,7 +1,3 @@
-<!--
-  TODO: The name of the modules shouldn't end with `Module`.
-  I've also clarified this in the documentation.
--->
 <script lang="ts" setup>
 import { Badge, DataTable } from '@fewangsit/wangsvue';
 import {
@@ -12,19 +8,16 @@ import {
 } from '@fewangsit/wangsvue/datatable';
 import { MenuItem } from '@fewangsit/wangsvue/menuitem';
 import { computed, shallowRef } from 'vue';
+import { useRouter } from 'vue-router';
 
-/*
- * TODO: You shouldn't import router from the router file.
- * You should first import useRouter from 'vue-router', then add this line:
- * const router = useRouter();
- */
-import router from '@/router';
 import AssetServices from '@/services/assets.service';
-import { Asset } from '@/types/assets.type';
+import { Assets } from '@/types/assets.type';
 
 import AssetTableHeader from './AssetTableHeader.vue';
 
-const TABLE_COLUMNS: TableColumn<Asset>[] = [
+const route = useRouter();
+
+const TABLE_COLUMNS: TableColumn<Assets>[] = [
   {
     field: 'assets',
     header: 'Asset',
@@ -32,7 +25,7 @@ const TABLE_COLUMNS: TableColumn<Asset>[] = [
   {
     field: 'group',
     header: 'Group',
-    bodyComponent: (data: Asset): TableCellComponent => ({
+    bodyComponent: (data: Assets): TableCellComponent => ({
       component: Badge,
       props: {
         label: data.group,
@@ -42,7 +35,7 @@ const TABLE_COLUMNS: TableColumn<Asset>[] = [
   {
     field: 'category',
     header: 'Category',
-    bodyComponent: (data: Asset): TableCellComponent => ({
+    bodyComponent: (data: Assets): TableCellComponent => ({
       component: Badge,
       props: {
         label: data.category,
@@ -52,7 +45,7 @@ const TABLE_COLUMNS: TableColumn<Asset>[] = [
   {
     field: 'brand',
     header: 'Brand',
-    bodyComponent: (data: Asset): TableCellComponent => ({
+    bodyComponent: (data: Assets): TableCellComponent => ({
       component: Badge,
       props: {
         label: data.brand,
@@ -63,7 +56,7 @@ const TABLE_COLUMNS: TableColumn<Asset>[] = [
   {
     field: 'type',
     header: 'Types',
-    bodyComponent: (data: Asset): TableCellComponent => ({
+    bodyComponent: (data: Assets): TableCellComponent => ({
       component: Badge,
       props: {
         label: data.type,
@@ -76,14 +69,14 @@ const TABLE_COLUMNS: TableColumn<Asset>[] = [
     header: 'Alias',
   },
 ];
-const selectedAset = shallowRef<Asset>();
+const selectedAset = shallowRef<Assets>();
 
 const singleActions = computed<MenuItem[]>(() => [
   {
     label: 'Detail Asset',
     icon: 'file-copy-2-line',
     command: (): void => {
-      router.push('/detail');
+      route.push('/detail');
     },
   },
   {
@@ -95,7 +88,7 @@ const singleActions = computed<MenuItem[]>(() => [
 
 const getTableData = async (
   params: QueryParams,
-): Promise<FetchListResponse<Asset> | undefined> => {
+): Promise<FetchListResponse<Assets> | undefined> => {
   try {
     const { data } = await AssetServices.getAssets(params);
     return data;

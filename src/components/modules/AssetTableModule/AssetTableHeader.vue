@@ -15,7 +15,9 @@ import { computed, shallowRef } from 'vue';
 import { GetOptionParams } from '@/dto/assets.dto';
 import AssetServices from '@/services/assets.service';
 
-import DialogAddModule from '../DialogModule/DialogAddModule.vue';
+import DialogAdd from './DialogAdd.vue';
+
+const show = shallowRef<boolean>(false);
 
 const filterFields = computed<FilterField[]>(() => [
   {
@@ -52,9 +54,6 @@ const filterFields = computed<FilterField[]>(() => [
   },
 ]);
 
-// TODO: shallowRefs should be put above computed values
-const show = shallowRef<boolean>(false);
-
 const getFilterOptions = async (
   params: GetOptionParams,
 ): Promise<AxiosResponse<FetchOptionResponse<GetOptionParams>>> => {
@@ -75,5 +74,5 @@ const getFilterOptions = async (
 
   <FilterContainer :fields="filterFields" table-name="asset-list" />
 
-  <DialogAddModule v-model:visible="show" />
+  <DialogAdd v-model:visible="show" />
 </template>
