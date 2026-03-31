@@ -4,13 +4,13 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 const routes: Readonly<RouteRecordRaw[]> = [
   {
     path: '/',
-    component: (): Promise<Component> => import('@/layout/ExampleLayout.vue'),
+    component: (): Promise<Component> => import('@/layout/Layout.vue'),
     redirect: '/home',
     children: [
       {
         path: 'home',
-        name: 'ExampleView',
-        component: (): Promise<Component> => import('@/views/ExampleView.vue'),
+        name: 'Asset',
+        component: (): Promise<Component> => import('@/views/Asset.vue'),
       },
       {
         path: 'another',
@@ -19,8 +19,7 @@ const routes: Readonly<RouteRecordRaw[]> = [
           import('@/views/AnotherExampleView.vue'),
       },
       {
-        // TODO: All path should be in lowercase
-        path: 'Asset',
+        path: 'home',
         name: 'Asset',
         component: (): Promise<Component> => import('@/views/Asset.vue'),
       },

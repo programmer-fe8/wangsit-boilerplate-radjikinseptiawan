@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import DataTableModule from '@/components/modules/DataTable/DataTableModule.vue';
+import AssetTableModule from '@/components/modules/AssetTableModule/AssetTableModule.vue';
 </script>
 
 <template>
-  <DataTableModule />
+  <AssetTableModule />
 </template>

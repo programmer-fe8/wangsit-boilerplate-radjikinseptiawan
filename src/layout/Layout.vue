@@ -1,19 +1,11 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { Breadcrumb, Card, TabMenu } from '@fewangsit/wangsvue';
 import { MenuItem } from '@fewangsit/wangsvue/menuitem';
 
-const TAB_MENUS: MenuItem[] = [
+const TAB_MENU: MenuItem[] = [
   {
-    label: 'Home',
+    label: 'Assets',
     route: 'home',
-  },
-  {
-    label: 'Another Page',
-    route: 'another',
-  },
-  {
-    label: 'asset',
-    route: 'asset',
   },
 ];
 </script>
@@ -23,7 +15,7 @@ const TAB_MENUS: MenuItem[] = [
 
   <Card>
     <template #content>
-      <TabMenu :menu="TAB_MENUS" />
+      <TabMenu :menu="TAB_MENU" />
 
       <router-view />
     </template>

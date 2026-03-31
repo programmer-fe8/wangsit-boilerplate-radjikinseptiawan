@@ -1,8 +1,4 @@
-/*
- * TODO: The name of this interface should be `Asset`, not `Assets`, because this interface only represents a single asset.
- * A quick tip, to rename an instance on all files, put your cursor on the instance name, then press `F2`.
- */
-export interface Assets {
+export interface Asset {
   _id: string;
   key: number;
   assets?: string;

@@ -1,11 +1,8 @@
-<!-- TODO: You should never disable eslint errors -->
-<!-- eslint-disable no-console -->
 <script lang="ts" setup>
 import {
   Button,
   ButtonFilter,
   ButtonSearch,
-  DialogForm,
   FilterContainer,
 } from '@fewangsit/wangsvue';
 import {
@@ -18,15 +15,7 @@ import { computed, shallowRef } from 'vue';
 import { GetOptionParams } from '@/dto/assets.dto';
 import AssetServices from '@/services/assets.service';
 
-import DialogAdd from '../Dialog/DialogAdd.vue';
-
-const show = shallowRef<boolean>(false);
-
-const getFilterOptions = async (
-  params: GetOptionParams,
-): Promise<AxiosResponse<FetchOptionResponse<GetOptionParams>>> => {
-  return await AssetServices.getAssetsOptions(params);
-};
+import DialogAddModule from '../DialogModule/DialogAddModule.vue';
 
 const filterFields = computed<FilterField[]>(() => [
   {
@@ -62,6 +51,14 @@ const filterFields = computed<FilterField[]>(() => [
     fetchOptionFn: getFilterOptions,
   },
 ]);
+
+const show = shallowRef<boolean>(false);
+
+const getFilterOptions = async (
+  params: GetOptionParams,
+): Promise<AxiosResponse<FetchOptionResponse<GetOptionParams>>> => {
+  return await AssetServices.getAssetsOptions(params);
+};
 </script>
 
 <template>
@@ -77,16 +74,5 @@ const filterFields = computed<FilterField[]>(() => [
 
   <FilterContainer :fields="filterFields" table-name="asset-list" />
 
-  <!-- TODO: Move DialogForm to the DialogAdd component, so that DialogForm isn't used here -->
-  <!-- TODO: The width still doesn't match the design -->
-  <DialogForm
-    v-model:visible="show"
-    :buttons-template="['submit', 'clear']"
-    header="Register Asset"
-    width="xlarge"
-  >
-    <template #fields>
-      <DialogAdd />
-    </template>
-  </DialogForm>
+  <DialogAddModule v-model:visible="show" />
 </template>

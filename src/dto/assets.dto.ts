@@ -13,5 +13,6 @@ export interface GetOptionParams {
   typeOptions?: boolean;
   categoryOptions?: boolean;
   nameOptions?: boolean;
+  groupOptions?: boolean;
   brandOptions?: boolean;
 }

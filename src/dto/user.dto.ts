@@ -6,6 +6,6 @@ export interface GetUsersParams extends QueryParams {
   maxAge?: number;
 }
 
-export interface GetOptionsParams {
+export interface GetOptionsUserParams {
   countryOptions?: string;
 }
