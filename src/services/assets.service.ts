@@ -4,6 +4,7 @@ import { getBaseURL } from '@fewangsit/workspace-api-services';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 import { GetAssetsParams, GetOptionParams } from '@/dto/assets.dto';
+// TODO: Because you didn't rename the interface with `F2`, there's an error with this import
 import { Assets } from '@/types/assets.type';
 
 const API = ({ headers = {}, params = {} } = {}): AxiosInstance => {

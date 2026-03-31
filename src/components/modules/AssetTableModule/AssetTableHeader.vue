@@ -52,6 +52,7 @@ const filterFields = computed<FilterField[]>(() => [
   },
 ]);
 
+// TODO: shallowRefs should be put above computed values
 const show = shallowRef<boolean>(false);
 
 const getFilterOptions = async (

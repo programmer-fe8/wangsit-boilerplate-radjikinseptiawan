@@ -15,6 +15,7 @@ const TAB_MENU: MenuItem[] = [
 
   <Card>
     <template #content>
+      <!-- TODO: Delete the tabmenu, if you look at the figma design, there are no tabmenus -->
       <TabMenu :menu="TAB_MENU" />
 
       <router-view />

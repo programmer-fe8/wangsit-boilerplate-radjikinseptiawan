@@ -1,8 +1,8 @@
+<!--
+  TODO: The name of the modules shouldn't end with `Module`.
+  I've also clarified this in the documentation.
+-->
 <script lang="ts" setup>
-/*
- * TODO: For all files (not only this file), organize the variables according to the code structure guide
- * Reference: https://fewangsit.gitbook.io/vue/docs/style-guide/vue-code-structure#id-1.3-example
- */
 import { Badge, DataTable } from '@fewangsit/wangsvue';
 import {
   FetchListResponse,
@@ -13,6 +13,11 @@ import {
 import { MenuItem } from '@fewangsit/wangsvue/menuitem';
 import { computed, shallowRef } from 'vue';
 
+/*
+ * TODO: You shouldn't import router from the router file.
+ * You should first import useRouter from 'vue-router', then add this line:
+ * const router = useRouter();
+ */
 import router from '@/router';
 import AssetServices from '@/services/assets.service';
 import { Asset } from '@/types/assets.type';
@@ -73,22 +78,20 @@ const TABLE_COLUMNS: TableColumn<Asset>[] = [
 ];
 const selectedAset = shallowRef<Asset>();
 
-const singleActions = computed<MenuItem[]>(() => {
-  return [
-    {
-      label: 'Detail Asset',
-      icon: 'file-copy-2-line',
-      command: (): void => {
-        router.push('/detail');
-      },
+const singleActions = computed<MenuItem[]>(() => [
+  {
+    label: 'Detail Asset',
+    icon: 'file-copy-2-line',
+    command: (): void => {
+      router.push('/detail');
     },
-    {
-      label: 'Edit',
-      icon: 'edit-2-line',
-      command: (): void => {},
-    },
-  ];
-});
+  },
+  {
+    label: 'Edit',
+    icon: 'edit-2-line',
+    command: (): void => {},
+  },
+]);
 
 const getTableData = async (
   params: QueryParams,
