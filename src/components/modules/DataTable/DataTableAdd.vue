@@ -1,6 +1,10 @@
-<!-- <script setup lang="ts">
+<script setup lang="ts">
 import { DialogForm, InputText } from '@fewangsit/wangsvue';
 
+/*
+ * TODO: show shouldn't be a prop, it should be a v-model
+ * Reference: https://vuejs.org/guide/components/v-model
+ */
 withDefaults(
   defineProps<{
     show?: boolean;
@@ -27,4 +31,4 @@ withDefaults(
       use-validator
     />
   </DialogForm>
-</template> -->
+</template>

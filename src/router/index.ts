@@ -19,6 +19,7 @@ const routes: Readonly<RouteRecordRaw[]> = [
           import('@/views/AnotherExampleView.vue'),
       },
       {
+        // TODO: All path should be in lowercase
         path: 'Asset',
         name: 'Asset',
         component: (): Promise<Component> => import('@/views/Asset.vue'),

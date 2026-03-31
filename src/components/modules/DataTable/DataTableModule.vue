@@ -1,4 +1,12 @@
 <script lang="ts" setup>
+/*
+ * TODO: The name of this module should be `AssetTable`, not `DataTable`.
+ * The name of the module should describe its content.
+ * Reference: https://fewangsit.gitbook.io/vue/docs/style-guide/project-structure#id-3.-components-greater-than-modules-greater-than-examplemodule
+ *
+ * TODO: For all files (not only this file), organize the variables according to the code structure guide
+ * Reference: https://fewangsit.gitbook.io/vue/docs/style-guide/vue-code-structure#id-1.3-example
+ */
 import { Badge, DataTable } from '@fewangsit/wangsvue';
 import {
   FetchListResponse,
@@ -14,8 +22,13 @@ import { Assets } from '@/types/assets.type';
 
 import DataTableHeader from './DataTableHeader.vue';
 
+/*
+ * TODO: The `null` type should be avoided whenever possible, so change this to `shallowRef<Assets>()`.
+ * This part is wrong in the documentation, I'll fix it.
+ */
 const selectedAset = shallowRef<Assets | null>(null);
 const singleActions = computed<MenuItem[]>(() => {
+  // TODO: refs shouldn't be put inside computed values
   const singleDataDelete = shallowRef<boolean>(false);
   return [
     {

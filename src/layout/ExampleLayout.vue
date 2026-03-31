@@ -19,6 +19,8 @@ const TAB_MENUS: MenuItem[] = [
 </script>
 
 <template>
+  <!-- TODO: Remove these, as I mentioned, you shouldn't implement the navigation bar -->
+  <!-- TODO: You should create a new layout, don't use the example layout. Because the figma design doesn't have a TabMenu. -->
   <div class="flex bg-gray-100 justify-between">
     <span>
       <img alt="" src="" />

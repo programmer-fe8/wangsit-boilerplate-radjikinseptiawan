@@ -1,3 +1,4 @@
+<!-- TODO: You should never disable eslint errors -->
 <!-- eslint-disable no-console -->
 <script lang="ts" setup>
 import {
@@ -27,42 +28,40 @@ const getFilterOptions = async (
   return await AssetServices.getAssetsOptions(params);
 };
 
-const filterFields = computed<FilterField[]>(() => {
-  return [
-    {
-      label: 'Asset',
-      field: 'asset',
-      optionField: 'nameOptions',
-      placeholder: 'Select Asset Name',
-      type: 'multiselect',
-      fetchOptionFn: getFilterOptions,
-    },
-    {
-      label: 'Group',
-      field: 'groupOptions',
-      optionField: 'groupOptions',
-      placeholder: 'Select Group',
-      type: 'multiselect',
-      fetchOptionFn: getFilterOptions,
-    },
-    {
-      label: 'Brand',
-      field: 'brand',
-      optionField: 'brandOptions',
-      placeholder: 'Select Brand',
-      type: 'multiselect',
-      fetchOptionFn: getFilterOptions,
-    },
-    {
-      label: 'Model/Type',
-      optionField: 'typeOptions',
-      field: 'type',
-      placeholder: 'Select Model/Type',
-      type: 'multiselect',
-      fetchOptionFn: getFilterOptions,
-    },
-  ];
-});
+const filterFields = computed<FilterField[]>(() => [
+  {
+    label: 'Asset',
+    field: 'asset',
+    optionField: 'nameOptions',
+    placeholder: 'Select Asset Name',
+    type: 'multiselect',
+    fetchOptionFn: getFilterOptions,
+  },
+  {
+    label: 'Group',
+    field: 'groupOptions',
+    optionField: 'groupOptions',
+    placeholder: 'Select Group',
+    type: 'multiselect',
+    fetchOptionFn: getFilterOptions,
+  },
+  {
+    label: 'Brand',
+    field: 'brand',
+    optionField: 'brandOptions',
+    placeholder: 'Select Brand',
+    type: 'multiselect',
+    fetchOptionFn: getFilterOptions,
+  },
+  {
+    label: 'Model/Type',
+    optionField: 'typeOptions',
+    field: 'type',
+    placeholder: 'Select Model/Type',
+    type: 'multiselect',
+    fetchOptionFn: getFilterOptions,
+  },
+]);
 </script>
 
 <template>
@@ -78,6 +77,8 @@ const filterFields = computed<FilterField[]>(() => {
 
   <FilterContainer :fields="filterFields" table-name="asset-list" />
 
+  <!-- TODO: Move DialogForm to the DialogAdd component, so that DialogForm isn't used here -->
+  <!-- TODO: The width still doesn't match the design -->
   <DialogForm
     v-model:visible="show"
     :buttons-template="['submit', 'clear']"

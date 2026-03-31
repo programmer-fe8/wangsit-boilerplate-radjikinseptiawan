@@ -1,3 +1,4 @@
+// TODO: You should never disable eslint errors
 /* eslint-disable no-empty-function */
 describe('Asset Page', () => {
   beforeEach(() => {
