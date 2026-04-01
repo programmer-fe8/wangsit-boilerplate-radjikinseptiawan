@@ -10,7 +10,7 @@ export interface GetAssetsParams extends QueryParams {
 }
 
 export interface GetOptionParams {
-  typeOptions?: boolean;
+  modelOptions?: boolean;
   categoryOptions?: boolean;
   nameOptions?: boolean;
   groupOptions?: boolean;

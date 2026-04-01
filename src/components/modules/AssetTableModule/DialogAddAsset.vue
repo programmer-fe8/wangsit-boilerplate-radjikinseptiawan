@@ -7,24 +7,48 @@ import {
 } from '@fewangsit/wangsvue';
 import { FilterOptions } from '@fewangsit/wangsvue/filtercontainer';
 import { FormPayload } from '@fewangsit/wangsvue/form';
-import { ImageCompressorPayload } from '@fewangsit/wangsvue/imagecompressor';
-import { shallowRef } from 'vue';
+import { ref, shallowRef } from 'vue';
 
 import { GetOptionParams } from '@/dto/assets.dto';
 import AssetServices from '@/services/assets.service';
 
 const visible = defineModel<boolean>('visible', { required: true });
 
-const options = shallowRef<FilterOptions<GetOptionParams>>();
+interface DropValueDataType {
+  category: string;
+  brand: string;
+  model: string;
+  group: string;
+  name: string;
+  aliasName: string;
+  assetImage: string;
+}
 
+const options = shallowRef<FilterOptions<GetOptionParams>>();
+const dropValue = ref<DropValueDataType>({
+  model: '',
+  brand: '',
+  group: '',
+  name: '',
+  aliasName: '',
+  assetImage: '',
+  category: '',
+});
 const getOptions = async (params: GetOptionParams): Promise<void> => {
   const { data } = await AssetServices.getAssetsOptions(params);
   options.value = data.data;
 };
 
-const onSubmit = (payload: FormPayload) => {
-  console.log('form submitted', payload.formValues);
+const onSubmit = async (payload: FormPayload): Promise<void> => {
+  try {
+    const response = await AssetServices.postAssets(payload);
+    console.log(response);
+  } catch (e) {
+    console.error(e);
+  }
 };
+
+console.log(dropValue.value);
 </script>
 
 <template>
@@ -39,6 +63,7 @@ const onSubmit = (payload: FormPayload) => {
     <template #fields>
       <div class="grid grid-cols-2 gap-3" show-stay-checkbox>
         <Dropdown
+          v-model="dropValue.group"
           :options="options?.groupOptions"
           :validator-message="{ empty: 'You must pick a grup' }"
           @show="getOptions({ groupOptions: true })"
@@ -52,6 +77,7 @@ const onSubmit = (payload: FormPayload) => {
         />
 
         <Dropdown
+          v-model="dropValue.name"
           :options="options?.nameOptions"
           :validator-message="{ empty: 'You must pick a name' }"
           @show="getOptions({ nameOptions: true })"
@@ -64,9 +90,11 @@ const onSubmit = (payload: FormPayload) => {
         />
 
         <Dropdown
+          v-model="dropValue.category"
           :options="options?.categoryOptions"
           :validator-message="{ empty: 'You must pick a category' }"
           @show="getOptions({ categoryOptions: true })"
+          field-name="category"
           label="Category"
           mandatory
           option-label="label"
@@ -75,12 +103,15 @@ const onSubmit = (payload: FormPayload) => {
         />
 
         <InputText
+          v-model="dropValue.aliasName"
           :validator-message="{ empty: 'You must pick a alias name' }"
           field-info="You can input an alias name for convenience in searching for assets and to differentiate them from others."
           label="Alias Name"
         />
 
         <Dropdown
+          v-model="dropValue.brand"
+          :disabled="!dropValue.name || !dropValue.category || !dropValue.group"
           :options="options?.brandOptions"
           :validator-message="{ empty: 'You must pick a brand' }"
           @show="getOptions({ brandOptions: true })"
@@ -93,10 +124,16 @@ const onSubmit = (payload: FormPayload) => {
         />
 
         <Dropdown
-          :options="options?.typeOptions"
+          v-model="dropValue.model"
+          :disabled="
+            !dropValue.name ||
+            !dropValue.category ||
+            !dropValue.brand ||
+            !dropValue.group
+          "
+          :options="options?.modelOptions"
           :validator-message="{ empty: 'You must pick a Model/Type' }"
-          @show="getOptions({ typeOptions: true })"
-          disabled
+          @show="getOptions({ modelOptions: true })"
           field-name="model"
           label="Model/Type"
           mandatory
@@ -106,7 +143,7 @@ const onSubmit = (payload: FormPayload) => {
         />
       </div>
 
-      <ImageCompressor field-name="imageAsset" />
+      <ImageCompressor v-model="dropValue.assetImage" field-name="assetImage" />
     </template>
   </DialogForm>
 </template>
