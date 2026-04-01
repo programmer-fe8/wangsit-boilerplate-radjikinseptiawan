@@ -10,6 +10,7 @@ const routes: Readonly<RouteRecordRaw[]> = [
       {
         path: 'home',
         name: 'Home',
+        // TODO: There shouldn't be any routes with duplicate components
         component: (): Promise<Component> => import('@/views/AssetView.vue'),
       },
       {
@@ -24,6 +25,10 @@ const routes: Readonly<RouteRecordRaw[]> = [
         component: (): Promise<Component> => import('@/views/AssetView.vue'),
       },
       {
+        /*
+         * This is the second time you deleted a TODO without fixing it.
+         * TODO: The path should be `assets/detail/:id`
+         */
         path: 'detail',
         name: 'Detail',
         component: (): Promise<Component> =>

@@ -15,6 +15,11 @@ import { Assets } from '@/types/assets.type';
 
 import AssetTableHeader from './AssetTableHeader.vue';
 
+/*
+ * TODO: Rename this to `router`. `router` is the name for the `useRouter` instance,
+ * while `route` is the name for the `useRoute` instance, which you might use
+ * in the future.
+ */
 const route = useRouter();
 
 const TABLE_COLUMNS: TableColumn<Assets>[] = [
@@ -69,7 +74,7 @@ const TABLE_COLUMNS: TableColumn<Assets>[] = [
     header: 'Alias',
   },
 ];
-const selectedAset = shallowRef<Assets>();
+const selectedAset = shallowRef<Assets>(); // TODO: There should be blank lines between groups of variables, so you should add a blank line above this shallowRef to separate it from the constant
 
 const singleActions = computed<MenuItem[]>(() => [
   {

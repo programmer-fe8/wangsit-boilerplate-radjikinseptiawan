@@ -1,3 +1,4 @@
+<!-- TODO: The name of this file isn't clear enough. What is it adding? -->
 <script lang="ts" setup>
 import {
   DialogForm,
