@@ -4,66 +4,92 @@ import {
   Dropdown,
   ImageCompressor,
   InputText,
+  useToast,
 } from '@fewangsit/wangsvue';
 import { FilterOptions } from '@fewangsit/wangsvue/filtercontainer';
 import { FormPayload } from '@fewangsit/wangsvue/form';
-import { ref, shallowRef } from 'vue';
+import { shallowRef, useTemplateRef } from 'vue';
 
 import { GetOptionParams } from '@/dto/assets.dto';
 import AssetServices from '@/services/assets.service';
+import { Asset } from '@/types/assets.type';
+
+const props = defineProps<{
+  asset?: Asset;
+}>();
 
 const visible = defineModel<boolean>('visible', { required: true });
-
-interface DropValueDataType {
-  category: string;
-  brand: string;
-  model: string;
-  group: string;
-  name: string;
-  aliasName: string;
-  assetImage: string;
-}
+const toast = useToast();
+const dialogForm = useTemplateRef<DialogForm>('dialogForm');
 
 const options = shallowRef<FilterOptions<GetOptionParams>>();
-const dropValue = ref<DropValueDataType>({
-  model: '',
-  brand: '',
-  group: '',
-  name: '',
-  aliasName: '',
-  assetImage: '',
-  category: '',
-});
 const getOptions = async (params: GetOptionParams): Promise<void> => {
   const { data } = await AssetServices.getAssetsOptions(params);
   options.value = data.data;
 };
 
-const onSubmit = async (payload: FormPayload): Promise<void> => {
+const onSubmitPut = async (payload: FormPayload): Promise<void> => {
   try {
-    const response = await AssetServices.postAssets(payload);
-    console.log(response);
+    const id = props.asset?._id;
+    if (!id) {
+      return;
+    }
+    const response = await AssetServices.putAssets(payload, id);
+
+    if (!response) {
+      toast.add({
+        severity: 'error',
+        message:
+          'Error, failed to edit asset. Please check your connection and try again.',
+        life: 3000,
+      });
+    }
+    toast.add({
+      severity: 'success',
+      message: 'Success, asset has been edited.',
+      life: 3000,
+    });
   } catch (e) {
     console.error(e);
   }
 };
 
-console.log(dropValue.value);
+const onSubmitPost = async (payload: FormPayload): Promise<void> => {
+  try {
+    const response = await AssetServices.postAssets(payload);
+    if (!response) {
+      toast.add({
+        severity: 'error',
+        message:
+          'Error, failed to register asset. Please check your connection and try again.',
+        life: 3000,
+      });
+    }
+    toast.add({
+      severity: 'success',
+      message: 'Success, asset has been registered.',
+      life: 3000,
+    });
+  } catch (e) {
+    console.error(e);
+  }
+};
 </script>
 
 <template>
   <DialogForm
+    ref="dialogForm"
     v-model:visible="visible"
     :buttons-template="['submit', 'cancel', 'clear']"
-    @submit="onSubmit"
-    header="Register Asset"
+    :header="props.asset ? 'Edit Asset' : 'Register Asset'"
+    @show="props.asset ? dialogForm?.setValues(props.asset) : undefined"
+    @submit="props.asset ? onSubmitPut($event) : onSubmitPost($event)"
     show-stay-checkbox
     width="semi-xlarge"
   >
     <template #fields>
       <div class="grid grid-cols-2 gap-3" show-stay-checkbox>
         <Dropdown
-          v-model="dropValue.group"
           :options="options?.groupOptions"
           :validator-message="{ empty: 'You must pick a grup' }"
           @show="getOptions({ groupOptions: true })"
@@ -73,11 +99,9 @@ console.log(dropValue.value);
           option-label="label"
           option-value="value"
           use-validator
-          visible
         />
 
         <Dropdown
-          v-model="dropValue.name"
           :options="options?.nameOptions"
           :validator-message="{ empty: 'You must pick a name' }"
           @show="getOptions({ nameOptions: true })"
@@ -90,7 +114,6 @@ console.log(dropValue.value);
         />
 
         <Dropdown
-          v-model="dropValue.category"
           :options="options?.categoryOptions"
           :validator-message="{ empty: 'You must pick a category' }"
           @show="getOptions({ categoryOptions: true })"
@@ -103,15 +126,17 @@ console.log(dropValue.value);
         />
 
         <InputText
-          v-model="dropValue.aliasName"
           :validator-message="{ empty: 'You must pick a alias name' }"
           field-info="You can input an alias name for convenience in searching for assets and to differentiate them from others."
           label="Alias Name"
         />
 
         <Dropdown
-          v-model="dropValue.brand"
-          :disabled="!dropValue.name || !dropValue.category || !dropValue.group"
+          :disabled="
+            !dialogForm?.form?.values.group ||
+            !dialogForm.form.values.category ||
+            !dialogForm.form.values.name
+          "
           :options="options?.brandOptions"
           :validator-message="{ empty: 'You must pick a brand' }"
           @show="getOptions({ brandOptions: true })"
@@ -124,12 +149,11 @@ console.log(dropValue.value);
         />
 
         <Dropdown
-          v-model="dropValue.model"
           :disabled="
-            !dropValue.name ||
-            !dropValue.category ||
-            !dropValue.brand ||
-            !dropValue.group
+            !dialogForm?.form?.values.group ||
+            !dialogForm.form.values.category ||
+            !dialogForm.form.values.name ||
+            !dialogForm.form.values.brand
           "
           :options="options?.modelOptions"
           :validator-message="{ empty: 'You must pick a Model/Type' }"
@@ -143,7 +167,7 @@ console.log(dropValue.value);
         />
       </div>
 
-      <ImageCompressor v-model="dropValue.assetImage" field-name="assetImage" />
+      <ImageCompressor field-name="assetImage" />
     </template>
   </DialogForm>
 </template>

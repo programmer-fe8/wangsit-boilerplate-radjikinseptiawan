@@ -14,6 +14,7 @@ import AssetServices from '@/services/assets.service';
 import { Asset } from '@/types/assets.type';
 
 import AssetTableHeader from './AssetTableHeader.vue';
+import DialogFormAsset from './DialogFormAsset.vue';
 
 const router = useRouter();
 
@@ -71,19 +72,22 @@ const TABLE_COLUMNS: TableColumn<Asset>[] = [
 ];
 
 const selectedAset = shallowRef<Asset>();
+const show = shallowRef<boolean>(false);
 
 const singleActions = computed<MenuItem[]>(() => [
   {
     label: 'Detail Asset',
     icon: 'file-copy-2-line',
     command: (): void => {
-      router.push('/detail');
+      router.push('/assets/detail/:id');
     },
   },
   {
     label: 'Edit',
     icon: 'edit-2-line',
-    command: (): void => {},
+    command: (): void => {
+      show.value = true;
+    },
   },
 ]);
 
@@ -101,6 +105,8 @@ const getTableData = async (
 
 <template>
   <AssetTableHeader />
+
+  <DialogFormAsset v-model:visible="show" :asset="selectedAset" />
 
   <DataTable
     :columns="TABLE_COLUMNS"

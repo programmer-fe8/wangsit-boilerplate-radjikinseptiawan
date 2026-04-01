@@ -15,7 +15,7 @@ import { computed, shallowRef } from 'vue';
 import { GetOptionParams } from '@/dto/assets.dto';
 import AssetServices from '@/services/assets.service';
 
-import DialogAddAsset from './DialogAddAsset.vue';
+import DialogFormAsset from './DialogFormAsset.vue';
 
 const show = shallowRef<boolean>(false);
 
@@ -74,5 +74,5 @@ const getFilterOptions = async (
 
   <FilterContainer :fields="filterFields" table-name="asset-list" />
 
-  <DialogAddAsset v-model:visible="show" />
+  <DialogFormAsset v-model:visible="show" />
 </template>

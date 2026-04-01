@@ -5,7 +5,7 @@ import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 import { Member } from '@/types/member.type';
 
-import { GetOptionsParams, GetUsersParams } from '../dto/user.dto';
+import { GetUsersParams } from '../dto/user.dto';
 
 const API = ({ headers = {}, params = {} } = {}): AxiosInstance => {
   const user = JSON.parse(localStorage.getItem('user') ?? '{}');
@@ -32,8 +32,8 @@ const UserServices = {
   },
 
   getOptions: (
-    params: GetOptionsParams,
-  ): Promise<AxiosResponse<FetchOptionResponse<GetOptionsParams>>> => {
+    params: GetUsersParams,
+  ): Promise<AxiosResponse<FetchOptionResponse<GetUsersParams>>> => {
     return API({ params }).get('/options');
   },
 };

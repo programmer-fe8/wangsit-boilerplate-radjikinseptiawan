@@ -41,6 +41,20 @@ const AssetServices = {
   ): Promise<AxiosResponse<FetchListResponse<GetOptionParams>>> {
     return API({ params }).post('');
   },
+
+  getDetailAssets(
+    params: GetAssetsParams,
+    assetId: string,
+  ): Promise<AxiosResponse<FetchListResponse<GetOptionParams>>> {
+    return API({ params }).get(`/${assetId}`);
+  },
+
+  putAssets(
+    params: GetAssetsParams,
+    assetId: string,
+  ): Promise<AxiosResponse<FetchListResponse<GetOptionParams>>> {
+    return API({ params }).put(`/${assetId}`);
+  },
 };
 
 export default AssetServices;
