@@ -31,11 +31,20 @@ const AssetServices = {
   },
 
   getAssetsOptions(
+    // TODO: Use the correct param type
     params: GetAssetsParams,
   ): Promise<AxiosResponse<FetchOptionResponse<GetOptionParams>>> {
     return API({ params }).get('/options');
   },
 
+  /*
+   * TODO: Post endpoints don't use params, they instead use body:
+   * return API().post('', body);
+   * Make sure the body's type matches the body in the API spec I gave to you.
+   *
+   * TODO: Rename this function to registerAsset, it describes what it does more accurately.
+   * Remember to rename it with `F2`, you should make a habit of renaming anything with `F2`.
+   */
   postAssets(
     params: GetAssetsParams,
   ): Promise<AxiosResponse<FetchListResponse<GetOptionParams>>> {
@@ -49,6 +58,10 @@ const AssetServices = {
     return API({ params }).get(`/${assetId}`);
   },
 
+  /*
+   * TODO: Same as the post endpoint, this should have a body, not params.
+   * TODO: Rename this function to editAsset
+   */
   putAssets(
     params: GetAssetsParams,
     assetId: string,
