@@ -4,7 +4,7 @@ import { getBaseURL } from '@fewangsit/workspace-api-services';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 import { GetAssetsParams, GetOptionParams } from '@/dto/assets.dto';
-import { Assets } from '@/types/assets.type';
+import { Asset } from '@/types/assets.type';
 
 const API = ({ headers = {}, params = {} } = {}): AxiosInstance => {
   const user = JSON.parse(localStorage.getItem('user') ?? '{}');
@@ -26,7 +26,7 @@ const API = ({ headers = {}, params = {} } = {}): AxiosInstance => {
 const AssetServices = {
   getAssets(
     params: GetAssetsParams,
-  ): Promise<AxiosResponse<FetchListResponse<Assets>>> {
+  ): Promise<AxiosResponse<FetchListResponse<Asset>>> {
     return API({ params }).get('');
   },
 

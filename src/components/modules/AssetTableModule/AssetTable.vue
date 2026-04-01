@@ -11,13 +11,13 @@ import { computed, shallowRef } from 'vue';
 import { useRouter } from 'vue-router';
 
 import AssetServices from '@/services/assets.service';
-import { Assets } from '@/types/assets.type';
+import { Asset } from '@/types/assets.type';
 
 import AssetTableHeader from './AssetTableHeader.vue';
 
-const route = useRouter();
+const router = useRouter();
 
-const TABLE_COLUMNS: TableColumn<Assets>[] = [
+const TABLE_COLUMNS: TableColumn<Asset>[] = [
   {
     field: 'assets',
     header: 'Asset',
@@ -25,7 +25,7 @@ const TABLE_COLUMNS: TableColumn<Assets>[] = [
   {
     field: 'group',
     header: 'Group',
-    bodyComponent: (data: Assets): TableCellComponent => ({
+    bodyComponent: (data: Asset): TableCellComponent => ({
       component: Badge,
       props: {
         label: data.group,
@@ -35,7 +35,7 @@ const TABLE_COLUMNS: TableColumn<Assets>[] = [
   {
     field: 'category',
     header: 'Category',
-    bodyComponent: (data: Assets): TableCellComponent => ({
+    bodyComponent: (data: Asset): TableCellComponent => ({
       component: Badge,
       props: {
         label: data.category,
@@ -45,7 +45,7 @@ const TABLE_COLUMNS: TableColumn<Assets>[] = [
   {
     field: 'brand',
     header: 'Brand',
-    bodyComponent: (data: Assets): TableCellComponent => ({
+    bodyComponent: (data: Asset): TableCellComponent => ({
       component: Badge,
       props: {
         label: data.brand,
@@ -56,7 +56,7 @@ const TABLE_COLUMNS: TableColumn<Assets>[] = [
   {
     field: 'type',
     header: 'Types',
-    bodyComponent: (data: Assets): TableCellComponent => ({
+    bodyComponent: (data: Asset): TableCellComponent => ({
       component: Badge,
       props: {
         label: data.type,
@@ -69,14 +69,14 @@ const TABLE_COLUMNS: TableColumn<Assets>[] = [
     header: 'Alias',
   },
 ];
-const selectedAset = shallowRef<Assets>();
+const selectedAset = shallowRef<Asset>();
 
 const singleActions = computed<MenuItem[]>(() => [
   {
     label: 'Detail Asset',
     icon: 'file-copy-2-line',
     command: (): void => {
-      route.push('/detail');
+      router.push('/detail');
     },
   },
   {
@@ -88,7 +88,7 @@ const singleActions = computed<MenuItem[]>(() => [
 
 const getTableData = async (
   params: QueryParams,
-): Promise<FetchListResponse<Assets> | undefined> => {
+): Promise<FetchListResponse<Asset> | undefined> => {
   try {
     const { data } = await AssetServices.getAssets(params);
     return data;

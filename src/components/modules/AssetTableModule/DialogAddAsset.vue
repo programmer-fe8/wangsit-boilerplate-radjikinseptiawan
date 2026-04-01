@@ -84,7 +84,6 @@ const onSubmit = (payload: FormPayload) => {
           :options="options?.brandOptions"
           :validator-message="{ empty: 'You must pick a brand' }"
           @show="getOptions({ brandOptions: true })"
-          disabled
           field-name="brand"
           label="Brand"
           mandatory

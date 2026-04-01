@@ -1,4 +1,4 @@
-export interface Assets {
+export interface Asset {
   _id: string;
   key: number;
   assets?: string;
