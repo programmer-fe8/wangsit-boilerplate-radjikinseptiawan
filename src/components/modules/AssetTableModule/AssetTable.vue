@@ -69,6 +69,7 @@ const TABLE_COLUMNS: TableColumn<Asset>[] = [
     header: 'Alias',
   },
 ];
+
 const selectedAset = shallowRef<Asset>();
 
 const singleActions = computed<MenuItem[]>(() => [
