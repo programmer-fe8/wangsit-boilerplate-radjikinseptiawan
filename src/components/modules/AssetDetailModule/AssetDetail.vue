@@ -4,7 +4,7 @@ import { onMounted, shallowRef } from 'vue';
 import { useRoute } from 'vue-router';
 
 import AssetServices from '@/services/assets.service';
-import { Asset, AssetDetail } from '@/types/assets.type';
+import { AssetDetail } from '@/types/assets.type';
 
 const route = useRoute();
 
@@ -23,16 +23,17 @@ const FetchDetailAsset = async (): Promise<void> => {
 
 onMounted(() => {
   FetchDetailAsset();
-  console.log(detailAssets);
 });
 </script>
 
 <template>
   <div class="flex flex-col gap-[10px]">
     <div class="flex justify-between w-full h-[34px] items-center">
-      <span class="font-semibold text-[20px]">{{ detailAssets?.name }}</span>
+      <span class="font-semibold text-grayscale-900 text-[20px]">{{
+        detailAssets?.name
+      }}</span>
 
-      <div class="flex justify-end items-end flex-col">
+      <div class="flex justify-end text-general-400 items-end flex-col">
         <span class="text-[10px]">Last Modified</span>
 
         <span class="text-[10px] text-grayscale-900"
@@ -51,27 +52,25 @@ onMounted(() => {
           <div class="flex flex-col">
             <span class="text-[10px] text-general-500">Brand</span>
 
-            <span class="text-[12px]">Daihatsu</span>
+            <span class="text-[12px]">{{ detailAssets?.brand }}</span>
           </div>
 
           <div class="flex flex-col">
             <span class="text-[10px] text-general-500">Model/Type</span>
 
-            <span class="text-[12px]">Grand Max PU</span>
+            <span class="text-[12px]">{{ detailAssets?.model }}</span>
           </div>
 
           <div class="flex flex-col">
             <span class="text-[10px] text-general-500">Category</span>
 
-            <span class="text-[12px]"
-              >Kategori > Kendaraan > Mobil Operasional</span
-            >
+            <span class="text-[12px]">{{ detailAssets?.category }}</span>
           </div>
 
           <div class="flex flex-col">
             <span class="text-[10px] text-general-500">Group</span>
 
-            <span class="text-[12px]">Kacab 1 > Gedung A > Pengadaan</span>
+            <span class="text-[12px]">{{ detailAssets?.group }}</span>
           </div>
         </div>
       </div>

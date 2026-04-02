@@ -3,9 +3,10 @@ import { FetchOptionResponse } from '@fewangsit/wangsvue/filtercontainer';
 import { FormPayload } from '@fewangsit/wangsvue/form';
 import { getBaseURL } from '@fewangsit/workspace-api-services';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import { FetchDetailResponse } from 'node_modules/@fewangsit/workspace-api-services/src/types/fetchResponse.type';
 
 import { GetAssetsParams, GetOptionParams } from '@/dto/assets.dto';
-import { Asset } from '@/types/assets.type';
+import { AssetDetail } from '@/types/assets.type';
 
 const API = ({ headers = {}, params = {} } = {}): AxiosInstance => {
   const user = JSON.parse(localStorage.getItem('user') ?? '{}');
@@ -45,7 +46,7 @@ const AssetServices = {
 
   getDetailAsset(
     assetId: string,
-  ): Promise<AxiosResponse<FetchListResponse<Asset>>> {
+  ): Promise<AxiosResponse<FetchDetailResponse<AssetDetail>>> {
     return API().get(`/${assetId}`);
   },
 
