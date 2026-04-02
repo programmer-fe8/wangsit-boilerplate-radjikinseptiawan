@@ -72,6 +72,7 @@ const TABLE_COLUMNS: TableColumn<Asset>[] = [
 ];
 
 const selectedAset = shallowRef<Asset>();
+
 const show = shallowRef<boolean>(false);
 
 const singleActions = computed<MenuItem[]>(() => [
@@ -79,7 +80,7 @@ const singleActions = computed<MenuItem[]>(() => [
     label: 'Detail Asset',
     icon: 'file-copy-2-line',
     command: (): void => {
-      router.push('/assets/detail/:id');
+      router.push(`/assets/detail/${selectedAset.value?._id}`);
     },
   },
   {

@@ -1,5 +1,6 @@
 import { FetchListResponse } from '@fewangsit/wangsvue/datatable';
 import { FetchOptionResponse } from '@fewangsit/wangsvue/filtercontainer';
+import { FormPayload } from '@fewangsit/wangsvue/form';
 import { getBaseURL } from '@fewangsit/workspace-api-services';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
@@ -31,42 +32,28 @@ const AssetServices = {
   },
 
   getAssetsOptions(
-    // TODO: Use the correct param type
-    params: GetAssetsParams,
+    params: GetOptionParams,
   ): Promise<AxiosResponse<FetchOptionResponse<GetOptionParams>>> {
     return API({ params }).get('/options');
   },
 
-  /*
-   * TODO: Post endpoints don't use params, they instead use body:
-   * return API().post('', body);
-   * Make sure the body's type matches the body in the API spec I gave to you.
-   *
-   * TODO: Rename this function to registerAsset, it describes what it does more accurately.
-   * Remember to rename it with `F2`, you should make a habit of renaming anything with `F2`.
-   */
-  postAssets(
-    params: GetAssetsParams,
+  registerAsset(
+    body: FormPayload,
   ): Promise<AxiosResponse<FetchListResponse<GetOptionParams>>> {
-    return API({ params }).post('');
+    return API().post('', body);
   },
 
-  getDetailAssets(
-    params: GetAssetsParams,
+  getDetailAsset(
     assetId: string,
-  ): Promise<AxiosResponse<FetchListResponse<GetOptionParams>>> {
-    return API({ params }).get(`/${assetId}`);
+  ): Promise<AxiosResponse<FetchListResponse<Asset>>> {
+    return API().get(`/${assetId}`);
   },
 
-  /*
-   * TODO: Same as the post endpoint, this should have a body, not params.
-   * TODO: Rename this function to editAsset
-   */
-  putAssets(
-    params: GetAssetsParams,
+  editAsset(
+    body: FormPayload,
     assetId: string,
   ): Promise<AxiosResponse<FetchListResponse<GetOptionParams>>> {
-    return API({ params }).put(`/${assetId}`);
+    return API().put(`/${assetId}`, body);
   },
 };
 

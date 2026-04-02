@@ -8,3 +8,18 @@ export interface Asset {
   type: string[];
   alias: string;
 }
+
+export interface AssetDetail {
+  aliasName: string;
+  assetImage: string;
+  assetNumber: number;
+  brand: string;
+  category: string;
+  createdAt: string;
+  group: string;
+  model: string;
+  name: string;
+  updatedAt: string;
+  updatedBy: string;
+  _id: string;
+}

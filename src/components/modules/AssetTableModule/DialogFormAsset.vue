@@ -1,7 +1,3 @@
-<!--
-  TODO: There are 6 things on this dialog that doesn't match the figma design, try to identify and fix them.
-  Hint: It's not related to tailwind classes or any of the TODOs below.
--->
 <script lang="ts" setup>
 import {
   DialogForm,
@@ -12,7 +8,7 @@ import {
 } from '@fewangsit/wangsvue';
 import { FilterOptions } from '@fewangsit/wangsvue/filtercontainer';
 import { FormPayload } from '@fewangsit/wangsvue/form';
-import { shallowRef, useTemplateRef } from 'vue';
+import { computed, shallowRef, useTemplateRef } from 'vue';
 
 import { GetOptionParams } from '@/dto/assets.dto';
 import AssetServices from '@/services/assets.service';
@@ -22,78 +18,67 @@ const props = defineProps<{
   asset?: Asset;
 }>();
 
-/*
- * TODO: Add blank lines between variable groups
- *
- * I already added this TODO before in another file. If you're going to fix something,
- * be careful not to repeat the same mistakes again.
- */
 const visible = defineModel<boolean>('visible', { required: true });
+
 const toast = useToast();
+
 const dialogForm = useTemplateRef<DialogForm>('dialogForm');
 
+const isDisabled = computed<boolean>(() => {
+  const value = dialogForm.value?.form?.values;
+
+  return !value?.group || !value.name || !value.category;
+});
+
 const options = shallowRef<FilterOptions<GetOptionParams>>();
+const isError = shallowRef<boolean>(false);
 const getOptions = async (params: GetOptionParams): Promise<void> => {
-  // TODO: All API calls should be wrapped in a try/catch
-  const { data } = await AssetServices.getAssetsOptions(params);
-  options.value = data.data;
-};
-
-// TODO: Rename this function to editAsset, the current name is confusing
-const onSubmitPut = async (payload: FormPayload): Promise<void> => {
   try {
-    const id = props.asset?._id;
-    /*
-     * TODO: You should change the condition to `if (id)`, and wrap the whole try block
-     * in this if statement. This is related to how cypress tests work. I'll explain in
-     * more detail once you start working on cypress tests.
-     */
-    if (!id) {
-      return;
-    }
-    const response = await AssetServices.putAssets(payload, id);
-
-    // TODO: The error toasts should be moved to the catch block, do this for both functions
-    if (!response) {
-      toast.add({
-        severity: 'error',
-        message:
-          // TODO: Delete the `Please check your...` part of the message, it's already handled by the component.
-          'Error, failed to edit asset. Please check your connection and try again.',
-        // TODO: Unless specified in the design, don't set the life of toasts, it already has a default value
-        life: 3000,
-      });
-    }
-    toast.add({
-      severity: 'success',
-      message: 'Success, asset has been edited.',
-      life: 3000,
-    });
+    const { data } = await AssetServices.getAssetsOptions(params);
+    options.value = data.data;
   } catch (e) {
     console.error(e);
   }
 };
 
-// TODO: Rename this function to registerAsset
-const onSubmitPost = async (payload: FormPayload): Promise<void> => {
+const editAsset = async (payload: FormPayload): Promise<void> => {
   try {
-    const response = await AssetServices.postAssets(payload); // TODO: Add blank lines to improve readability, such as below this line. Blank lines can improve readability because they add a visual break between groups of code, making it easier to understand and navigate.
-    if (!response) {
+    const id = props.asset?._id;
+    if (id) {
+      const response = await AssetServices.editAsset(payload, id);
+      if (response) {
+        toast.add({
+          severity: 'success',
+          message: 'Success, asset has been edited.',
+        });
+      }
+    }
+  } catch (error) {
+    toast.add({
+      message: 'Error, failed to edit asset.',
+      error,
+    });
+    isError.value = true;
+    console.error(error);
+  }
+};
+
+const registerAsset = async (payload: FormPayload): Promise<void> => {
+  try {
+    const response = await AssetServices.registerAsset(payload);
+    if (response) {
       toast.add({
-        severity: 'error',
-        message:
-          'Error, failed to register asset. Please check your connection and try again.',
-        life: 3000,
+        severity: 'success',
+        message: 'Success, asset has been registered.',
       });
     }
+  } catch (error) {
     toast.add({
-      severity: 'success',
-      message: 'Success, asset has been registered.',
-      life: 3000,
+      message: 'Error, failed to register asset.',
+      error,
     });
-    // TODO: After submitting, the dialog shouldn't be closed if the stay after submit checkbox is checked
-  } catch (e) {
-    console.error(e);
+    isError.value = true;
+    console.error(error);
   }
 };
 </script>
@@ -103,9 +88,11 @@ const onSubmitPost = async (payload: FormPayload): Promise<void> => {
     ref="dialogForm"
     v-model:visible="visible"
     :buttons-template="['submit', 'cancel', 'clear']"
+    :close-on-submit="isError === true ? false : true"
     :header="props.asset ? 'Edit Asset' : 'Register Asset'"
+    :reset-after-submit="isError === true ? false : true"
     @show="props.asset ? dialogForm?.setValues(props.asset) : undefined"
-    @submit="props.asset ? onSubmitPut($event) : onSubmitPost($event)"
+    @submit="props.asset ? editAsset($event) : registerAsset($event)"
     show-stay-checkbox
     width="semi-xlarge"
   >
@@ -124,18 +111,6 @@ const onSubmitPost = async (payload: FormPayload): Promise<void> => {
         />
 
         <Dropdown
-          :options="options?.nameOptions"
-          :validator-message="{ empty: 'You must pick a name' }"
-          @show="getOptions({ nameOptions: true })"
-          field-name="name"
-          label="Name"
-          mandatory
-          option-label="label"
-          option-value="value"
-          use-validator
-        />
-
-        <Dropdown
           :options="options?.categoryOptions"
           :validator-message="{ empty: 'You must pick a category' }"
           @show="getOptions({ categoryOptions: true })"
@@ -147,23 +122,28 @@ const onSubmitPost = async (payload: FormPayload): Promise<void> => {
           use-validator
         />
 
-        <!-- TODO: As I've explained before, all inputs in a form must use the use-validator and field-name prop -->
+        <Dropdown
+          :options="options?.nameOptions"
+          :validator-message="{ empty: 'You must pick a name' }"
+          @show="getOptions({ nameOptions: true })"
+          field-name="name"
+          label="Name"
+          mandatory
+          option-label="label"
+          option-value="value"
+          use-validator
+        />
+
         <InputText
           :validator-message="{ empty: 'You must pick a alias name' }"
           field-info="You can input an alias name for convenience in searching for assets and to differentiate them from others."
+          field-name="aliasName"
           label="Alias Name"
+          use-validator
         />
 
-        <!--
-          TODO: This `disabled` condition is too complex, move it to a computed property
-          Reference: https://fewangsit.gitbook.io/vue/docs/style-guide/code-consistency-guidelines/vue-specific-guidelines#id-1.1-keep-templates-simple
-        -->
         <Dropdown
-          :disabled="
-            !dialogForm?.form?.values.group ||
-            !dialogForm.form.values.category ||
-            !dialogForm.form.values.name
-          "
+          :disabled="isDisabled"
           :options="options?.brandOptions"
           :validator-message="{ empty: 'You must pick a brand' }"
           @show="getOptions({ brandOptions: true })"
@@ -175,18 +155,8 @@ const onSubmitPost = async (payload: FormPayload): Promise<void> => {
           use-validator
         />
 
-        <!--
-          TODO: The condition should only be `!dialogForm?.form?.values.brand`,
-          because the `brand` field is already disabled when the `group`, `category`
-          or `name` fields are empty.
-        -->
         <Dropdown
-          :disabled="
-            !dialogForm?.form?.values.group ||
-            !dialogForm.form.values.category ||
-            !dialogForm.form.values.name ||
-            !dialogForm.form.values.brand
-          "
+          :disabled="!dialogForm?.form?.values.brand"
           :options="options?.modelOptions"
           :validator-message="{ empty: 'You must pick a Model/Type' }"
           @show="getOptions({ modelOptions: true })"

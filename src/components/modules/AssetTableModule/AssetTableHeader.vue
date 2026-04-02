@@ -19,7 +19,6 @@ import DialogFormAsset from './DialogFormAsset.vue';
 
 const show = shallowRef<boolean>(false);
 
-// TODO: The filter doesn't have any options
 const filterFields = computed<FilterField[]>(() => [
   {
     label: 'Asset',
@@ -68,8 +67,12 @@ const getFilterOptions = async (
 
     <ButtonFilter table-name="asset-list" />
 
-    <!-- TODO: Don't add a `+` to the label, use the `add-line` icon -->
-    <Button @click="show = true" label="+ Register" severity="secondary" />
+    <Button
+      @click="show = true"
+      icon="add-line"
+      label="Register"
+      severity="secondary"
+    />
   </div>
 
   <FilterContainer :fields="filterFields" table-name="asset-list" />
