@@ -49,6 +49,11 @@ onMounted(() => {
         <span class="font-semibold text-[14px]">General Information</span>
 
         <div class="grid grid-cols-2 gap-2">
+          <!--
+            TODO: Rather than multiple divs and spans, you should utiliize v-for
+            and a computed property so that you only need to use one div
+            and two spans. This is to reduce code duplication.
+          -->
           <div class="flex flex-col">
             <span class="text-[10px] text-general-500">Brand</span>
 

@@ -71,6 +71,12 @@ const TABLE_COLUMNS: TableColumn<Asset>[] = [
   },
 ];
 
+/*
+ * TODO: Blank lines should be added between variable groups. Variables within the same
+ * group shouldn't have blank lines between them.
+ *
+ * Please read this in detail: https://fewangsit.gitbook.io/vue/docs/style-guide/vue-code-structure#id-1.2-the-script-code-arrangement
+ */
 const selectedAset = shallowRef<Asset>();
 
 const show = shallowRef<boolean>(false);

@@ -28,6 +28,10 @@ const API = ({ headers = {}, params = {} } = {}): AxiosInstance => {
 const AssetServices = {
   getAssets(
     params: GetAssetsParams,
+    /*
+     * TODO: Because you imported AssetDetail, you made this error.
+     * Make a habit of importing types with Ctrl + Space, not by typing it manually.
+     */
   ): Promise<AxiosResponse<FetchListResponse<Asset>>> {
     return API({ params }).get('');
   },
@@ -39,7 +43,21 @@ const AssetServices = {
   },
 
   registerAsset(
+    /*
+     * TODO: Make sure the body's type matches the body in the API spec I gave to you (also for the edit endpoint).
+     *
+     * I made this comment previously, but you didn't fix it correctly. I think this is another case
+     * where you should've asked me about how to fix it, but you didn't. Maybe you just assumed you
+     * knew how to fix it?
+     *
+     * Again I remind you, please ask me more questions.
+     * I'd rather you ask me 10 questions than I have to add 1 TODO comment.
+     */
     body: FormPayload,
+    /*
+     * TODO: The response type of non-get endpoints should just be `Promise<AxiosResponse>`
+     * Also change this for the edit endpoint.
+     */
   ): Promise<AxiosResponse<FetchListResponse<GetOptionParams>>> {
     return API().post('', body);
   },

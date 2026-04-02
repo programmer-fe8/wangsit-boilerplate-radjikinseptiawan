@@ -1,3 +1,7 @@
+<!--
+  TODO: So, there were 6 things in this file that doesn't match the design.
+  None of them have been fixed.  Try to identify and fix them.
+-->
 <script lang="ts" setup>
 import {
   DialogForm,
@@ -30,6 +34,7 @@ const isDisabled = computed<boolean>(() => {
   return !value?.group || !value.name || !value.category;
 });
 
+// TODO: shallowRefs shouldn't be put here
 const options = shallowRef<FilterOptions<GetOptionParams>>();
 const isError = shallowRef<boolean>(false);
 const getOptions = async (params: GetOptionParams): Promise<void> => {
@@ -46,6 +51,11 @@ const editAsset = async (payload: FormPayload): Promise<void> => {
     const id = props.asset?._id;
     if (id) {
       const response = await AssetServices.editAsset(payload, id);
+      /*
+       * TODO: Remove this condition, it's not needed. If there's no response,
+       * then the endpoint will throw an error, and the error will be caught in the catch block.
+       * Also remove this condition in the register function.
+       */
       if (response) {
         toast.add({
           severity: 'success',
@@ -84,6 +94,12 @@ const registerAsset = async (payload: FormPayload): Promise<void> => {
 </script>
 
 <template>
+  <!--
+    TODO: Delete the `isError` ref, it's not needed.
+    reset-after-submit and close-on-submit should just be set to false.
+    Then, you'll need to handle the stay condition in the register and 
+    edit function.
+  -->
   <DialogForm
     ref="dialogForm"
     v-model:visible="visible"
@@ -97,6 +113,7 @@ const registerAsset = async (payload: FormPayload): Promise<void> => {
     width="semi-xlarge"
   >
     <template #fields>
+      <!-- TODO: Delete show-stay-checkbox, I think you added it by mistake? -->
       <div class="grid grid-cols-2 gap-3" show-stay-checkbox>
         <Dropdown
           :options="options?.groupOptions"
