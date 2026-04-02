@@ -82,24 +82,6 @@ const FetchDetailAsset = async (): Promise<void> => {
 
             <span class="text-[12px]">{{ item.value }}</span>
           </div>
-
-          <div class="flex flex-col">
-            <span class="text-[10px] text-general-500">Model/Type</span>
-
-            <span class="text-[12px]">{{ detailAssets?.model }}</span>
-          </div>
-
-          <div class="flex flex-col">
-            <span class="text-[10px] text-general-500">Category</span>
-
-            <span class="text-[12px]">{{ detailAssets?.category }}</span>
-          </div>
-
-          <div class="flex flex-col">
-            <span class="text-[10px] text-general-500">Group</span>
-
-            <span class="text-[12px]">{{ detailAssets?.group }}</span>
-          </div>
         </div>
       </div>
     </div>

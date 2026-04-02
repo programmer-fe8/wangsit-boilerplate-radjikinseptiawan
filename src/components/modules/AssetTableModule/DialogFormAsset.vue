@@ -46,30 +46,35 @@ const editAsset = async (payload: FormPayload): Promise<void> => {
     const id = props.asset?._id;
     if (id) {
       await AssetServices.editAsset(payload.formValues as EditAssets, id);
+
       toast.add({
         severity: 'success',
         message: 'asset has been edited.',
       });
     }
+    visible.value = false;
   } catch (error) {
     toast.add({
       message: 'failed to edit asset.',
       error,
     });
-    payload.stayAfterSubmit = true;
   }
 };
 
 const registerAsset = async (payload: FormPayload): Promise<void> => {
   try {
-    const response = await AssetServices.registerAsset(
-      payload.formValues as AddAssets,
-    );
-    if (response) {
-      toast.add({
-        severity: 'success',
-        message: 'asset has been registered.',
-      });
+    await AssetServices.registerAsset(payload.formValues as AddAssets);
+
+    toast.add({
+      severity: 'success',
+      message: 'asset has been registered.',
+    });
+
+    console.log(payload);
+    if (payload.stayAfterSubmit) {
+      dialogForm.value?.clearField();
+    } else {
+      visible.value = false;
     }
   } catch (error) {
     toast.add({
@@ -91,10 +96,10 @@ const registerAsset = async (payload: FormPayload): Promise<void> => {
     :close-on-submit="false"
     :header="props.asset ? 'Edit Asset' : 'Register Asset'"
     :reset-after-submit="false"
+    :show-stay-checkbox="props.asset ? false : true"
     :submit-btn-label="props.asset ? 'Edit' : 'Create'"
     @show="props.asset ? dialogForm?.setValues(props.asset) : undefined"
     @submit="props.asset ? editAsset($event) : registerAsset($event)"
-    show-stay-checkbox
     width="semi-xlarge"
   >
     <template #fields>
@@ -171,11 +176,7 @@ const registerAsset = async (payload: FormPayload): Promise<void> => {
         />
       </div>
 
-      <ImageCompressor
-        :use-delete-button="props.asset ? true : false"
-        field-name="assetImage"
-        label="Photo"
-      />
+      <ImageCompressor field-name="assetImage" label="Photo" />
     </template>
   </DialogForm>
 </template>

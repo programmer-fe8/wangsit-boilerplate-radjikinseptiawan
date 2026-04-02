@@ -14,7 +14,6 @@ import { MenuItem } from '@fewangsit/wangsvue/menuitem';
 import { AxiosResponse } from 'axios';
 import { computed, shallowRef } from 'vue';
 
-import { GetOptionsParams } from '@/dto/user.dto';
 import UserServices from '@/services/example.service';
 import { Member } from '@/types/member.type';
 
