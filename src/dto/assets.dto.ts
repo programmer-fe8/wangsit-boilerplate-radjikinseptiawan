@@ -16,3 +16,23 @@ export interface GetOptionParams {
   groupOptions?: boolean;
   brandOptions?: boolean;
 }
+
+export interface AddAssets {
+  category: string;
+  brand: string;
+  model: string;
+  group: string;
+  aliasName: string;
+  name: string;
+  assetImage: string;
+}
+
+export interface EditAssets {
+  category: string;
+  brand: string;
+  model: string;
+  group: string;
+  aliasName: string;
+  name: string;
+  assetImage: string;
+}

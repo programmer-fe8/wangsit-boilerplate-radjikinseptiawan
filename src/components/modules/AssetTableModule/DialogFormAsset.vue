@@ -1,7 +1,3 @@
-<!--
-  TODO: So, there were 6 things in this file that doesn't match the design.
-  None of them have been fixed.  Try to identify and fix them.
--->
 <script lang="ts" setup>
 import {
   DialogForm,
@@ -14,7 +10,7 @@ import { FilterOptions } from '@fewangsit/wangsvue/filtercontainer';
 import { FormPayload } from '@fewangsit/wangsvue/form';
 import { computed, shallowRef, useTemplateRef } from 'vue';
 
-import { GetOptionParams } from '@/dto/assets.dto';
+import { AddAssets, EditAssets, GetOptionParams } from '@/dto/assets.dto';
 import AssetServices from '@/services/assets.service';
 import { Asset } from '@/types/assets.type';
 
@@ -28,15 +24,14 @@ const toast = useToast();
 
 const dialogForm = useTemplateRef<DialogForm>('dialogForm');
 
+const options = shallowRef<FilterOptions<GetOptionParams>>();
+
 const isDisabled = computed<boolean>(() => {
   const value = dialogForm.value?.form?.values;
 
   return !value?.group || !value.name || !value.category;
 });
 
-// TODO: shallowRefs shouldn't be put here
-const options = shallowRef<FilterOptions<GetOptionParams>>();
-const isError = shallowRef<boolean>(false);
 const getOptions = async (params: GetOptionParams): Promise<void> => {
   try {
     const { data } = await AssetServices.getAssetsOptions(params);
@@ -50,71 +45,60 @@ const editAsset = async (payload: FormPayload): Promise<void> => {
   try {
     const id = props.asset?._id;
     if (id) {
-      const response = await AssetServices.editAsset(payload, id);
-      /*
-       * TODO: Remove this condition, it's not needed. If there's no response,
-       * then the endpoint will throw an error, and the error will be caught in the catch block.
-       * Also remove this condition in the register function.
-       */
-      if (response) {
-        toast.add({
-          severity: 'success',
-          message: 'Success, asset has been edited.',
-        });
-      }
+      await AssetServices.editAsset(payload.formValues as EditAssets, id);
+      toast.add({
+        severity: 'success',
+        message: 'asset has been edited.',
+      });
     }
   } catch (error) {
     toast.add({
-      message: 'Error, failed to edit asset.',
+      message: 'failed to edit asset.',
       error,
     });
-    isError.value = true;
-    console.error(error);
+    payload.stayAfterSubmit = true;
   }
 };
 
 const registerAsset = async (payload: FormPayload): Promise<void> => {
   try {
-    const response = await AssetServices.registerAsset(payload);
+    const response = await AssetServices.registerAsset(
+      payload.formValues as AddAssets,
+    );
     if (response) {
       toast.add({
         severity: 'success',
-        message: 'Success, asset has been registered.',
+        message: 'asset has been registered.',
       });
     }
   } catch (error) {
     toast.add({
-      message: 'Error, failed to register asset.',
+      message: 'failed to register asset.',
       error,
     });
-    isError.value = true;
     console.error(error);
+    payload.stayAfterSubmit = true;
   }
 };
 </script>
 
 <template>
-  <!--
-    TODO: Delete the `isError` ref, it's not needed.
-    reset-after-submit and close-on-submit should just be set to false.
-    Then, you'll need to handle the stay condition in the register and 
-    edit function.
-  -->
   <DialogForm
     ref="dialogForm"
     v-model:visible="visible"
     :buttons-template="['submit', 'cancel', 'clear']"
-    :close-on-submit="isError === true ? false : true"
+    :closable="false"
+    :close-on-submit="false"
     :header="props.asset ? 'Edit Asset' : 'Register Asset'"
-    :reset-after-submit="isError === true ? false : true"
+    :reset-after-submit="false"
+    :submit-btn-label="props.asset ? 'Edit' : 'Create'"
     @show="props.asset ? dialogForm?.setValues(props.asset) : undefined"
     @submit="props.asset ? editAsset($event) : registerAsset($event)"
     show-stay-checkbox
     width="semi-xlarge"
   >
     <template #fields>
-      <!-- TODO: Delete show-stay-checkbox, I think you added it by mistake? -->
-      <div class="grid grid-cols-2 gap-3" show-stay-checkbox>
+      <div class="grid grid-cols-2 gap-3">
         <Dropdown
           :options="options?.groupOptions"
           :validator-message="{ empty: 'You must pick a grup' }"
@@ -153,9 +137,10 @@ const registerAsset = async (payload: FormPayload): Promise<void> => {
 
         <InputText
           :validator-message="{ empty: 'You must pick a alias name' }"
-          field-info="You can input an alias name for convenience in searching for assets and to differentiate them from others."
+          field-info="You can input an alias name for convenience in searching for &#10; assets and to differentiate them from others."
           field-name="aliasName"
           label="Alias Name"
+          show-optional-text
           use-validator
         />
 
@@ -186,7 +171,11 @@ const registerAsset = async (payload: FormPayload): Promise<void> => {
         />
       </div>
 
-      <ImageCompressor field-name="assetImage" />
+      <ImageCompressor
+        :use-delete-button="props.asset ? true : false"
+        field-name="assetImage"
+        label="Photo"
+      />
     </template>
   </DialogForm>
 </template>

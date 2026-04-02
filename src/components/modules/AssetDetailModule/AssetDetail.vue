@@ -1,29 +1,53 @@
 <script lang="ts" setup>
 import { Image } from '@fewangsit/wangsvue';
-import { onMounted, shallowRef } from 'vue';
+import { computed, onMounted, shallowRef } from 'vue';
 import { useRoute } from 'vue-router';
 
 import AssetServices from '@/services/assets.service';
 import { AssetDetail } from '@/types/assets.type';
 
+onMounted(async () => {
+  await FetchDetailAsset();
+});
+
 const route = useRoute();
 
 const detailAssets = shallowRef<AssetDetail | undefined>();
+
+const mappingAsset = computed(() => {
+  if (!detailAssets.value) return [];
+
+  return [
+    {
+      field: 'alias name',
+      value: detailAssets.value?.aliasName ?? '-',
+    },
+    {
+      field: 'category',
+      value: detailAssets.value?.category ?? '-',
+    },
+    {
+      field: 'group',
+      value: detailAssets.value?.group ?? '-',
+    },
+    {
+      field: 'model',
+      value: detailAssets.value?.model ?? '-',
+    },
+  ];
+});
+
 const FetchDetailAsset = async (): Promise<void> => {
   try {
-    const response = await AssetServices.getDetailAsset(
+    const { data } = await AssetServices.getDetailAsset(
       route.params.id as string,
     );
-    const value = response.data;
-    detailAssets.value = value.data;
+
+    detailAssets.value = data.data;
   } catch (e) {
     console.error(e);
   }
 };
-
-onMounted(() => {
-  FetchDetailAsset();
-});
 </script>
 
 <template>
@@ -49,15 +73,14 @@ onMounted(() => {
         <span class="font-semibold text-[14px]">General Information</span>
 
         <div class="grid grid-cols-2 gap-2">
-          <!--
-            TODO: Rather than multiple divs and spans, you should utiliize v-for
-            and a computed property so that you only need to use one div
-            and two spans. This is to reduce code duplication.
-          -->
-          <div class="flex flex-col">
-            <span class="text-[10px] text-general-500">Brand</span>
+          <div
+            :key="index"
+            v-for="(item, index) in mappingAsset"
+            class="flex flex-col"
+          >
+            <span class="text-[10px] text-general-500">{{ item.field }}</span>
 
-            <span class="text-[12px]">{{ detailAssets?.brand }}</span>
+            <span class="text-[12px]">{{ item.value }}</span>
           </div>
 
           <div class="flex flex-col">
